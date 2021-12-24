@@ -1,0 +1,52 @@
+
+const { indexOf } = require("lodash");
+
+$(function () {
+    //モーダルウィンドウを開く
+    $('#modalIn').on('click', function () {
+        $('#modalWindow').fadeIn();
+        return false;
+    });
+    //モーダルウィンドウを閉じる
+    $('#modalOut').on('click', function () {
+        //$('#pointname').val("");
+        $('#modalWindow').fadeOut();
+        return false;
+    });
+    //次へ進行するボタン
+    $('#nextButton').on('click', function () {
+        $('#nextAction').submit();
+    });
+    //前へ戻るボタン
+    $('#backButton').on('click', function () {
+        $('#backAction').submit();
+    });
+    //画像ファイル選択アクション
+    $('#pictureSelect').on('click',function (){
+        if($('#pictureButton').val() != ""){
+            $('#preview').attr("src","");
+            //アップロードした画像をクリア
+            $('#pictureButton').val("");
+            $('#pictureSelect').html("添付");
+        }else{
+            $('#pictureButton').click();
+        }
+    });
+    //画像プレビュー
+    $('#pictureButton').on('change',function(e){
+            let render = new FileReader();
+            //一時ファイルをプレビューへ
+            //一時ファイルを呼び出し
+            render.onload = function(e){
+                    //プレビュー画像表示
+                    $('#preview').attr("src",e.target.result);
+                    //プレビュータイトルの項目を入れる
+                    $('#preview').attr("title",e.target.name);
+            };
+            //読込処理（ここが終わればonloadが発火する）
+            render.readAsDataURL(e.target.files[0]);
+            $('#pictureSelect').html("削除");
+    });
+
+
+});

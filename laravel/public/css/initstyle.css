@@ -1,0 +1,59 @@
+/**/
+/*
+/*      css初期化
+/*
+/**/
+
+@charset "UTF-8";
+
+:root{
+    --root-font-size:16px;
+    --mobile-height:650px;
+    --mobile-width:365px;
+    --button-font-size:4rem;
+    --input-text-size:1.5rem;
+}
+
+html{
+    font-size:var(--root-font-size);
+}
+
+body,h1,h2,h3,h4,h5,h6,p,ul,li,figure{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+body{
+    box-sizing:border-box;
+}
+form{
+    height:100%;
+    width:100%;
+    margin:0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.wrapper{
+    height:100vh;
+    width:100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/*ポイント作成画面モーダルウィンドウ*/
+.modalWindow{
+    display:none;
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:100vw;
+    height:100vh;
+}
