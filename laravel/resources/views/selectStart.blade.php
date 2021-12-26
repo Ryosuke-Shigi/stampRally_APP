@@ -54,7 +54,7 @@ CREATE [start]
                             <!-- 紹介メッセージ -->
                             <div class="multiText">
                                 <div class="name">紹 介 メ ッ セ ー ジ</div>
-                                <div class="content"><textarea name="message" class="text">{{ old('message') }}</textarea></div>
+                                <div class="content"><textarea name="introduction" class="text">{{ old('message') }}</textarea></div>
                             </div>
                             <!-- エラーメッセージ -->
                             @if($errors->has('message'))<div class="errorMessage">{{ $errors->first('message') }}</div>@endif
@@ -64,7 +64,7 @@ CREATE [start]
                                 <div class="content"><img class="preview" id="preview"></div>
                                 <div class="buttonSection">
                                     <div class="pictButton" id="pictureSelect">添付</div>
-                                    <input type="file" class="NONE" name="picture" id="pictureButton">
+                                    <input type="file" class="NONE" name="pict" id="pictureButton">
                                 </div>
                             </div>
 

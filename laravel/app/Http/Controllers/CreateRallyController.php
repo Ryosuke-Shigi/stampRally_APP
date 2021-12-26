@@ -32,12 +32,7 @@ class CreateRallyController extends Controller
     // スタートポイント選択画面からポイント選択画面へ　※テーブルにスタートデータを登録する
     public function makeStart(POSITION_SET $request){
 
-        dump($request->name);
-        dump($request->message);
-        dump($request->latitude);
-        dump($request->longitude);
-        dump($request->nowTime);
-
+        //画像が存在しているか　また　アップロードは成功しているかどうか
         if(isset($request->picture) && $request->file('picture')->isValid()){
                 dump($request->file("picture")->getPathname());
         }
@@ -46,17 +41,22 @@ class CreateRallyController extends Controller
 
         //webAPI rallyapiを叩く
         $client = new Client();
-/*         $url = "http://127.0.0.1:8075/api/start/delete/";
+        //$url = "http://127.0.0.1:8075/api/start/delete/";
         //$response = $client->request('GET',$url);
-        $param=array('name'=>$request->name,
+        $param=array(
+                    'user_id'=>auth()->user()->user_id,
+                    'name'=>$request->name,
                     'message'=>$request->message,
                     'latitude'=>$request->latitude,
                     'longitude'=>$request->longitude,
-                    'time'=>$request->nowTime);
-        $response = $client->request('get',$url,['json'=>"2"]);
-        dump($response);
- */        $url = "http://127.0.0.1:8075/api/start/delete/";
-        $response = $client->request('GET',$url);
+                    'time'=>$request->nowTime
+                    );
+        //$response = $client->request('get',$url,['json'=>"2"]);
+        //dump($response);
+
+        $url = "host.docker.internal:8075/api/start/create/";
+        dump('test');
+        $response = $client->request('POST',$url,['json'=>$param]);
         dump($response);
 
         //ポイント選択画面へ移動
