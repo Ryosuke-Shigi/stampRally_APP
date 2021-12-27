@@ -26,19 +26,21 @@ class POSITION_SET extends FormRequest
         return [
             //
             'name'=>'required',
-            'message'=>'required'
+            'introduction'=>'required',
+            'pict'=>'mimes:jpeg,png,jpg,bmp,gif',
         ];
     }
     public function attributes(){
         return [
             'name'=>'名前',
-            'message'=>"紹介文"
+            'introduction'=>"紹介文",
+            'pict'=>"画像"
         ];
     }
     public function messages(){
         return [
             'name.required'=>":attributeを入力してください。",
-            'message.required'=>":attributeを入力してください。"
+            'introduction.required'=>":attributeを入力してください。"
         ];
     }
 }

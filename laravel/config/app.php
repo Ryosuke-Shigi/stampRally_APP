@@ -225,6 +225,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        //webAPIを触る時の定数
+        'WebApi'=> App\Consts\webApi::class,
 
     ],
 
