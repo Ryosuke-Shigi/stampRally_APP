@@ -21,7 +21,7 @@ CREATE [start]
     <div class="wrapper">
         <!-- 地図部分 -->
         <div class="mapContainer">
-            <div class="mapKind">SETTING : START</div>
+            <div class="mapKind">スタート位置を設定してください MAPクリック後、SETをクリック</S></div>
             <div class="map" id="map"></div>
         </div>
         <!-- ボタン部分 -->
@@ -31,33 +31,37 @@ CREATE [start]
         </div>
     </div>
 
+    <!--BackAction 他に影響しないように外へ-->
+    <form method="GET" id="backAction" action="" enctype="multipart/form-data">
+        @csrf
+    </form>
 
-    <!--モーダルウィンドウ　スタート詳細設定画面-->
+    <!--モーダルウィンドウ　ラリー名・スタート詳細設定画面-->
     <div id="modalWindow" class="modalWindow">
         <div class="modalwrapper">
             <!-- 詳細設定部分 -->
             <div class="configContainer">
                 <div class="sectorA">
-                    <div class="titleSection"><div class="title">スタート位置詳細を設定してください</div></div>
+                    <div class="titleSection"><div class="title">ラリー名・スタート位置詳細を設定してください</div></div>
                     <div class="configSection">
-                    <form method="POST" id="nextAction" action="makeStart" enctype="multipart/form-data">
+                    <form method="POST" id="nextActionA" action={{ route('makeStart') }} enctype="multipart/form-data">
                         @csrf
                         <div class="itemSection">
 
                             <!-- ラリーの名前 -->
                             <div class="singleText">
-                                <div class="name">R A L L Y　N A M E</div>
+                                <div class="name">R A L L Y　N A M E（※必須）</div>
                                 <div class="content"><input type="text" class="text" name="name" value="{{ old('name') }}" autocomplete="off"></div>
                             </div>
                             <!-- エラーメッセージ -->
                             @if($errors->has('name'))<div class="errorMessage">{{ $errors->first('name') }}</div>@endif
                             <!-- 紹介メッセージ -->
                             <div class="multiText">
-                                <div class="name">紹 介 メ ッ セ ー ジ</div>
-                                <div class="content"><textarea name="introduction" class="text">{{ old('introduction') }}</textarea></div>
+                                <div class="name">紹 介 メ ッ セ ー ジ（※必須）</div>
+                                <div class="content"><textarea name="text" class="text">{{ old('text') }}</textarea></div>
                             </div>
                             <!-- エラーメッセージ -->
-                            @if($errors->has('introduction'))<div class="errorMessage">{{ $errors->first('introduction') }}</div>@endif
+                            @if($errors->has('text'))<div class="errorMessage">{{ $errors->first('text') }}</div>@endif
                             <!-- 写真追加 -->
                             <div class="picture">
                                 <div class="name">ＰＩＣＴＵＲＥ</div>
@@ -79,7 +83,7 @@ CREATE [start]
             </div>
             <!--モーダルウィンドウ　ボタン部分-->
             <div class="buttonContainer">
-                <div id="nextButton" class="setButton">Create</div>
+                <div id="nextButtonA" class="setButton">Create</div>
                 <div id="modalOut" class="backButton">Back</div>
             </div>
         </div>

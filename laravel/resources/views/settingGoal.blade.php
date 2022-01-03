@@ -7,7 +7,7 @@ CREATE [G O A L]
 
 <!--追加メタ情報-->
 @section('meta')
-    <link href="{{ asset('css/temp.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/settingGoal.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection

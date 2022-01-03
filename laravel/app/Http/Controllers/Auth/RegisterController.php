@@ -9,6 +9,10 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+//guzzle ｗｅｂＡＰＩを叩く
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Utils;
+
 class RegisterController extends Controller
 {
     /*
@@ -65,11 +69,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        //webAPI rallyapiを叩く
+        $client = new Client();
+
+        //外部API接続用ConnectID作成
+        $Url = \WebApi::API_ADRESS.'/createUser';
+        $param=array(
+            'user_id'=>$data['user_id'],
+            'email'=>$data['email']
+            //'user_id'=>auth()->user()->user_id,
+            );
+        $response = $client->request('POST',$Url,['json'=>$param]);
+        $connect_id=json_decode($response->getBody()->getContents());
         return User::create([
             //'name' => $data['name'],
             'user_id' => $data['user_id'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'connect_id'=>$connect_id->connect_id
         ]);
     }
 }

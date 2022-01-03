@@ -13,10 +13,20 @@ $(function () {
         $('#modalWindow').fadeOut();
         return false;
     });
+    //進行ボタンは複数あります 各それぞれのBladeで行き先管理
     //次へ進行するボタン
-    $('#nextButton').on('click', function () {
-        $('#nextAction').submit();
+    $('#nextButtonA').on('click', function () {
+        $('#nextActionA').submit();
     });
+    //次へ進行するボタン
+    $('#nextButtonB').on('click', function () {
+        $('#nextActionB').submit();
+    });
+    //次へ進行するボタン
+    $('#nextButtonC').on('click', function () {
+        $('#nextActionC').submit();
+    });
+
     //前へ戻るボタン
     $('#backButton').on('click', function () {
         $('#backAction').submit();
