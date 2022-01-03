@@ -46,7 +46,7 @@ CREATE [G O A L]
                     </div>
                 </div>
             </div>
-            <!--モーダルウィンドウ　ボタン部分-->
+            <!--選択ボタン領域-->
             <div class="buttonContainer">
                 <div id="nextButtonA" class="setButton">完了</div>
             </div>

@@ -40,7 +40,7 @@ class CreateRallyController extends Controller
     }
     //ポイント追加選択画面
     public function addPoint(REQUEST $request,$route_code,$route_name,$point_no){
-        return view('selectPoint')
+        return view('addPoint')
                         ->with('route_code',$route_code)
                         ->with('route_name',$route_name)
                         ->with('point_no',$point_no+1);
@@ -128,7 +128,7 @@ class CreateRallyController extends Controller
                     'text'=>$request->text,
                     );
         $response = $client->request('POST',$dataUrl,['json'=>$param]);
-        return redirect()->route('settingGoal',['route_code'=>$route_code,'route_name'=>$route_name]);
+        return redirect()->route('addPoint',['route_code'=>$route_code,'route_name'=>$route_name,'point_no'=>$point_no]);
     }
 
 
@@ -152,7 +152,7 @@ class CreateRallyController extends Controller
             $pictPath = NULL;
         }
 
-        //ポイントの保存
+        //ゴールの保存
         $dataUrl = \WebApi::API_ADRESS.'/goal/create';
         $param=array(
                     'connect_id'=>auth()->user()->connect_id,

@@ -22,7 +22,7 @@ CREATE [G O A L]
                 <div class="sectorA">
                     <div class="titleSection"><div class="title">ラリー達成結果を作成してください。</div></div>
                     <div class="configSection">
-                    <form method="POST" id="nextActionA" action="{{ route('makeGoal',['route_code'=>$route_code]) }}" enctype="multipart/form-data">
+                    <form method="POST" id="nextActionA" action="" enctype="multipart/form-data">
                         @csrf
                         <div class="itemSection">
                             <!-- 紹介メッセージ -->
@@ -48,7 +48,9 @@ CREATE [G O A L]
             </div>
             <!--モーダルウィンドウ　ボタン部分-->
             <div class="buttonContainer">
-                <div id="nextButtonA" class="setButton">完了</div>
+                <div id="nextButtonA" class="setButton">point追加</div>
+                <div id="nextButtonB" class="setButton">次へ</div>
+
             </div>
     </div>
 
