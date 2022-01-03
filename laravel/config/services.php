@@ -30,4 +30,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'web' => [
+        'stamprally_API'=>env('STAMPRALLY_API_URL'),
+    ],
+
 ];

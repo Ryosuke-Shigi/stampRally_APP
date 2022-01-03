@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class POSITION_SET extends FormRequest
+class ROUTE_SET extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,19 +25,22 @@ class POSITION_SET extends FormRequest
     {
         return [
             //
+            'name'=>'required',
             'text'=>'required',
             'pict'=>'mimes:jpeg,png,jpg,bmp,gif',
         ];
     }
     public function attributes(){
         return [
-            'text'=>'コメント',
+            'name'=>'名前',
+            'text'=>"紹介文",
             'pict'=>"画像"
         ];
     }
     public function messages(){
         return [
-            'text.required'=>":attributeをいれてあげてください。"
+            'name.required'=>":attributeを入力してください。",
+            'text.required'=>":attributeを入力してください。"
         ];
     }
 }

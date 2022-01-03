@@ -12,9 +12,10 @@
         <!-- Styles -->
         <style>
             html, body {
-                color: #0026ff;//非対応のブラウザでの文字色を設定
-                font-family: '游ゴシック', 'Nunito', 'Noto Sans', sans-serif;
-                font-weight: 1000;
+                background-color: #fff;
+                color: #636b6f;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 200;
                 height: 100vh;
                 margin: 0;
             }
@@ -44,7 +45,7 @@
             }
 
             .title {
-                font-size: 150px;
+                font-size: 84px;
             }
 
             .links > a {
