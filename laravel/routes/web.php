@@ -72,5 +72,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //画面表示テスト用
 Route::get('/test',function(){
-    return view('temp');
+    return view('test');
 });
