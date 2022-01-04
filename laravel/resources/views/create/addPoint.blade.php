@@ -2,7 +2,7 @@
 
 <!--タイトル-->
 @section('title')
-CREATE [G O A L]
+ポイントを追加しますか？
 @endsection
 
 <!--追加メタ情報-->

@@ -42,7 +42,6 @@ Route::group(['prefix'=>'create'],function(){
 
 
     //データ処理
-
     //スタート作成処理
     Route::get('/makeStart','CreateRallyController@makeStart')->name('makeStart');
     Route::post('/makeStart','CreateRallyController@makeStart')->name('makeStart');
@@ -71,6 +70,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 //画面表示テスト用
-Route::get('/test',function(){
-    return view('test');
-});
+Route::get('/test','GameRallyController@test')->name('test');
