@@ -2,14 +2,14 @@
 
 <!--タイトル-->
 @section('title')
-CREATE [Point]
+CREATE [start]
 @endsection
 
 <!--追加メタ情報-->
 @section('meta')
-    <link href="{{ asset('css/selectPoint.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/test.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/maps.js') }}" defer></script>
+    <script src="{{ asset('js/createMap.js') }}" defer></script>
     <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyBMKajpItMT-Hy-YgCTAvSO13Eefz2OVnY&callback=initMap" defer></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
@@ -21,7 +21,7 @@ CREATE [Point]
     <div class="wrapper">
         <!-- 地図部分 -->
         <div class="mapContainer">
-            <div class="mapKind">Route:{{ $route_name }}　のPOINTを作成してください。</div>
+            <div class="mapKind">スタート位置を設定してください MAPクリック後、SETをクリック</S></div>
             <div class="map" id="map"></div>
         </div>
         <!-- ボタン部分 -->
@@ -29,29 +29,35 @@ CREATE [Point]
             <div id="modalIn" class="setButton">SET</div>
             <div id="backButton" class="backButton">Back</div>
         </div>
-
     </div>
 
     <!--BackAction 他に影響しないように外へ-->
-    <form method="POST" id="backAction" action={{ route('reSelectStart',['route_code'=>$route_code]) }} enctype="multipart/form-data">
+    <form method="GET" id="backAction" action="" enctype="multipart/form-data">
         @csrf
-        <!-- ルートを一度削除するため、route_codeを送る -->
     </form>
 
-    <!--モーダルウィンドウ ポイント設定画面-->
+    <!--モーダルウィンドウ　ラリー名・スタート詳細設定画面-->
     <div id="modalWindow" class="modalWindow">
         <div class="modalwrapper">
             <!-- 詳細設定部分 -->
             <div class="configContainer">
                 <div class="sectorA">
-                    <div class="titleSection"><div class="title">詳細を設定してください</div></div>
+                    <div class="titleSection"><div class="title">ラリー名・スタート位置詳細を設定してください</div></div>
                     <div class="configSection">
-                    <form method="POST" id="nextActionA" action="{{ route('makePoint',['route_code'=>$route_code,'route_name'=>$route_name,'point_no'=>$point_no]) }}" enctype="multipart/form-data">
+                    <form method="POST" id="nextActionA" action={{ route('makeStart') }} enctype="multipart/form-data">
                         @csrf
                         <div class="itemSection">
+
+                            <!-- ラリーの名前 -->
+                            <div class="singleText">
+                                <div class="name">R A L L Y　N A M E（※必須）</div>
+                                <div class="content"><input type="text" class="text" name="name" value="{{ old('name') }}" autocomplete="off"></div>
+                            </div>
+                            <!-- エラーメッセージ -->
+                            @if($errors->has('name'))<div class="errorMessage">{{ $errors->first('name') }}</div>@endif
                             <!-- 紹介メッセージ -->
                             <div class="multiText">
-                                <div class="name">ＰＯＩＮＴ紹介（※必須）</div>
+                                <div class="name">紹 介 メ ッ セ ー ジ（※必須）</div>
                                 <div class="content"><textarea name="text" class="text">{{ old('text') }}</textarea></div>
                             </div>
                             <!-- エラーメッセージ -->
@@ -78,7 +84,7 @@ CREATE [Point]
             <!--モーダルウィンドウ　ボタン部分-->
             <div class="buttonContainer">
                 <div id="nextButtonA" class="setButton">Create</div>
-                <div id="modalOut" class="backButton">ReSet</div>
+                <div id="modalOut" class="backButton">Back</div>
             </div>
         </div>
     </div>

@@ -71,6 +71,7 @@ function initMap() {
                 strokeColor: "#000000",              //枠の色
                 strokeWeight: 1.0                    //枠の透過率
             },
+
             //現在地アイコン
             map_icon_label:'<span class=""></span>',
             label: {
@@ -110,44 +111,6 @@ function initMap() {
 
             });
         });
-
-/*         //ダブルクリック　登録表示
-        google.maps.event.addListener(mapObj,'dblclick',function(e)
-        {
-            let name=window.prompt("地点名を入力してください。");
-            if(name!="" && name!=null){
-                document.getElementById('name').value=name;
-                document.geo_point.submit();
-            }else{
-                alert("地点登録を取り消しました");
-            }
-        }); */
-
-
-        //ISS（宇宙国際ステーションの位置をとり、マーカーで表示する
-/*         var iss = new XMLHttpRequest();
-        iss.onload = function(){
-            let data = this.response;
-            data = JSON.parse(data);
-            let g_lat=data.iss_position.latitude;
-            let g_lng=data.iss_position.longitude;
-            let g_latLng=new google.maps.LatLng(g_lat,g_lng);
-            //alert(lat+lng);
-            //mapObj.panTo(g_latLng);
-            if(iss_marker != null){
-                iss_marker.setMap(null);
-            }
-            iss_marker=new google.maps.Marker({
-                position:g_latLng,          //位置
-                map:mapObj,                     //どの地図に入れるか
-            });
-        }
-        setInterval(function(){
-            iss.open('GET','http://api.open-notify.org/iss-now.json',true);
-            iss.send();
-        },500); */
-
-
 
     });//非同期処理　Promise 終了
 

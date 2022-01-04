@@ -23,24 +23,24 @@ class CreateRallyController extends Controller
     // スタートポイント選択画面表示
     public function selectStart(){
         //ユーザIDの取得はこれでよい　２０２１　１２　１８
-        return view('selectStart');
+        return view('create.selectStart');
     }
     // ポイント選択画面表示
     public function selectPoint($route_code,$route_name,$point_no){
-        return view('selectPoint')
+        return view('create.selectPoint')
                         ->with('route_code',$route_code)
                         ->with('route_name',$route_name)
                         ->with('point_no',$point_no);
     }
     // ゴール設定画面
     public function settingGoal($route_code,$route_name){
-        return view('settingGoal')
+        return view('create.settingGoal')
                         ->with('route_code',$route_code)
                         ->with('route_name',$route_name);
     }
     //ポイント追加選択画面
     public function addPoint(REQUEST $request,$route_code,$route_name,$point_no){
-        return view('addPoint')
+        return view('create.addPoint')
                         ->with('route_code',$route_code)
                         ->with('route_name',$route_name)
                         ->with('point_no',$point_no+1);
@@ -55,7 +55,7 @@ class CreateRallyController extends Controller
         if($request->hasFile('pict')){
             //画像保存
             //画像を保存してＰＡＴＨを取得。　外部ＷＥＢで行うことで　ファイルの取扱を統一
-            $pictUrl = \WebApi::API_ADRESS."/createPict";
+            $pictUrl = config('services.web.stamprally_API')."/createPict";
             $picture = Utils::tryFopen($request->file('pict')->getPathname(), 'r');
             $pict = $client->request('POST',$pictUrl,['multipart'=>[['name'=>'name','contents'=>$request->file('pict')->getClientOriginalName()],
                                                                     ['name'=>'mimeType','contents'=>$request->file('pict')->getMimeType()],
@@ -74,7 +74,7 @@ class CreateRallyController extends Controller
         $response=array();
 
         //ルートの保存
-        $dataUrl = \WebApi::API_ADRESS.'/route/create';
+        $dataUrl = config('services.web.stamprally_API').'/route/create';
         $param=array(
                     'connect_id'=>auth()->user()->connect_id,
                     'name'=>$request->name,
@@ -82,7 +82,7 @@ class CreateRallyController extends Controller
         $response = $client->request('POST',$dataUrl,['json'=>$param]);
         $route_code = json_decode($response->getBody()->getContents())->route_code;
         //スタートの保存
-        $dataUrl = \WebApi::API_ADRESS.'/start/create';
+        $dataUrl = config('services.web.stamprally_API').'/start/create';
         $param=array(
                     'connect_id'=>auth()->user()->connect_id,
                     'route_code'=>$route_code,
@@ -105,7 +105,7 @@ class CreateRallyController extends Controller
         if($request->hasFile('pict')){
             //画像保存
             //画像を保存してＰＡＴＨを取得。　外部ＷＥＢで行うことで　ファイルの取扱を統一
-            $pictUrl = \WebApi::API_ADRESS."/createPict";
+            $pictUrl = config('services.web.stamprally_API')."/createPict";
             $picture = Utils::tryFopen($request->file('pict')->getPathname(), 'r');
             $pict = $client->request('POST',$pictUrl,['multipart'=>[['name'=>'name','contents'=>$request->file('pict')->getClientOriginalName()],
                                                                     ['name'=>'mimeType','contents'=>$request->file('pict')->getMimeType()],
@@ -130,10 +130,6 @@ class CreateRallyController extends Controller
         $response = $client->request('POST',$dataUrl,['json'=>$param]);
         return redirect()->route('addPoint',['route_code'=>$route_code,'route_name'=>$route_name,'point_no'=>$point_no]);
     }
-
-
-
-
     //ゴール設定処理
     public function makeGoal(POSITION_SET $request,$route_code){
         $client = new Client();
@@ -141,7 +137,7 @@ class CreateRallyController extends Controller
         if($request->hasFile('pict')){
             //画像保存
             //画像を保存してＰＡＴＨを取得。　外部ＷＥＢで行うことで　ファイルの取扱を統一
-            $pictUrl = \WebApi::API_ADRESS."/createPict";
+            $pictUrl = config('services.web.stamprally_API')."/createPict";
             $picture = Utils::tryFopen($request->file('pict')->getPathname(), 'r');
             $pict = $client->request('POST',$pictUrl,['multipart'=>[['name'=>'name','contents'=>$request->file('pict')->getClientOriginalName()],
                                                                     ['name'=>'mimeType','contents'=>$request->file('pict')->getMimeType()],
@@ -153,7 +149,7 @@ class CreateRallyController extends Controller
         }
 
         //ゴールの保存
-        $dataUrl = \WebApi::API_ADRESS.'/goal/create';
+        $dataUrl = config('services.web.stamprally_API').'/goal/create';
         $param=array(
                     'connect_id'=>auth()->user()->connect_id,
                     'route_code'=>$route_code,
@@ -171,13 +167,12 @@ class CreateRallyController extends Controller
     public function reSelectStart(REQUEST $request){
         //routeDelete
         $client = new Client();
-        $dataUrl = \WebApi::API_ADRESS.'/route/delete';
+        $dataUrl = config('services.web.stamprally_API').'/route/delete';
         $param=array(
             'connect_id'=>auth()->user()->connect_id,
             'route_code'=>$request->route_code,
             );
         $client->request('GET',$dataUrl,['json'=>$param]);
-        //return view('selectStart');
         return redirect()->route('selectStart');
     }
 

@@ -2,14 +2,14 @@
 
 <!--タイトル-->
 @section('title')
-CREATE [start]
+{{ $title }}
 @endsection
 
 <!--追加メタ情報-->
 @section('meta')
-    <link href="{{ asset('css/selectStart.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/test.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/maps.js') }}" defer></script>
+    <script src="{{ asset('js/mapStartSearch.js') }}" defer></script>
     <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyBMKajpItMT-Hy-YgCTAvSO13Eefz2OVnY&callback=initMap" defer></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
@@ -21,7 +21,7 @@ CREATE [start]
     <div class="wrapper">
         <!-- 地図部分 -->
         <div class="mapContainer">
-            <div class="mapKind">スタート位置を設定してください MAPクリック後、SETをクリック</S></div>
+            <div class="mapKind">{{ $title }}</div>
             <div class="map" id="map"></div>
         </div>
         <!-- ボタン部分 -->

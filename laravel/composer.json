@@ -13,6 +13,7 @@
         "fideloper/proxy": "^4.4",
         "goldspecdigital/laravel-eloquent-uuid": "^6.0",
         "guzzlehttp/guzzle": "^7.4",
+        "laracasts/utilities": "^3.2",
         "laravel/framework": "^6.20.26",
         "laravel/tinker": "^2.5",
         "laravel/ui": "1.2.0",
