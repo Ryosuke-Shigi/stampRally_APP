@@ -7,7 +7,7 @@ CREATE [start]
 
 <!--追加メタ情報-->
 @section('meta')
-    <link href="{{ asset('css/test.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/selectStart.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/createMap.js') }}" defer></script>
     <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyBMKajpItMT-Hy-YgCTAvSO13Eefz2OVnY&callback=initMap" defer></script>

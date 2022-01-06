@@ -2,7 +2,7 @@
 
 <!--タイトル-->
 @section('title')
-{{ $title }}
+ポイントチェック
 @endsection
 
 <!--追加メタ情報-->
@@ -10,7 +10,7 @@
     <link href="{{ asset('css/test.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/mapStartSearch.js') }}" defer></script>
-    <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyBMKajpItMT-Hy-YgCTAvSO13Eefz2OVnY&callback=initMap" defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyD15q_WbENit79VC9VYY1FWhX92r7Vj_w0&callback=initMap" defer></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 
@@ -21,13 +21,13 @@
     <div class="wrapper">
         <!-- 地図部分 -->
         <div class="mapContainer">
-            <div class="mapKind">{{ $title }}</div>
+            <div class="mapKind">チェックしたいマーカーをクリック</div>
             <div class="map" id="map"></div>
         </div>
         <!-- ボタン部分 -->
         <div class = "buttonContainer">
-            <div id="modalIn" class="setButton">SET</div>
-            <div id="backButton" class="backButton">Back</div>
+            <div id="modalIn" class="NONE"></div>
+            <div id="backButton" class="backButton">別ラリーへ</div>
         </div>
     </div>
 
@@ -51,25 +51,26 @@
                             <!-- ラリーの名前 -->
                             <div class="singleText">
                                 <div class="name">R A L L Y　N A M E（※必須）</div>
-                                <div class="content"><input type="text" class="text" name="name" value="{{ old('name') }}" autocomplete="off"></div>
+                                <div class="content"><input type="text" id="route_name" class="text" name="name" readonly></div>
                             </div>
-                            <!-- エラーメッセージ -->
-                            @if($errors->has('name'))<div class="errorMessage">{{ $errors->first('name') }}</div>@endif
+
+
                             <!-- 紹介メッセージ -->
                             <div class="multiText">
                                 <div class="name">紹 介 メ ッ セ ー ジ（※必須）</div>
-                                <div class="content"><textarea name="text" class="text">{{ old('text') }}</textarea></div>
+                                <div class="content"><textarea name="text" id="text" class="text" readonly></textarea></div>
                             </div>
-                            <!-- エラーメッセージ -->
-                            @if($errors->has('text'))<div class="errorMessage">{{ $errors->first('text') }}</div>@endif
+
+
                             <!-- 写真追加 -->
                             <div class="picture">
-                                <div class="name">ＰＩＣＴＵＲＥ</div>
-                                <div class="content"><img class="preview" id="preview"></div>
+                                <div class="content"><img class="preview" id="picture"></div>
+                                {{-- <img src="" id="picture"> --}}
+
                                 <div class="buttonSection">
-                                    <div class="pictButton" id="pictureSelect">添付</div>
-                                    <input type="file" class="NONE" accept="img/*,.jpg,.jpeg,.png,.gif,.bmp" name="pict" id="pictureButton">
-                                </div>
+                                    <div class="pictButton" id="pictureSelect">チェック</div>
+{{--                                     <input type="file" class="NONE" accept="img/*,.jpg,.jpeg,.png,.gif,.bmp" name="pict" id="pictureButton">
+ --}}                                </div>
                             </div>
 
                         </div>
@@ -83,10 +84,17 @@
             </div>
             <!--モーダルウィンドウ　ボタン部分-->
             <div class="buttonContainer">
-                <div id="nextButtonA" class="setButton">Create</div>
                 <div id="modalOut" class="backButton">Back</div>
             </div>
         </div>
+        <?php
+            dump($table);
+            //dump(array('test'=>1,'test2'=2));
+        ?>
     </div>
+    <script>
+        window.Laravel = {};
+        window.Laravel.table = @json($table);
 
+    </script>
 @endsection

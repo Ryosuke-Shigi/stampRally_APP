@@ -25,6 +25,15 @@ class CreateRallyController extends Controller
         //ユーザIDの取得はこれでよい　２０２１　１２　１８
         return view('create.selectStart');
     }
+
+
+
+    // ルート作成画面画面表示
+    public function createRoute(){
+        //ユーザIDの取得はこれでよい　２０２１　１２　１８
+        return view('create.createRoute');
+    }
+
     // ポイント選択画面表示
     public function selectPoint($route_code,$route_name,$point_no){
         return view('create.selectPoint')
@@ -45,6 +54,9 @@ class CreateRallyController extends Controller
                         ->with('route_name',$route_name)
                         ->with('point_no',$point_no+1);
     }
+
+
+
 
     // スタートポイント選択画面からポイント選択画面へ　※テーブルにスタートデータを登録する
     public function makeStart(ROUTE_SET $request){
@@ -96,6 +108,50 @@ class CreateRallyController extends Controller
         //ポイント選択画面へ移動
         return redirect()->route('selectPoint',['route_code'=>$route_code,'route_name'=>$request->name,'point_no'=>0]);
     }
+
+
+    // ルート作成画面からポイント選択画面へ　※テーブルにスタートデータを登録する
+    public function makeRoute(ROUTE_SET $request){
+        //画像が存在すれば・保存する　pathが必要なので一番最初に処理
+        //webAPI rallyapiを叩く
+        $client = new Client();
+        //画像が存在しているか　また　アップロードは成功しているかどうか
+        if($request->hasFile('pict')){
+            //画像保存
+            //画像を保存してＰＡＴＨを取得。　外部ＷＥＢで行うことで　ファイルの取扱を統一
+            $pictUrl = config('services.web.stamprally_API')."/createPict";
+            $picture = Utils::tryFopen($request->file('pict')->getPathname(), 'r');
+            $pict = $client->request('POST',$pictUrl,['multipart'=>[['name'=>'name','contents'=>$request->file('pict')->getClientOriginalName()],
+                                                                    ['name'=>'mimeType','contents'=>$request->file('pict')->getMimeType()],
+                                                                    ['name'=>"pict",'contents'=>$picture]]]);
+            $pictPath = json_decode($pict->getBody()->getContents())->path;
+        }else{
+            //画像がないときは　NULL　をいれる
+            $pictPath = NULL;
+        }
+
+        //  ルート登録・スタート地点の保存
+
+        //ルートコード初期化
+        $route_code="";
+        //外部APIより返ってきたレスポンス保存用
+        $response=array();
+
+        //ルートの保存
+        $dataUrl = config('services.web.stamprally_API').'/route/create';
+        $param=array(
+                    'connect_id'=>auth()->user()->connect_id,
+                    'name'=>$request->name,
+                    );
+        $response = $client->request('POST',$dataUrl,['json'=>$param]);
+        //返ってきたルートコードを取得
+        $route_code = json_decode($response->getBody()->getContents())->route_code;
+        //ポイント選択画面へ移動
+        return redirect()->route('selectPoint',['route_code'=>$route_code,'route_name'=>$request->name,'point_no'=>1]);
+    }
+
+
+
 
 
     // ポイント選択画面より ポイント登録処理 selectPoint
@@ -158,12 +214,28 @@ class CreateRallyController extends Controller
                     );
         $response = $client->request('POST',$dataUrl,['json'=>$param]);
 
-        return redirect()->route('selectStart');
+        return redirect()->route('createRoute');
     }
 
 
 
-    //　ポイント選択画面から　戻るボタンをクリックした際の処理　（startで設定したテーブルデータを削除する）
+
+        //　ポイント選択画面から　戻るボタンをクリックした際の処理　（作成したルートを丸ごと削除）
+    public function reCreateRoute(REQUEST $request){
+        //routeDelete
+        //外部制約でルート以下データが丸ごと削除される
+        $client = new Client();
+        $dataUrl = config('services.web.stamprally_API').'/route/delete';
+        $param=array(
+            'connect_id'=>auth()->user()->connect_id,
+            'route_code'=>$request->route_code,
+            );
+        $client->request('GET',$dataUrl,['json'=>$param]);
+        return redirect()->route('createRoute');
+    }
+
+
+/*     //　ポイント選択画面から　戻るボタンをクリックした際の処理　（startで設定したテーブルデータを削除する）
     public function reSelectStart(REQUEST $request){
         //routeDelete
         $client = new Client();
@@ -174,6 +246,6 @@ class CreateRallyController extends Controller
             );
         $client->request('GET',$dataUrl,['json'=>$param]);
         return redirect()->route('selectStart');
-    }
+    } */
 
 }

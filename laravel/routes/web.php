@@ -33,6 +33,10 @@ Route::group(['prefix'=>'create'],function(){
 
     //スタート選択画面表示
     Route::get('/selectStart','CreateRallyController@selectStart')->name('selectStart');
+
+
+    //ルート作成画面表示
+    Route::get('/createRoute','CreateRallyController@createRoute')->name('createRoute');
     //ポイント選択画面表示
     Route::get('/selectPoint/{route_code}/{route_name}/{point_no}','CreateRallyController@selectPoint')->name('selectPoint');
     //ポイント追加選択画面表示
@@ -45,6 +49,9 @@ Route::group(['prefix'=>'create'],function(){
     //スタート作成処理
     Route::get('/makeStart','CreateRallyController@makeStart')->name('makeStart');
     Route::post('/makeStart','CreateRallyController@makeStart')->name('makeStart');
+    //スタート作成処理
+    Route::get('/makeRoute','CreateRallyController@makeRoute')->name('makeRoute');
+    Route::post('/makeRoute','CreateRallyController@makeRoute')->name('makeRoute');
     //ポイント作成処理
     Route::get('/makePoint/{route_code}/{route_name}/{point_no}','CreateRallyController@makePoint')->name('makePoint');
     Route::post('/makePoint/{route_code}/{route_name}/{point_no}','CreateRallyController@makePoint')->name('makePoint');
@@ -57,6 +64,8 @@ Route::group(['prefix'=>'create'],function(){
 
     //ポイント選択画面からスタート選択画面へ戻る　※スタート設定時に作成したテーブルデータを削除
     Route::post('/reSelectStart/{route_code}','CreateRallyController@reSelectStart')->name('reSelectStart');
+    //ポイント選択画面からスタート選択画面へ戻る　※スタート設定時に作成したテーブルデータを削除
+    Route::post('/reCreateRoute/{route_code}','CreateRallyController@reCreateRoute')->name('reCreateRoute');
     //ポイント設定完了ORポイント追加選択画面
     Route::post('/reSelectpoint','CreateRallyController@reSelectpoint')->name('reSelectPoint');
 
