@@ -1,14 +1,13 @@
 // googleMapsAPIを持ってくるときに,callback=initMapと記述しているため、initMap関数を作成
 function initMap() {
-
     //変数宣言
     let mapObj;             //マップオブジェクト
-    let init_position;      //初期位置 lat: lng:
-    let init_marker;        //現在位置用マーカー
-    let activeMarker;       //位置指定中マーカー
-
+    let player_position;      //初期位置 lat: lng:
+    let player_marker;
+    let markers = new Array();  //各マーカー保存
+    let table = JSON.stringify(Laravel.table);
+    table = JSON.parse(table);
     //let iss_marker;       //ISS関連で作った
-
     //現在地取得 ： Promise化
     //navigator.geolocation.getcurrentposition
     //中心の座標を取得
@@ -22,9 +21,9 @@ function initMap() {
         navigator.geolocation.getCurrentPosition(   //一度だけ現在地取得　 //定期的にとる 　navigator.geolocation.watchPosition(  移動ルート取得するのに使いそう
             function(pos){
                 //pos.coords.heading 方角
-                init_position={lat:pos.coords.latitude,lng:pos.coords.longitude};//連想配列 "lat"=>現在の緯度 "lng"=>現在の経度 latLng
+                player_position={lat:pos.coords.latitude,lng:pos.coords.longitude};//連想配列 "lat"=>現在の緯度 "lng"=>現在の経度 latLng
 
-                //現在位置で、bladeに保存する緯度経度を初期化
+                //現在位置で、bladeにはいる緯度経度を初期化
                 //cords.latitude longitudeは現在位置での変数であることに注意！！
                 //ここにはいるのは、自分自身の座標
                 document.getElementById('latitude').value = pos.coords.latitude;
@@ -32,6 +31,7 @@ function initMap() {
                 document.getElementById('nowTime').value = pos.timestamp;
 
                 resolve();
+                return 0;
             }
         );
     });
@@ -43,7 +43,7 @@ function initMap() {
         // mapインスタンス化用：オプションを設定 連想配列で作成
         let opt = {
             zoom: 15,                           //地図の縮尺を指定
-            center: init_position,              //現在地からスタート
+            center: player_position,              //現在地からスタート
             disableDoubleClickZoom: true,       //ダブルクリックによるズームをさせない falseで可能になる
             mapTypeControl: false,              //地図・航空地図切り替えをなくす
             fullscreenControl: false,           //全体画面表示ボタンキャンセル
@@ -53,15 +53,48 @@ function initMap() {
         // 地図のインスタンスを作成します。第一引数にはマップを描画する領域、第二引数にはオプションを指定
         // mapはgooglemap.blade.phpのdivのid
         mapObj = new google.maps.Map(document.getElementById("map"), opt);
+
+
+        /*
+        /*      ポイントを表示する
+        */
+        //テーブルで送られてきたデータ分　マーカーを設置する
+        // tableデータ table マーカー保存用空配列 markers
+        for(let key in table){
+            let tempLatLng=new google.maps.LatLng(table[key].latitude,table[key].longitude)
+            //ルートマーカー設置(初期位置に)
+            let tempMarker = new google.maps.Marker({
+                // ピンを差す位置を決めます。
+                position: tempLatLng,//経度・緯度で指定
+                // ピンを差すマップを決めます。 上記の地図のインスタンス
+                map: mapObj,
+                // ホバーしたときに
+                title: String(table[key].route_name+":"+table[key].point_no),
+                animation: google.maps.Animation.DROP,
+                icon: {
+                    url:  'https://mt.googleapis.com/vt/icon/name=icons/onion/SHARED-mymaps-container_4x.png,icons/onion/1592-heart_4x.png&highlight=ff5252&scale=1.7', //円を指定
+                },
+                //現在地アイコン
+                //map_icon_label:'<span class=""></span>',
+                label: {
+                    text: String(table[key].point_no),                           //ラベル文字
+                    color: '#FF0000',                    //文字の色
+                    fontSize: '15px'                     //文字のサイズ
+                }
+            });
+            markers.push(tempMarker);
+        }
+
+
         //マーカーを設置(初期位置に)
-        init_marker = new google.maps.Marker({
+        player_marker = new google.maps.Marker({
             // ピンを差す位置を決めます。
-            position: init_position,//経度・緯度で指定
+            position: player_position,//経度・緯度で指定
             // ピンを差すマップを決めます。 上記の地図のインスタンス
             //17行目の作成した地図のインスタンス
             map: mapObj,
             // ホバーしたときに「tokyotower」と表示されるようにします。
-            title: test,
+            title: "",
             animation: google.maps.Animation.BOUNCE,    //アニメーション
             icon: {
                 fillColor: "#FF0000",                //塗り潰し色
@@ -72,17 +105,28 @@ function initMap() {
                 strokeWeight: 1.0                    //枠の透過率
             },
             //現在地アイコン
-            map_icon_label:'<span class=""></span>',
+            //map_icon_label:'<span class=""></span>',
             label: {
-                text: '現',                           //ラベル文字
+                text: "",
                 color: '#FFFFFF',                    //文字の色
                 fontSize: '10px'                     //文字のサイズ
             }
         });
+        console.log(table);
+
+        for(let key in markers){
+            markers[key].addListener('click',function(){
+                document.getElementById('route_name').value = String(table[key].point_no);
+                document.getElementById('text').value = String(table[key].text);
+                document.getElementById('picture').src = "https://ada-stamprally.s3.ap-northeast-3.amazonaws.com/"+String(table[key].pict);
+                //モーダルウィンドウを開く
+                document.getElementById('modalIn').click();
+            });
+        }
 
 
 
-        //シングルクリックでマーカー（どこを登録するか）作成
+/*         //シングルクリックでマーカー（どこを登録するか）作成
         google.maps.event.addListener(mapObj, 'click', function(pos)
         {
             //マーカーが存在していたら
@@ -109,7 +153,7 @@ function initMap() {
                 title:"経度："+pos.latLng.lat()+" 緯度："+pos.latLng.lng()+" チェック時間："+nowDate.getTime()         //マウスをホバーした時にでるタイトルDate(pos.timestamp)
 
             });
-        });
+        }); */
 
 /*         //ダブルクリック　登録表示
         google.maps.event.addListener(mapObj,'dblclick',function(e)
@@ -146,7 +190,6 @@ function initMap() {
             iss.open('GET','http://api.open-notify.org/iss-now.json',true);
             iss.send();
         },500); */
-
 
 
     });//非同期処理　Promise 終了

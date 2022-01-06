@@ -33,7 +33,7 @@
     </div>
 
     <!--BackAction 他に影響しないように外へ-->
-    <form method="POST" id="backAction" action={{ route('reSelectStart',['route_code'=>$route_code]) }} enctype="multipart/form-data">
+    <form method="POST" id="backAction" action={{ route('reCreateRoute',['route_code'=>$route_code]) }} enctype="multipart/form-data">
         @csrf
         <!-- ルートを一度削除するため、route_codeを送る -->
     </form>
