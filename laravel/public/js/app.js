@@ -65950,6 +65950,13 @@ $(function () {
 
     render.readAsDataURL(e.target.files[0]);
     $('#pictureSelect').html("削除");
+  }); //ルート選択画面
+  //複数ある同名IDからクリックイベントより、<input type="hidden" の id $route_nameに
+  //data-route_nameで指定されている値をいれてサブミットさせる
+
+  $('.buttonSection').on('click', function () {
+    $('#selectroute_code').val($(this).data('route_code'));
+    $('#nextActionA').submit();
   });
 });
 
