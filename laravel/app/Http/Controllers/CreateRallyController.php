@@ -174,6 +174,7 @@ class CreateRallyController extends Controller
             //画像がないときは　NULL　をいれる
             $pictPath = NULL;
         }
+        dump($pictPath);
 
         //ポイントの保存
         $dataUrl = config('services.web.stamprally_API').'/point/create';
@@ -186,6 +187,7 @@ class CreateRallyController extends Controller
                     'pict'=>$pictPath,
                     'text'=>$request->text,
                     );
+        dump($param);
         $response = $client->request('POST',$dataUrl,['json'=>$param]);
         return redirect()->route('addPoint',['route_code'=>$route_code,'route_name'=>$route_name,'point_no'=>$point_no]);
     }
