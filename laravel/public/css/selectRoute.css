@@ -1,0 +1,276 @@
+@charset "UTF-8";
+
+html{
+    font-size:var(--root-font-size);
+}
+
+body,h1,h2,h3,h4,h5,h6,p,ul,li,figure{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+body{
+    box-sizing:border-box;
+}
+form{
+    height:100%;
+    width:100%;
+    margin:0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+:root{
+    --root-font-size:16px;
+    --mobile-height:650px;
+    --mobile-width:365px;
+    --button-font-size:1.5rem;
+    --input-text-size:1.5rem;
+}
+
+/* 全体*/
+.wrapper{
+    height:100vh;
+    width:100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background: linear-gradient(180deg, rgba(255,255,0,1) 0%, rgba(255,255,0,1) 60%, rgba(254,0,187,1) 100%);
+    align-content: center;
+}
+
+/*map表示領域*/
+.wrapper .mainContainer{
+    height:85%;
+    width: 95%;
+    border-radius:10px;
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.424);
+    border-radius:10px;
+
+}
+/*マップ　座標選択画面の上記文*/
+.mainContainer .title{
+    height:5%;
+    width:100%;
+    background: radial-gradient(circle,#3fd9ffbe 65%,rgba(121, 235, 255, 0.356));
+    border-radius:5px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 1rem;
+    color: red;
+}
+
+/*ルートボタン部分*/
+.mainContainer .routeSector{
+    width:90%;
+    height:92%;
+    padding: 10px 0px 10px 0px;
+    display:flex;
+    justify-content: space-evenly;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    background: radial-gradient(circle,#3fd9ffbe 65%,rgba(121, 235, 255, 0.356));
+    border-radius:10px;
+    overflow-y:scroll;
+}
+
+.routeSector .buttonSection{
+    width:80%;
+    height:200px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.424);
+    border-radius:10px;
+    flex-wrap: wrap;
+    transition: all 0.2s ease;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+.routeSector .buttonSection:not(:first-of-type){
+    margin-top:10px;
+}
+.routeSector .buttonSection:active{
+    background: radial-gradient(circle,#fdc190 50%,#ffe601);
+    box-shadow: 0 0 20px rgb(255, 251, 2) inset;
+}
+
+.buttonSection .title{
+    width:90%;
+    height:10%;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    color:rgb(210, 45, 30);
+    font-weight: bolder;
+    font-size:var(--root-font-size);
+}
+
+.buttonSection .message{
+    width:50%;
+    height:70%;
+    margin-right: 10px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    overflow-y:scroll;
+}
+
+.buttonSection .picture{
+    height:auto;
+    width:40%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: rgba(146, 255, 118, 0.52);
+    border-radius:10px;
+    color:brown;
+    font-weight: bolder;
+}
+
+.routeSector .buttonSection .Button{
+    width:60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-size: var(--button-font-size);
+    font-weight: 700;
+    color:rgba(248, 90, 164, 0.719);
+    background: radial-gradient(circle,#fffb01 65%,#ff5100e8);
+    border-radius: 50vh;
+    min-height:30px;
+    transition: all 0.2s ease;
+    cursor:pointer;
+}
+.routeSector .buttonSection .Button:active{
+    color:rgba(255, 57, 149, 0.719);
+    background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
+    box-shadow: 0 0 20px rgb(255, 251, 2) inset;
+}
+
+
+/*ボタン領域*/
+.wrapper .buttonContainer{
+    height:10%;
+    width:95%;
+    background-color:rgba(121, 235, 255, 0.356);
+    border-radius:5px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/*登録ボタン*/
+.buttonContainer .setButton{
+    height:70%;
+    width:35%;
+    border-radius:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-size: var(--button-font-size);
+    font-weight: 700;
+    color:rgba(248, 90, 164, 0.719);
+    background: radial-gradient(circle,#fffb01 65%,#ff5100e8);
+    border-radius: 50vh;
+    min-height:50px;
+    transition: all 0.2s ease;
+    cursor:pointer;
+}
+.setButton:active{
+    color:rgba(255, 57, 149, 0.719);
+    background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
+    box-shadow: 0 0 20px rgb(255, 251, 2) inset;
+}
+
+/*戻るボタン*/
+.buttonContainer .backButton{
+    height:70%;
+    width:35%;
+    border-radius:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-size: var(--button-font-size);
+    font-weight: 700;
+    color:rgba(90, 151, 248, 0.719);
+    background: radial-gradient(circle,#fffb01 65%,#ff00aae8);
+    border-radius: 50vh;
+    min-height:50px;
+    transition: all 0.2s ease;
+    cursor:pointer;
+}
+.backButton:active{
+    color:rgba(39, 120, 251, 0.719);
+    background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
+    box-shadow: 0 0 20px rgb(255, 251, 2) inset;
+}
+
+.NONE{
+    display:none;
+}
+
+
+
+
+/*横長（デバイス横向き）である場合*/
+@media (orientation: landscape){
+    .wrapper{
+        display:inline-flex;
+        flex-direction: row-reverse;
+    }
+    /*MAP表示領域*/
+    .wrapper .mainContainer{
+        height:95%;
+        width:85%;
+    }
+    /*ボタン領域*/
+    .wrapper .buttonContainer{
+        height:95%;
+        width:10%;
+        max-width: 120px;
+        overflow: hidden;
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+        display:flex
+    }
+    /*登録ボタン*/
+    .buttonContainer .setButton{
+        width:70%;
+        height:25%;
+        min-height:100px;
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+    }
+    /*戻るボタン*/
+    .buttonContainer .backButton{
+        width:70%;
+        height:25%;
+        min-height:100px;
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+    }
+
+
+    .mainContainer .routeSector{
+        max-width:750px;
+
+    }
+
+}

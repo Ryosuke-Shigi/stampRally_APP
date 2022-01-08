@@ -2,12 +2,12 @@
 
 <!--タイトル-->
 @section('title')
-ポイントチェック
+近くのポイントをチェックしよう
 @endsection
 
 <!--追加メタ情報-->
 @section('meta')
-    <link href="{{ asset('css/test.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/checkPoint.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/mapStartSearch.js') }}" defer></script>
     <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyD15q_WbENit79VC9VYY1FWhX92r7Vj_w0&callback=initMap" defer></script>
@@ -27,12 +27,12 @@
         <!-- ボタン部分 -->
         <div class = "buttonContainer">
             <div id="modalIn" class="NONE"></div>
-            <div id="backButton" class="backButton">別ラリーへ</div>
+            <div id="backButton" class="backButton">Back</div>
         </div>
     </div>
 
     <!--BackAction 他に影響しないように外へ-->
-    <form method="GET" id="backAction" action="" enctype="multipart/form-data">
+    <form method="GET" id="backAction" action="{{ route('selectRoute') }}" enctype="multipart/form-data">
         @csrf
     </form>
 
@@ -42,22 +42,22 @@
             <!-- 詳細設定部分 -->
             <div class="configContainer">
                 <div class="sectorA">
-                    <div class="titleSection"><div class="title">ラリー名・スタート位置詳細を設定してください</div></div>
+                    <div class="titleSection"><div class="title">ポイントカード</div></div>
                     <div class="configSection">
-                    <form method="POST" id="nextActionA" action={{ route('makeStart') }} enctype="multipart/form-data">
+                    <form method="POST" id="nextActionA" action={{ route('createRoute') }} enctype="multipart/form-data">
                         @csrf
                         <div class="itemSection">
 
                             <!-- ラリーの名前 -->
                             <div class="singleText">
-                                <div class="name">R A L L Y　N A M E（※必須）</div>
-                                <div class="content"><input type="text" id="route_name" class="text" name="name" readonly></div>
+                                <div class="name">スタンプ・ラリー名</div>
+                                <div class="content"><input type="text" id="point_no" class="text" name="name" readonly></div>
                             </div>
 
 
                             <!-- 紹介メッセージ -->
                             <div class="multiText">
-                                <div class="name">紹 介 メ ッ セ ー ジ（※必須）</div>
+                                <div class="name">メッセージ</div>
                                 <div class="content"><textarea name="text" id="text" class="text" readonly></textarea></div>
                             </div>
 
@@ -65,16 +65,17 @@
                             <!-- 写真追加 -->
                             <div class="picture">
                                 <div class="content"><img class="preview" id="picture"></div>
-                                {{-- <img src="" id="picture"> --}}
-
                                 <div class="buttonSection">
-                                    <div class="pictButton" id="pictureSelect">チェック</div>
-{{--                                     <input type="file" class="NONE" accept="img/*,.jpg,.jpeg,.png,.gif,.bmp" name="pict" id="pictureButton">
- --}}                                </div>
+                                    <div class="pictButton" id="pictureSelect">ＣＨＥＣＫ</div>
+                                </div>
                             </div>
 
                         </div>
-                        <!-- 緯度　経度　現在時間も送信する -->
+                        <!--
+                                緯度　経度　現在時間も送信する
+                                この経度緯度情報もおくることで、外部APIでチェックするかどうか等、判断する
+                                nowTimeはいらないかも
+                        -->
                         <input type="hidden" name="latitude" id="latitude">
                         <input type="hidden" name="longitude" id="longitude">
                         <input type="hidden" name="nowTime" id="nowTime">
@@ -87,14 +88,10 @@
                 <div id="modalOut" class="backButton">Back</div>
             </div>
         </div>
-        <?php
-            dump($table);
-            //dump(array('test'=>1,'test2'=2));
-        ?>
     </div>
     <script>
+        /*googlemapAPI(javascript)へポイントのデータを送る*/
         window.Laravel = {};
         window.Laravel.table = @json($table);
-
     </script>
 @endsection

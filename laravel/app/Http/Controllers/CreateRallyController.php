@@ -142,6 +142,9 @@ class CreateRallyController extends Controller
         $param=array(
                     'connect_id'=>auth()->user()->connect_id,
                     'name'=>$request->name,
+                    'keyword'=>$request->keyword,
+                    'pict'=>$pictPath,
+                    'text'=>$request->text,
                     );
         $response = $client->request('POST',$dataUrl,['json'=>$param]);
         //返ってきたルートコードを取得

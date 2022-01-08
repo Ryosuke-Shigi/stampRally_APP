@@ -112,17 +112,65 @@ function initMap() {
                 fontSize: '10px'                     //文字のサイズ
             }
         });
-        console.log(table);
 
+        //定期的（自分の位置が移動していることを認識されたら）
+        //自分をさすマーカーを移動させる
+        navigator.geolocation.watchPosition(function(pos){
+            //pos.coords.heading 方角
+            player_position={lat:pos.coords.latitude,lng:pos.coords.longitude};//連想配列 "lat"=>現在の緯度 "lng"=>現在の経度 latLng
+            //mapObj.panTo(g_latLng);
+            //BLADEのデータも更新する
+            //これを利用してリアルタイムの座標を取得していく
+            document.getElementById('latitude').value = pos.coords.latitude;
+            document.getElementById('longitude').value = pos.coords.longitude;
+            document.getElementById('nowTime').value = pos.timestamp;
+            //自分の位置のマーカーを更新する
+            //ひとまずマーカーを消す
+            player_marker.setMap(null);
+            console.log(player_position);
+            //新しくマーカーをつける
+            player_marker=new google.maps.Marker({
+                position:player_position,          //位置
+                map:mapObj,                     //どの地図に入れるか
+                animation: google.maps.Animation.BOUNCE,    //アニメーション
+                icon: {
+                    fillColor: "#FF0000",                //塗り潰し色
+                    fillOpacity: 0.5,                    //塗り潰し透過率
+                    path: google.maps.SymbolPath.CIRCLE, //円を指定
+                    scale: 12,                           //円のサイズ
+                    strokeColor: "#000000",              //枠の色
+                    strokeWeight: 1.0                    //枠の透過率
+                },
+                //現在地アイコン
+                //map_icon_label:'<span class=""></span>',
+                label: {
+                    text: "",
+                    color: '#FFFFFF',                    //文字の色
+                    fontSize: '10px'                     //文字のサイズ
+                }
+            });
+
+        });
+
+
+
+
+
+
+        //ポイントをクリックした時の処理
+        //モーダルウィンドウにあるものに値をいれていく
+        //ここでpoint_no をいれてform内にいれて
+        //Blade側で
         for(let key in markers){
             markers[key].addListener('click',function(){
-                document.getElementById('route_name').value = String(table[key].point_no);
+                document.getElementById('point_no').value = String(table[key].point_no);
                 document.getElementById('text').value = String(table[key].text);
                 document.getElementById('picture').src = "https://ada-stamprally.s3.ap-northeast-3.amazonaws.com/"+String(table[key].pict);
                 //モーダルウィンドウを開く
                 document.getElementById('modalIn').click();
             });
         }
+
 
 
 
