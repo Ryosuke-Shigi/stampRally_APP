@@ -44,29 +44,18 @@
                 <div class="sectorA">
                     <div class="titleSection"><div class="title">ポイントカード</div></div>
                     <div class="configSection">
-                    <form method="POST" id="nextActionA" action={{ route('createRoute') }} enctype="multipart/form-data">
-                        @csrf
                         <div class="itemSection">
 
-                            <!-- ラリーの名前 -->
-                            <div class="singleText">
-                                <div class="name">スタンプ・ラリー名</div>
-                                <div class="content"><input type="text" id="point_no" class="text" name="name" readonly></div>
-                            </div>
-
-
-                            <!-- 紹介メッセージ -->
+                            <!-- 紹介メッセージ表示 -->
                             <div class="multiText">
                                 <div class="name">メッセージ</div>
                                 <div class="content"><textarea name="text" id="text" class="text" readonly></textarea></div>
                             </div>
-
-
-                            <!-- 写真追加 -->
+                            <!-- 画像とチェックボタン -->
                             <div class="picture">
                                 <div class="content"><img class="preview" id="picture"></div>
                                 <div class="buttonSection">
-                                    <div class="pictButton" id="pictureSelect">ＣＨＥＣＫ</div>
+                                    <div class="checkButton" id="nextButtonA">ＣＨＥＣＫ</div>
                                 </div>
                             </div>
 
@@ -76,10 +65,6 @@
                                 この経度緯度情報もおくることで、外部APIでチェックするかどうか等、判断する
                                 nowTimeはいらないかも
                         -->
-                        <input type="hidden" name="latitude" id="latitude">
-                        <input type="hidden" name="longitude" id="longitude">
-                        <input type="hidden" name="nowTime" id="nowTime">
-                    </form>
                     </div>
                 </div>
             </div>
@@ -88,6 +73,14 @@
                 <div id="modalOut" class="backButton">Back</div>
             </div>
         </div>
+        <form method="GET" id="nextActionA" action={{ route('selectRoute') }} enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" name="point_no" id="point_no">
+            <input type="hidden" name="route_code" value="{{ $route_code }}">
+            <input type="hidden" name="latitude" id="latitude">
+            <input type="hidden" name="longitude" id="longitude">
+            <input type="hidden" name="nowTime" id="nowTime">
+        </form>
     </div>
     <script>
         /*googlemapAPI(javascript)へポイントのデータを送る*/

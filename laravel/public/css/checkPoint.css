@@ -12,7 +12,7 @@ body,h1,h2,h3,h4,h5,h6,p,ul,li,figure{
 body{
     box-sizing:border-box;
 }
-form{
+/* form{
     height:100%;
     width:100%;
     margin:0;
@@ -23,7 +23,7 @@ form{
     justify-content: center;
     align-content: center;
     flex-wrap: wrap;
-}
+} */
 
 :root{
     --root-font-size:16px;
@@ -204,7 +204,7 @@ form{
 }
 .sectorA .configSection{
     height:90%;
-    width:100%;
+    width:95%;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -284,7 +284,7 @@ form{
 /*複数行テキスト 紹介文など*/
 .itemSection .multiText{
     margin-top:0.5%;
-    height:20%;
+    height:30%;
     width:95%;
     display:flex;
     justify-content: center;
@@ -294,7 +294,7 @@ form{
     overflow:hidden;
 }
 .multiText .name{
-    height:15%;
+    height:10%;
     width:100%;
     display:flex;
     justify-content: center;
@@ -307,7 +307,7 @@ form{
     border-radius: 10px;
 }
 .multiText .content{
-    height:85%;
+    height:90%;
     width:100%;
     display: flex;
     justify-content: center;
@@ -377,6 +377,7 @@ form{
 
 }
 
+/*画像とセットのボタンセクション*/
 .picture .buttonSection{
     height:15%;
     width:100%;
@@ -387,7 +388,7 @@ form{
     align-items: center;
 }
 
-.picture .buttonSection .pictButton{
+.picture .buttonSection .checkButton{
     height:70%;
     width:50%;
     border-radius:10px;
@@ -404,7 +405,7 @@ form{
     cursor:pointer;
 }
 
-.picture .pictButton:active{
+.picture .checkButton:active{
     color:rgba(255, 57, 149, 0.719);
     background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
     box-shadow: 0 0 20px rgb(255, 251, 2) inset;

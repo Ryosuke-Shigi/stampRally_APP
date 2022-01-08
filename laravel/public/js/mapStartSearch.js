@@ -127,7 +127,6 @@ function initMap() {
             //自分の位置のマーカーを更新する
             //ひとまずマーカーを消す
             player_marker.setMap(null);
-            console.log(player_position);
             //新しくマーカーをつける
             player_marker=new google.maps.Marker({
                 position:player_position,          //位置

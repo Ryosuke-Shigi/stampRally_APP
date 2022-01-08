@@ -65954,7 +65954,7 @@ $(function () {
   //複数ある同名IDからクリックイベントより、<input type="hidden" の id $route_nameに
   //data-route_nameで指定されている値をいれてサブミットさせる
 
-  $('.buttonSection').on('click', function () {
+  $('.rallySelectSection').on('click', function () {
     $('#selectroute_code').val($(this).data('route_code'));
     $('#nextActionA').submit();
   });

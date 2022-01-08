@@ -23,7 +23,7 @@
 
             <div class="routeSector">
                 @foreach ($table as $temp)
-                    <div class = "buttonSection" data-route_code={{ $temp->route_code }}>
+                    <div class = "rallySelectSection" data-route_code={{ $temp->route_code }}>
                         <div class="title">{{ $temp->route_name }}</div>
                         <div class="message">{{ $temp->text }}</div>
                         @if($temp->pict != NULL)

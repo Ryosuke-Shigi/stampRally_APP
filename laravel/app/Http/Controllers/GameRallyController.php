@@ -51,7 +51,9 @@ class GameRallyController extends Controller
                         'route_code'=>$request->route_code,
                     );
         $response = $client->request('POST',$dataUrl,['json'=>$param]);
-        return view('game.checkPoint',['table'=>json_decode($response->getBody()->getContents())->table]);
+        return view('game.checkPoint',['route_code'=>$request->route_code,
+                                        'table'=>json_decode($response->getBody()->getContents())->table
+                                        ]);
     }
 
     //チェックしたポイントが距離内にあるか判断してもらう（外部API）に

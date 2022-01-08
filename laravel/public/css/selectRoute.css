@@ -86,7 +86,7 @@ form{
     overflow-y:scroll;
 }
 
-.routeSector .buttonSection{
+.routeSector .rallySelectSection{
     width:80%;
     height:200px;
     display:flex;
@@ -100,15 +100,15 @@ form{
     cursor:pointer;
 }
 
-.routeSector .buttonSection:not(:first-of-type){
+.routeSector .rallySelectSection:not(:first-of-type){
     margin-top:10px;
 }
-.routeSector .buttonSection:active{
+.routeSector .rallySelectSection:active{
     background: radial-gradient(circle,#fdc190 50%,#ffe601);
     box-shadow: 0 0 20px rgb(255, 251, 2) inset;
 }
 
-.buttonSection .title{
+.rallySelectSection .title{
     width:90%;
     height:10%;
     text-align: center;
@@ -119,7 +119,7 @@ form{
     font-size:var(--root-font-size);
 }
 
-.buttonSection .message{
+.rallySelectSection .message{
     width:50%;
     height:70%;
     margin-right: 10px;
@@ -128,7 +128,7 @@ form{
     overflow-y:scroll;
 }
 
-.buttonSection .picture{
+.rallySelectSection .picture{
     height:auto;
     width:40%;
     display:flex;
@@ -141,7 +141,7 @@ form{
     font-weight: bolder;
 }
 
-.routeSector .buttonSection .Button{
+.routeSector .rallySelectSection .Button{
     width:60%;
     display: flex;
     justify-content: center;
@@ -156,7 +156,7 @@ form{
     transition: all 0.2s ease;
     cursor:pointer;
 }
-.routeSector .buttonSection .Button:active{
+.routeSector .rallySelectSection .Button:active{
     color:rgba(255, 57, 149, 0.719);
     background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
     box-shadow: 0 0 20px rgb(255, 251, 2) inset;
