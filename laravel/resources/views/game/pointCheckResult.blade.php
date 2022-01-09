@@ -7,7 +7,7 @@
 
 <!--追加メタ情報-->
 @section('meta')
-    <link href="{{ asset('css/test.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/selectRoute.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
@@ -19,11 +19,10 @@
     <div class="wrapper">
         <!-- 地図部分 -->
         <div class="mainContainer">
-{{--             <div class="title">はじめるルートを選択してください</div>
- --}}
+            <div class="title">はじめるルートを選択してください</div>
 
-            <div class="mainSector">
-{{--                 @foreach ($table as $temp)
+            <div class="routeSector">
+                @foreach ($table as $temp)
                     <div class = "rallySelectSection" data-route_code={{ $temp->route_code }}>
                         <div class="title">{{ $temp->route_name }}</div>
                         <div class="message">{{ $temp->text }}</div>
@@ -34,38 +33,24 @@
                         @endif
                     </div>
                 @endforeach
- --}}            </div>
+            </div>
 
         </div>
         <!-- ボタン部分 -->
         <div class = "buttonContainer">
-            @auth
-                <div id="nextButtonA" class="setButton">START</div>
-            @else
-                <div id="nextButtonB" class="setButton">新規登録</div>
-                <div id="nextButtonC" class="setButton">ログイン</div>
-            @endauth
+            <div id="modalIn" class="NONE"></div>
+            <div id="backButton" class="backButton">Back</div>
         </div>
     </div>
 
-    <!--buttonaction 他に影響しないように外へ-->
+    <!--BackAction 他に影響しないように外へ-->
     <form method="GET" id="nextActionA" action="{{ route('checkPoint') }}" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="route_code" id="selectroute_code">
     </form>
-    <form method="GET" id="nextActionB" action="{{ route('checkPoint') }}" enctype="multipart/form-data">
-        @csrf
-        <input type="hidden" name="route_code" id="selectroute_code">
-    </form>
-    <form method="GET" id="nextActionC" action="{{ route('checkPoint') }}" enctype="multipart/form-data">
-        @csrf
-        <input type="hidden" name="route_code" id="selectroute_code">
-    </form>
-
-
-{{--     <!--BackAction 他に影響しないように外へ-->
+    <!--BackAction 他に影響しないように外へ-->
     <form method="GET" id="backAction" action="" enctype="multipart/form-data">
         @csrf
-    </form> --}}
+    </form>
 
 @endsection

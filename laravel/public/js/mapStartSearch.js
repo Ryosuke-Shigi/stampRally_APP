@@ -55,8 +55,9 @@ function initMap() {
         mapObj = new google.maps.Map(document.getElementById("map"), opt);
 
 
+        //////////////////////////////////////////////////////////////////
         /*
-        /*      ポイントを表示する
+        /*      ポイントのマーカーを表示する
         */
         //テーブルで送られてきたデータ分　マーカーを設置する
         // tableデータ table マーカー保存用空配列 markers
@@ -69,7 +70,7 @@ function initMap() {
                 // ピンを差すマップを決めます。 上記の地図のインスタンス
                 map: mapObj,
                 // ホバーしたときに
-                title: String(table[key].route_name+":"+table[key].point_no),
+                title: " ",
                 animation: google.maps.Animation.DROP,
                 icon: {
                     url:  'https://mt.googleapis.com/vt/icon/name=icons/onion/SHARED-mymaps-container_4x.png,icons/onion/1592-heart_4x.png&highlight=ff5252&scale=1.7', //円を指定
@@ -77,7 +78,8 @@ function initMap() {
                 //現在地アイコン
                 //map_icon_label:'<span class=""></span>',
                 label: {
-                    text: String(table[key].point_no),                           //ラベル文字
+                    text:"P",
+                    //text: String(table[key].point_no),                           //ラベル文字
                     color: '#FF0000',                    //文字の色
                     fontSize: '15px'                     //文字のサイズ
                 }
@@ -86,7 +88,9 @@ function initMap() {
         }
 
 
-        //マーカーを設置(初期位置に)
+
+
+        //ユーザのマーカーを設置(初期位置に)
         player_marker = new google.maps.Marker({
             // ピンを差す位置を決めます。
             position: player_position,//経度・緯度で指定
@@ -94,7 +98,7 @@ function initMap() {
             //17行目の作成した地図のインスタンス
             map: mapObj,
             // ホバーしたときに「tokyotower」と表示されるようにします。
-            title: "",
+            title: " ",
             animation: google.maps.Animation.BOUNCE,    //アニメーション
             icon: {
                 fillColor: "#FF0000",                //塗り潰し色
@@ -107,13 +111,13 @@ function initMap() {
             //現在地アイコン
             //map_icon_label:'<span class=""></span>',
             label: {
-                text: "",
+                text: " ",
                 color: '#FFFFFF',                    //文字の色
                 fontSize: '10px'                     //文字のサイズ
             }
         });
 
-        //定期的（自分の位置が移動していることを認識されたら）
+        //定期的（自分の位置が移動していることを認識されたら）に
         //自分をさすマーカーを移動させる
         navigator.geolocation.watchPosition(function(pos){
             //pos.coords.heading 方角
@@ -131,6 +135,7 @@ function initMap() {
             player_marker=new google.maps.Marker({
                 position:player_position,          //位置
                 map:mapObj,                     //どの地図に入れるか
+                title:" ",
                 animation: google.maps.Animation.BOUNCE,    //アニメーション
                 icon: {
                     fillColor: "#FF0000",                //塗り潰し色
@@ -143,7 +148,7 @@ function initMap() {
                 //現在地アイコン
                 //map_icon_label:'<span class=""></span>',
                 label: {
-                    text: "",
+                    text: " ",
                     color: '#FFFFFF',                    //文字の色
                     fontSize: '10px'                     //文字のサイズ
                 }
@@ -154,7 +159,12 @@ function initMap() {
 
 
 
+        /*
 
+            ポイントのマーカーをクリックした時
+
+
+        */
 
         //ポイントをクリックした時の処理
         //モーダルウィンドウにあるものに値をいれていく
@@ -164,8 +174,17 @@ function initMap() {
             markers[key].addListener('click',function(){
                 document.getElementById('point_no').value = String(table[key].point_no);
                 document.getElementById('text').value = String(table[key].text);
-                document.getElementById('picture').src = "https://ada-stamprally.s3.ap-northeast-3.amazonaws.com/"+String(table[key].pict);
-                //モーダルウィンドウを開く
+                //画像がついていれば画像を送る
+                if(table[key].pict != null){
+                    //画像があればimgにアドレスを送って 要素を表示
+                    document.getElementById('picture').src = "https://ada-stamprally.s3.ap-northeast-3.amazonaws.com/"+String(table[key].pict);
+                    document.getElementById('picture').style.display="block";
+                }else{
+                    //画像がなければ要素そのものを表示しない
+                    //NOIMAGEをつくって貼り付けるでもいいかも
+                    document.getElementById('picture').style.display='none';
+                }
+                    //モーダルウィンドウを開く
                 document.getElementById('modalIn').click();
             });
         }

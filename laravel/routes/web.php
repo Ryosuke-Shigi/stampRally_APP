@@ -12,16 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('test');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+/* Route::get('/home', 'HomeController@index')->name('home'); */
 
-/* Route::get('/selectRoute',function(){
-    return view('game.selectRoute');
-}); */
+Route::get('/test',function(){
+    return view('test');
+});
 //画面表示テスト用
 //Route::get('/test','GameRallyController@test')->name('test');
 
@@ -80,9 +80,13 @@ Route::group(['prefix'=>'game'],function(){
     //ポイントチェック画面
     Route::get('/checkPoint','GameRallyController@checkPoint')->name('checkPoint');
     Route::post('/checkPoint','GameRallyController@checkPoint')->name('checkPoint');
-    //ポイントチェック処理
-    Route::post('/handingCheckPoint','GameRallyCotroller@handingCheckPoint')->name('handingCheckPoint');
 
+
+    //ポイントチェック処理
+    Route::post('/pointJudge','GameRallyController@pointJudge')->name('pointJudge');
+    //ポイントチェック結果表示
+/*     Route::post('/pointJudgeResult','GameRallyCotroller@pointCheckResult')->name('pointjudgeResult');
+ */
 
 
 

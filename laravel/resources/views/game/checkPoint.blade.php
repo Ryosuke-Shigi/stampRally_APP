@@ -21,13 +21,13 @@
     <div class="wrapper">
         <!-- 地図部分 -->
         <div class="mapContainer">
-            <div class="mapKind">チェックしたいマーカーをクリック</div>
+            <div class="mapKind">ポイントに近づいてクリック！</div>
             <div class="map" id="map"></div>
         </div>
         <!-- ボタン部分 -->
         <div class = "buttonContainer">
             <div id="modalIn" class="NONE"></div>
-            <div id="backButton" class="backButton">Back</div>
+            <div id="backButton" class="backButton">to Route</div>
         </div>
     </div>
 
@@ -52,6 +52,7 @@
                                 <div class="content"><textarea name="text" id="text" class="text" readonly></textarea></div>
                             </div>
                             <!-- 画像とチェックボタン -->
+
                             <div class="picture">
                                 <div class="content"><img class="preview" id="picture"></div>
                                 <div class="buttonSection">
@@ -70,10 +71,12 @@
             </div>
             <!--モーダルウィンドウ　ボタン部分-->
             <div class="buttonContainer">
-                <div id="modalOut" class="backButton">Back</div>
+                <div id="modalOut" class="backButton">to MAP</div>
             </div>
         </div>
-        <form method="GET" id="nextActionA" action={{ route('selectRoute') }} enctype="multipart/form-data">
+
+        <!--次のpointJudgeへ送る値-->
+        <form method="POST" id="nextActionA" action={{ route('pointJudge') }} enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="point_no" id="point_no">
             <input type="hidden" name="route_code" value="{{ $route_code }}">
