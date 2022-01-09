@@ -56,22 +56,10 @@ form{
     align-content: center;
     flex-wrap: wrap;
     overflow: hidden;
-    background-color: rgba(255, 255, 255, 0.424);
+/*     background-color: rgba(255, 255, 255, 0.424);
+ */
     border-radius:10px;
 
-}
-/*マップ　座標選択画面の上記文*/
-.mainContainer .title{
-    height:5%;
-    width:100%;
-    background: radial-gradient(circle,#3fd9ffbe 65%,rgba(121, 235, 255, 0.356));
-    border-radius:5px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    font-weight: bolder;
-    font-size: 1rem;
-    color: red;
 }
 
 /*ルートボタン部分*/
@@ -80,14 +68,28 @@ form{
     height:92%;
     padding: 10px 0px 10px 0px;
     display:flex;
-    justify-content: space-evenly;
-    align-content: flex-start;
+    justify-content: center;
+    align-content: center;
     flex-wrap: wrap;
-    background: radial-gradient(circle,#3fd9ffbe 65%,rgba(121, 235, 255, 0.356));
-    border-radius:10px;
+    background: radial-gradient(circle,#ffffff3f 10%,rgba(255, 255, 255, 0));
+
+    border-radius:50vh;
 }
 
-
+.mainSector .title{
+    width:100%;
+    height:30%;
+    display: flex;
+    justify-content:center;
+    text-align: center;
+    font-size:10vw;
+    color:rgb(255, 169, 183);
+    font-weight: 1000;
+}
+.title .P{
+    font-size:17vw;
+    color:palevioletred;
+}
 
 
 /*ボタン領域*/
@@ -150,7 +152,24 @@ form{
 }
 
 
+/*横幅が480px以下の時*/
+@media screen and (max-width: 480px){
+    .mainSector .title{
+        font-size:15vw;
+    }
+    .title .P{
+        font-size:30vw;
+    }
+    :root{
+        --button-font-size:1rem;
+    }
+}
 
+@media screen and (max-height: 720px){
+    :root{
+        --button-font-size:1rem;
+    }
+}
 
 /*横長（デバイス横向き）である場合*/
 @media (orientation: landscape){
@@ -190,10 +209,5 @@ form{
         text-orientation: upright;
     }
 
-
-    .mainContainer .mainSector{
-        max-width:750px;
-
-    }
 
 }
