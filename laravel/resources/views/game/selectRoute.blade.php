@@ -47,6 +47,7 @@
     <form method="GET" id="nextActionA" action="{{ route('checkPoint') }}" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="route_code" id="selectroute_code">
+        <input type="hidden" name="message" value="ポイントに近づいてクリック！">
     </form>
     <!--BackAction 他に影響しないように外へ-->
     <form method="GET" id="backAction" action="" enctype="multipart/form-data">

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('test');
+    return view('home');
 });
 
 Auth::routes();
@@ -60,17 +60,6 @@ Route::group(['prefix'=>'create'],function(){
     //ポイント設定完了ORポイント追加選択画面
     Route::post('/reSelectpoint','CreateRallyController@reSelectpoint')->name('reSelectPoint');
 
-
-    //スタート選択画面表示
-    //Route::get('/selectStart','CreateRallyController@selectStart')->name('selectStart');
-    //スタート作成処理
-    //Route::get('/makeStart','CreateRallyController@makeStart')->name('makeStart');
-    //Route::post('/makeStart','CreateRallyController@makeStart')->name('makeStart');
-    //ポイント選択画面からスタート選択画面へ戻る　※スタート設定時に作成したテーブルデータを削除
-    //Route::post('/reSelectStart/{route_code}','CreateRallyController@reSelectStart')->name('reSelectStart');
-
-
-
 });
 
 Route::group(['prefix'=>'game'],function(){
@@ -84,10 +73,10 @@ Route::group(['prefix'=>'game'],function(){
 
     //ポイントチェック処理
     Route::post('/pointJudge','GameRallyController@pointJudge')->name('pointJudge');
-    //ポイントチェック結果表示
-/*     Route::post('/pointJudgeResult','GameRallyCotroller@pointCheckResult')->name('pointjudgeResult');
- */
-
+    //ゴール表示（モーダル画面に　名前とコメントをいれてもらう）
+    Route::post('/pointComplete','GameRallyController@pointComplete')->name('pointComplete');
+    //ゴール後処理（stateとstampを削除して、scoreを作成。 ルート選択画面前まで戻す)
+    Route::post('/clearRally','GameRallyController@clearRally')->name('clearRally');
 
 
 });

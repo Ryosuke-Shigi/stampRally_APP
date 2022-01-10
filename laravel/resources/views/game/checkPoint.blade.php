@@ -21,7 +21,7 @@
     <div class="wrapper">
         <!-- 地図部分 -->
         <div class="mapContainer">
-            <div class="mapKind">ポイントに近づいてクリック！</div>
+            <div class="mapKind">{{ $message }}</div>
             <div class="map" id="map"></div>
         </div>
         <!-- ボタン部分 -->
@@ -61,11 +61,6 @@
                             </div>
 
                         </div>
-                        <!--
-                                緯度　経度　現在時間も送信する
-                                この経度緯度情報もおくることで、外部APIでチェックするかどうか等、判断する
-                                nowTimeはいらないかも
-                        -->
                     </div>
                 </div>
             </div>

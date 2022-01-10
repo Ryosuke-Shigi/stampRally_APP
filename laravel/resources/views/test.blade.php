@@ -2,12 +2,12 @@
 
 <!--タイトル-->
 @section('title')
-チェックポイント一覧
+ラリークリア！
 @endsection
 
 <!--追加メタ情報-->
 @section('meta')
-    <link href="{{ asset('css/test.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/showGoal.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
@@ -19,36 +19,70 @@
     <div class="wrapper">
         <!-- 地図部分 -->
         <div class="mainContainer">
-{{--             <div class="title">はじめるルートを選択してください</div>
- --}}
-
-            <div class="mainSector">
-                <div class="title">Stam <div class="P">P</div></div>
-                <div class="title">ＲＡＬＬＹ</div>
-           </div>
-
+            <div class="mainKind">クリア！おめでとうございます！</div>
+            <div class="configContainer">
+                <div class="sectorA">
+{{--                     @if($table->pict != NULL)
+                    <div class="picture">
+                        <div class="content">
+                            <img src = {{ "https://ada-stamprally.s3.ap-northeast-3.amazonaws.com/"./* $table->pict */ }} class="preview">
+                        </div>
+                    </div>
+                    @endif
+ --}}                    <div class="multiText">
+                        <div class="name">クリアメッセージ</div>
+                        <div class="content">
+                            <textarea name="text" id="text" class="text" readonly>test</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- ボタン部分 -->
         <div class = "buttonContainer">
-            @auth
-                <div id="nextButtonA" class="setButton">START</div>
-                <div id="nextButtonB" class="setButton">LOGOUT</div>
-            @else
-                <div id="nextButtonC" class="setButton">LOG IN</div>
-                <div id="nextButtonD" class="setButton">新規登録</div>
-            @endauth
+            <div id="modalIn" class="setButton">次へ</div>
         </div>
+
     </div>
 
-    <!--buttonaction 他に影響しないように外へ-->
-    <form method="GET" id="nextActionA" action="{{-- {{ route('') }} --}}" ></form>
-    <form method="POST" id="nextActionB" action="{{ route('logout') }}" >@csrf</form>
-    <form method="GET" id="nextActionC" action="{{ route('login') }}" ></form>
-    <form method="GET" id="nextActionD" action="{{ route('register') }}"></form>
 
-{{--     <!--BackAction 他に影響しないように外へ-->
-    <form method="GET" id="backAction" action="" enctype="multipart/form-data">
+    <!--BackAction 他に影響しないように外へ-->
+    <form method="POST" id="backAction" action="" enctype="multipart/form-data">
         @csrf
-    </form> --}}
+        <!-- ルートを一度削除するため、route_codeを送る -->
+    </form>
+
+
+    <!--モーダルウィンドウ ポイント設定画面-->
+    <div id="modalWindow" class="modalWindow">
+        <div class="modalwrapper">
+            <!-- 詳細設定部分 -->
+            <div class="configContainer">
+                <div class="sectorA">
+                    <form method="POST" id="nextActionA" action="" enctype="multipart/form-data">
+                        @csrf
+                        <div class="singleText">
+                            <div class="name">名前をいれてください</div>
+                            <div class="content">
+                                <input type="text" name="name" class="text">
+                            </div>
+                        </div>
+                        <div class="singleText">
+                            <div class="name">コメント</div>
+                            <div class="content">
+                                <input type="text" name="text" class="text">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <!--モーダルウィンドウ　ボタン部分-->
+            <div class="buttonContainer">
+                <div id="nextButtonA" class="setButton">完了</div>
+                <div id="modalOut" class="backButton">Back</div>
+            </div>
+        </div>
+    </div>
 
 @endsection

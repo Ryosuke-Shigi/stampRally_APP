@@ -65919,6 +65919,10 @@ $(function () {
 
   $('#nextButtonC').on('click', function () {
     $('#nextActionC').submit();
+  }); //次へ進行するボタン
+
+  $('#nextButtonD').on('click', function () {
+    $('#nextActionD').submit();
   }); //前へ戻るボタン
 
   $('#backButton').on('click', function () {

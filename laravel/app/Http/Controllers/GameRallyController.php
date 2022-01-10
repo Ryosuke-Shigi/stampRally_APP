@@ -26,9 +26,7 @@ class GameRallyController extends Controller
     //ルート表示を共通化させる
     //キーワードで狭めたり、ユーザが進行中のもののみ　とか
     //制限をかけたテーブルデータを渡して表示を多様化させる
-
     //引数なしでも動きます
-
     public function selectRoute(REQUEST $request){
         $client = new Client();
         $param = array();
@@ -68,7 +66,8 @@ class GameRallyController extends Controller
                     );
         $response = $client->request('POST',$dataUrl,['json'=>$param]);
         return view('game.checkPoint',['route_code'=>$request->route_code,
-                                        'table'=>json_decode($response->getBody()->getContents())->table
+                                        'table'=>json_decode($response->getBody()->getContents())->table,
+                                        'message'=>$request->message
                                         ]);
     }
 
@@ -88,9 +87,7 @@ class GameRallyController extends Controller
         //ポイント数が０であればゴールを取得表示して　ルート選択画面へ
         //ポイント数がまだ残っていれば　checkPointへ戻る
 
-
         //ポイントチェックしてOKが出て まだチェックしていないポイントがあれば
-        //ポイントチェック画面へ戻る
         $client = new Client();
         //チェックするポイントの呼び出し
         $dataUrl = config('services.web.stamprally_API').'/game/pointJudge';
@@ -104,31 +101,81 @@ class GameRallyController extends Controller
                         'longitude'=>$request->longitude,
                         'nowTime'=>$request->nowTime
                     );
-        $response = $client->request('GET',$dataUrl,['json'=>$param]);
-
-        dump(json_decode($response->getBody()->getContents()));
-
-
-        //testのため　ルートセレクト画面へもどす
-        $param=array();
-        $dataUrl = config('services.web.stamprally_API').'/route/allRoutes';
-         //外部APIを叩く
         $response = $client->request('POST',$dataUrl,['json'=>$param]);
-        //取得したテーブルデータを返す
-        //return view('game.selectRoute',['table'=>json_decode($response->getBody()->getContents())->table]);
-        return redirect()->route('checkPoint',['route_code'=>$request->route_code]);
-
-
-/*         return view('game.pointCheckResult',['route_code'=>$request->route_code,
-                                        'table'=>json_decode($response->getBody()->getContents())->table
-                                        ]); */
-
-
-        //ポイントが全てチェック終了であれば
-        //ゴールを表示して その後、selectRouteへ戻る
+        $result = json_decode($response->getBody()->getContents());
+        //result・成功か否か・TRUEorFALSE　remainPoint・残りポイント数　が返ってくる
+        //チェック成功であれば(距離内でチェックを押していたら)
+        if($result->result === 0){
+            //残りチェックポイント数が０であれば処理へ
+            if($result->remainPoint == 0){
+                //クリア処理
+                return redirect()->route('pointComplete',['route_code'=>$request->route_code]);
+            }else{  //残りポイント数があればポイントチェック画面へ
+                //ポイントチェック画面へ戻す
+                return redirect()->route('checkPoint',['route_code'=>$request->route_code,
+                                                        'message'=>"クリア！次を目指そう！"]);
+            }
+        }else{  //チェック失敗であれば　失敗画面へいってチェックポイント画面へ戻る
+            //ポイントチェック画面へ戻す
+            return redirect()->route('checkPoint',['route_code'=>$request->route_code,
+                                                    'message'=>"もっとポイントへ近づこう！"]);
+        }
     }
 
 
+    /*
+    //
+    //  point全てチェック後
+    //  route_code が必要
+    //  クリア後のbladeを表示する
+    //  なのでtableデータでgoalのデータを取得して
+    //  bladeからclearRallyへ
+    */
+    public function pointComplete(ReQUEST $request){
+        $client = new Client();
+        //チェックするポイントの呼び出し
+        $dataUrl = config('services.web.stamprally_API').'/game/callGoal';
+        //必要なのはconnect_idとroute_code
+        //外部APIで その人はそのルートを進行中か、進行中であれば残ったポイントを返す
+        $param=array(
+                        //'connect_id'=>auth()->user()->connect_id,
+                        'route_code'=>$request->route_code,
+                    );
+        $response = $client->request('POST',$dataUrl,['json'=>$param]);
+
+        return view('test',['table'=>json_decode($response->getBody()->getContents())->table]);
+    }
+    /*
+    //
+    //  クリア後の名前とコメントを受け取って処理
+    //  scoreレコードを作成して、ルート選択画面の手前まで戻る
+    //
+    */
+    public function clearRally(REQUEST $request){
+        //nameとtextを受け取ってクリア後処理の外部APIを叩く
+        //終了後、ルート選択画面の手前へリダイレクト
+
+        //クリア後処理
+        $client = new Client();
+        //チェックするポイントの呼び出し
+        $dataUrl = config('services.web.stamprally_API').'/game/pointJudge';
+        //必要なのはconnect_idとroute_code
+        //外部APIで その人はそのルートを進行中か、進行中であれば残ったポイントを返す
+        $param=array(
+                        'connect_id'=>auth()->user()->connect_id,
+                        'route_code'=>$request->route_code,
+                        'point_no'=>$request->point_no,
+                        'latitude'=>$request->latitude,
+                        'longitude'=>$request->longitude,
+                        'nowTime'=>$request->nowTime
+                    );
+        $response = $client->request('POST',$dataUrl,['json'=>$param]);
+        $result = json_decode($response->getBody()->getContents());
+
+
+
+        return 0;
+    }
 
 
 /*     public function pointJudgeResult(REQUEST $request){
