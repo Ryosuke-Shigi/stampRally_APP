@@ -25,7 +25,7 @@
 
                         <div class="itemSection">
                                 <div class="buttonSector">
-                                    <form method="GET" id="nextActionA" action="{{ route('selectPoint',['route_code'=>$route_code,'route_name'=>$route_name,'point_no'=>$point_no]) }}" enctype="multipart/form-data">
+                                    <form method="GET" id="nextActionA" action="{{ route('selectPoint',['route_code'=>$route_code,'route_name'=>$route_name,'latitude'=>$latitude,'longitude'=>$longitude,'point_no'=>$point_no]) }}" enctype="multipart/form-data">
                                         @csrf
                                         <div id="nextButtonA" class="setButton">追　加</div>
                                     </form>
