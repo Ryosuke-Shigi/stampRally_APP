@@ -65,6 +65,24 @@ form{
     color: red;
 }
 /* GoogleMap */
+.mapContainer .controls{
+    margin-top:5px;
+    width:70%;
+    max-width:750px;
+    height:4%;
+    font-size:15px;
+    border-style:double;
+    background-color:rgba(255, 0, 98, 0.644);
+    font-weight: 1000;
+    color:rgb(255, 255, 255);
+}
+
+.mapContainer .controls::placeholder{
+    text-align: center;
+    font-size:15px;
+    font-weight: 1000;
+    color:rgb(255, 255, 255);
+}
 .mapContainer .map{
     height:95%;
     width:100%;
@@ -420,6 +438,7 @@ form{
     background-color: rgba(255, 80, 173, 0.472);
     border-radius:10px;
 }
+
 
 
 

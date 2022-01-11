@@ -39,9 +39,11 @@ Route::group(['prefix'=>'create'],function(){
     //ルート作成画面表示
     Route::get('/createRoute','CreateRallyController@createRoute')->name('createRoute');
     //ポイント選択画面表示
-    Route::get('/selectPoint/{route_code}/{route_name}/{point_no}','CreateRallyController@selectPoint')->name('selectPoint');
+    Route::get('/selectPoint/{route_code}/{route_name}/{latitude?}/{longitude?}/{point_no}','CreateRallyController@selectPoint')->name('selectPoint');
+    Route::post('/selectPoint/{route_code}/{route_name}/{latitude?}/{longitude?}/{point_no}','CreateRallyController@selectPoint')->name('selectPoint');
     //ポイント追加選択画面表示
-    Route::get('/addPoint/{route_code}/{route_name}/{point_no}','CreateRallyController@addPoint')->name('addPoint');
+    Route::get('/addPoint/{route_code}/{route_name}/{latitude?}/{longitude?}/{point_no}','CreateRallyController@addPoint')->name('addPoint');
+    Route::post('/addPoint/{route_code}/{route_name}/{latitude?}/{longitude?}/{point_no}','CreateRallyController@addPoint')->name('addPoint');
     //ゴール設定画面表示
     Route::get('/settingGoal/{route_code}/{route_name}','CreateRallyController@settingGoal')->name('settingGoal');
     //ルート作成データ処理

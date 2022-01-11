@@ -10,7 +10,7 @@
     <link href="{{ asset('css/selectPoint.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/createMap.js') }}" defer></script>
-    <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyD15q_WbENit79VC9VYY1FWhX92r7Vj_w0&callback=initMap" defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyD15q_WbENit79VC9VYY1FWhX92r7Vj_w0&libraries=places&callback=initMap" defer></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 
@@ -21,7 +21,8 @@
     <div class="wrapper">
         <!-- 地図部分 -->
         <div class="mapContainer">
-            <div class="mapKind">Route:{{ $route_name }}　のPOINTを作成してください。</div>
+            <div class="mapKind">{{ $route_name }}　のPOINTを作成</div>
+            <input id='pac-input' class="controls" type="text" placeholder="場所を検索"/>
             <div class="map" id="map"></div>
         </div>
         <!-- ボタン部分 -->
@@ -82,5 +83,11 @@
             </div>
         </div>
     </div>
-
+    <script>
+        /*googlemapAPI(javascript)へポイントのデータを送る*/
+        window.Laravel = {};
+        window.Laravel.table = @json($table);
+        window.Laravel.latitude = @json($latitude);
+        window.Laravel.longitude = @json($longitude);
+    </script>
 @endsection
