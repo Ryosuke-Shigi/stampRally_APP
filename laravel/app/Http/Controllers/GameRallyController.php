@@ -177,12 +177,6 @@ class GameRallyController extends Controller
         return 0;
     }
 
-
-/*     public function pointJudgeResult(REQUEST $request){
-
-
-    } */
-
 /*     public function test(){
         $client = new Client();
         //ポイントの保存
