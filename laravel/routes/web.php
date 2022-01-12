@@ -72,13 +72,12 @@ Route::group(['prefix'=>'game'],function(){
     Route::get('/checkPoint','GameRallyController@checkPoint')->name('checkPoint');
     Route::post('/checkPoint','GameRallyController@checkPoint')->name('checkPoint');
 
-
     //ポイントチェック処理
     Route::post('/pointJudge','GameRallyController@pointJudge')->name('pointJudge');
     //ゴール表示（モーダル画面に　名前とコメントをいれてもらう）
+    Route::get('/pointComplete','GameRallyController@pointComplete')->name('pointComplete');
     Route::post('/pointComplete','GameRallyController@pointComplete')->name('pointComplete');
-    //ゴール後処理（stateとstampを削除して、scoreを作成。 ルート選択画面前まで戻す)
+    //クリア後の処理
     Route::post('/clearRally','GameRallyController@clearRally')->name('clearRally');
-
 
 });
