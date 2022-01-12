@@ -171,7 +171,6 @@ class CreateRallyController extends Controller
             //画像がないときは　NULL　をいれる
             $pictPath = NULL;
         }
-
         //ゴールの保存
         $dataUrl = config('services.web.stamprally_API').'/goal/create';
         $param=array(
@@ -181,7 +180,6 @@ class CreateRallyController extends Controller
                     'text'=>$request->text,
                     );
         $response = $client->request('POST',$dataUrl,['json'=>$param]);
-
         return redirect()->route('createRoute');
     }
 

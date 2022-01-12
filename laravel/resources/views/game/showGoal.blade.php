@@ -22,17 +22,17 @@
             <div class="mainKind">クリア！おめでとうございます！</div>
             <div class="configContainer">
                 <div class="sectorA">
-{{--                     @if($table->pict != NULL)
+                    @if($table->pict != NULL)
                     <div class="picture">
                         <div class="content">
-                            <img src = {{ "https://ada-stamprally.s3.ap-northeast-3.amazonaws.com/"./* $table->pict */ }} class="preview">
+                            <img src = {{ "https://ada-stamprally.s3.ap-northeast-3.amazonaws.com/".$table->pict }} class="preview">
                         </div>
                     </div>
                     @endif
- --}}                    <div class="multiText">
+                    <div class="multiText">
                         <div class="name">クリアメッセージ</div>
                         <div class="content">
-                            <textarea name="text" id="text" class="text" readonly>test</textarea>
+                            <textarea name="text" id="text" class="text" readonly>{{ $table->text }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
             <!-- 詳細設定部分 -->
             <div class="configContainer">
                 <div class="sectorA">
-                    <form method="POST" id="nextActionA" action="" enctype="multipart/form-data">
+                    <form method="POST" id="nextActionA" action="{{ route('clearRally') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="singleText">
                             <div class="name">名前をいれてください</div>
@@ -73,7 +73,7 @@
                                 <input type="text" name="text" class="text">
                             </div>
                         </div>
-
+                        <input type="hidden" name="route_code" value="{{ $route_code }}">
                     </form>
                 </div>
             </div>

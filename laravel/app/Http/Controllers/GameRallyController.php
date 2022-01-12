@@ -124,7 +124,6 @@ class GameRallyController extends Controller
 
 
     /*
-    //
     //  point全てチェック後
     //  route_code が必要
     //  クリア後のbladeを表示する
@@ -134,7 +133,7 @@ class GameRallyController extends Controller
     public function pointComplete(ReQUEST $request){
         $client = new Client();
         //チェックするポイントの呼び出し
-        $dataUrl = config('services.web.stamprally_API').'/game/callGoal';
+        $dataUrl = config('services.web.stamprally_API').'/goal/callGoal';
         //必要なのはconnect_idとroute_code
         //外部APIで その人はそのルートを進行中か、進行中であれば残ったポイントを返す
         $param=array(
@@ -142,8 +141,8 @@ class GameRallyController extends Controller
                         'route_code'=>$request->route_code,
                     );
         $response = $client->request('POST',$dataUrl,['json'=>$param]);
-
-        return view('test',['table'=>json_decode($response->getBody()->getContents())->table]);
+        return view('game.showGoal',['table'=>json_decode($response->getBody()->getContents())->table,
+                                    'route_code'=>$request->route_code]);
     }
     /*
     //
@@ -153,41 +152,23 @@ class GameRallyController extends Controller
     */
     public function clearRally(REQUEST $request){
         //nameとtextを受け取ってクリア後処理の外部APIを叩く
-        //終了後、ルート選択画面の手前へリダイレクト
-
+        //終了後　別Bladeに移動する
         //クリア後処理
         $client = new Client();
         //チェックするポイントの呼び出し
-        $dataUrl = config('services.web.stamprally_API').'/game/pointJudge';
+        $dataUrl = config('services.web.stamprally_API').'/score/create';
         //必要なのはconnect_idとroute_code
         //外部APIで その人はそのルートを進行中か、進行中であれば残ったポイントを返す
         $param=array(
                         'connect_id'=>auth()->user()->connect_id,
                         'route_code'=>$request->route_code,
-                        'point_no'=>$request->point_no,
-                        'latitude'=>$request->latitude,
-                        'longitude'=>$request->longitude,
-                        'nowTime'=>$request->nowTime
+                        'name'=>$request->name,
+                        'text'=>$request->text
                     );
         $response = $client->request('POST',$dataUrl,['json'=>$param]);
         $result = json_decode($response->getBody()->getContents());
-
-
-
-        return 0;
+        return redirect()->route('selectRoute');
     }
 
-/*     public function test(){
-        $client = new Client();
-        //ポイントの保存
-        $dataUrl = config('services.web.stamprally_API').'/point/allPoints';
-        $param=array(
-                    //'connect_id'=>auth()->user()->connect_id,
-                    );
-        $response = $client->request('POST',$dataUrl,['json'=>$param]);
-        //dump(json_decode($response->getBody()->getContents())->table);
-        return view('test',['table'=>json_decode($response->getBody()->getContents())->table]);
-    }
- */
 
 }
