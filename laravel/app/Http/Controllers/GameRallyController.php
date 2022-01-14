@@ -12,25 +12,38 @@ use GuzzleHttp\Psr7\Utils;
 
 class GameRallyController extends Controller
 {
+
+
     //ログイン等認証対象　コンストラクタ
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    public function __construct(){$this->middleware('auth');}
+
+
+    /////////////////////////////////////////////////////////////
+    //
+    //      選択・移動・表示
+    //
+    /////////////////////////////////////////////////////////////
+    //play game score選択画面
+    public function selectMode(){return view('route.selectMode');}
+    //ＥＤＩＴ選択画面
+    public function selectCreate(){return view('route.selectCreate');}
+    //ルート検索画面
+    public function searchRoutes(){return view('route.searchRoutes');}
 
 
 
-    //ルート選択画面
-    //table データをview(selectRoutes)に渡して表示させる
-    //送られてくるkeywordによって内容を変えて表示など
-    //ルート表示を共通化させる
-    //キーワードで狭めたり、ユーザが進行中のもののみ　とか
-    //制限をかけたテーブルデータを渡して表示を多様化させる
-    //引数なしでも動きます
+    ///////////////////////////////////////////////////////////
+    //
+    //  ルート選択画面（ALLとキーワード検索両方）
+    //
+    //  ※ キーワードも送られてくると、キーワード検索をかけて値を返す
+    //
+    ///////////////////////////////////////////////////////////
+
     public function selectRoute(REQUEST $request){
         $client = new Client();
         $param = array();
-        //キーワードが入っていなければ、全てのルートを返す
+        //もしキーワードが入っていればキーワード検索
         if(isset($request->keyword)){
             $dataUrl = config('services.web.stamprally_API').'/route/keySearchRoutes';
             $param += array(
@@ -46,13 +59,32 @@ class GameRallyController extends Controller
         return view('game.selectRoute',['table'=>json_decode($response->getBody()->getContents())->table]);
     }
 
+    //進行中ルートを表示する
+    public function progressRoutes(REQUEST $request){
+        $client = new Client();
+        $param = array();
+        $dataUrl = config('services.web.stamprally_API').'/route/progressRoutes';
+        $param += array(
+                        'connect_id'=>auth()->user()->connect_id,
+                        );
+        //外部APIを叩く
+        $response = $client->request('POST',$dataUrl,['json'=>$param]);
+        //取得したテーブルデータを返す
+        return view('game.selectRoute',['table'=>json_decode($response->getBody()->getContents())->table]);
+    }
 
-    //ポイント選択画面をマップ表示
-    //新規に始める場合、『　自動的にstatusテーブルにデータが作成』　される
-    //進行中であれば、stampで保存されていない、残りのチェックポイントが表示される
-    //外部APIの扱い方で　次のポイントだけ　とか制限できそう
 
-    //　connect_id と　route_code　が必要
+
+
+    //////////////////////////////////////////////////////////////////////////////////
+    //
+    //  ポイント選択画面表示（マップ表示）
+    //
+    //  新規に始める場合、『　自動的にstatusテーブルにデータが作成』　される
+    //  進行中であれば、stampで保存されていない、残りのチェックポイントが表示される
+    //  外部APIの扱い方で　次のポイントだけ　とか制限できそう
+    //
+    ///////////////////////////////////////////////////////////////////////////////////
 
     public function checkPoint(REQUEST $request){
         $client = new Client();
@@ -71,6 +103,9 @@ class GameRallyController extends Controller
                                         ]);
     }
 
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////
     /*
         クリックしたポイントをチェックする
         $requestで送られてくるもの
@@ -80,6 +115,7 @@ class GameRallyController extends Controller
         longitude       経度
         nowTime         押した時間
     */
+    ////////////////////////////////////////////////////////////////////////////////////////////////
     public function pointJudge(REQUEST $request){
         //ポイントが距離内かの判断する外部API
         //OK　であれば   result TRUE  と remainPointNum 残りポイント数
@@ -123,16 +159,16 @@ class GameRallyController extends Controller
     }
 
 
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////
     /*
-    //  point全てチェック後
-    //  route_code が必要
-    //  クリア後のbladeを表示する
-    //  なのでtableデータでgoalのデータを取得して
-    //  bladeからclearRallyへ
+    //  スタンプラリー 攻略後処理
     */
+    //////////////////////////////////////////////////////////////////////////////////////
     public function pointComplete(ReQUEST $request){
         $client = new Client();
-        //チェックするポイントの呼び出し
+        //ゴールの情報を取得 必要なのはroute_codeのみ
         $dataUrl = config('services.web.stamprally_API').'/goal/callGoal';
         //必要なのはconnect_idとroute_code
         //外部APIで その人はそのルートを進行中か、進行中であれば残ったポイントを返す
@@ -144,21 +180,13 @@ class GameRallyController extends Controller
         return view('game.showGoal',['table'=>json_decode($response->getBody()->getContents())->table,
                                     'route_code'=>$request->route_code]);
     }
-    /*
-    //
     //  クリア後の名前とコメントを受け取って処理
-    //  scoreレコードを作成して、ルート選択画面の手前まで戻る
-    //
-    */
+    //  ルート選択画面の手前まで戻る
     public function clearRally(REQUEST $request){
-        //nameとtextを受け取ってクリア後処理の外部APIを叩く
-        //終了後　別Bladeに移動する
         //クリア後処理
         $client = new Client();
-        //チェックするポイントの呼び出し
+        //攻略後の名前と一言コメントを作成させる
         $dataUrl = config('services.web.stamprally_API').'/score/create';
-        //必要なのはconnect_idとroute_code
-        //外部APIで その人はそのルートを進行中か、進行中であれば残ったポイントを返す
         $param=array(
                         'connect_id'=>auth()->user()->connect_id,
                         'route_code'=>$request->route_code,
@@ -167,8 +195,30 @@ class GameRallyController extends Controller
                     );
         $response = $client->request('POST',$dataUrl,['json'=>$param]);
         $result = json_decode($response->getBody()->getContents());
-        return redirect()->route('selectRoute');
+        //ルート検索画面へ戻る
+        return redirect()->route('searchRoutes');
     }
 
+
+
+
+
+    ///////////////////////////////////////////////////////////////////////////////
+    //
+    //  スコア表示画面
+    //
+    ///////////////////////////////////////////////////////////////////////////////
+    public function showScore(){
+        $client = new Client();
+        $param = array();
+        $dataUrl = config('services.web.stamprally_API').'/score/showScore';
+        $param += array(
+                        'connect_id'=>auth()->user()->connect_id,
+                        );
+        //外部APIを叩く
+        $response = $client->request('POST',$dataUrl,['json'=>$param]);
+        //取得したテーブルデータを返す
+        return view('route.showScore',['table'=>json_decode($response->getBody()->getContents())->table]);
+    }
 
 }

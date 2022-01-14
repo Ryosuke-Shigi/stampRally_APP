@@ -23,7 +23,7 @@
  --}}
 
             <div class="mainSector">
-                <div class="title">Stam <div class="P">P</div></div>
+                <div class="title">Stam<span style="color:rgb(255, 60, 0)">Ｐ</span></div>
                 <div class="title">ＲＡＬＬＹ</div>
            </div>
 
@@ -41,7 +41,7 @@
     </div>
 
     <!--buttonaction 他に影響しないように外へ-->
-    <form method="GET" id="nextActionA" action="{{-- {{ route('') }} --}}" ></form>
+    <form method="GET" id="nextActionA" action="{{ route('selectMode') }}" ></form>
     <form method="POST" id="nextActionB" action="{{ route('logout') }}" >@csrf</form>
     <form method="GET" id="nextActionC" action="{{ route('login') }}" ></form>
     <form method="GET" id="nextActionD" action="{{ route('register') }}"></form>

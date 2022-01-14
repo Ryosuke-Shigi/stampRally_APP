@@ -20,12 +20,12 @@ class CreateRallyController extends Controller
     }
 
 
-    // スタートポイント選択画面表示
+ /*    // スタートポイント選択画面表示
     public function selectStart(){
         //ユーザIDの取得はこれでよい　２０２１　１２　１８
         return view('create.selectStart');
     }
-
+ */
 
 
     // ルート作成画面画面表示
@@ -180,7 +180,7 @@ class CreateRallyController extends Controller
                     'text'=>$request->text,
                     );
         $response = $client->request('POST',$dataUrl,['json'=>$param]);
-        return redirect()->route('createRoute');
+        return redirect()->route('selectCreate');
     }
 
 
@@ -189,7 +189,7 @@ class CreateRallyController extends Controller
         //　ポイント選択画面から　戻るボタンをクリックした際の処理　（作成したルートを丸ごと削除）
     public function reCreateRoute(REQUEST $request){
         //routeDelete
-        //外部制約でルート以下データが丸ごと削除される
+        //外部制約でルート以下データが「丸ごと」削除される
         $client = new Client();
         $dataUrl = config('services.web.stamprally_API').'/route/delete';
         $param=array(
@@ -201,9 +201,33 @@ class CreateRallyController extends Controller
     }
 
 
-/*     //　ポイント選択画面から　戻るボタンをクリックした際の処理　（startで設定したテーブルデータを削除する）
-    public function reSelectStart(REQUEST $request){
+
+    ///////////////////////////////////////////////////////////////////////////////
+    //
+    //  ルート削除
+    //
+    ///////////////////////////////////////////////////////////////////////////////
+    //  削除するルートを表示する（connect_idで自分のコースだけを取り出し、表示させる)
+    //  なので引数は不要
+    public function selectDeleteRoutes(REQUEST $request){
+        $client = new Client();
+        $param = array();
+        //もしキーワードが入っていればキーワード検索
+        $dataUrl = config('services.web.stamprally_API').'/route/keySearchRoutes';
+        $param += array(
+                        'connect_id'=>auth()->user()->connect_id,
+                        );
+        $dataUrl = config('services.web.stamprally_API').'/route/allRoutes';
+        //外部APIを叩く
+        $response = $client->request('POST',$dataUrl,['json'=>$param]);
+        //取得したテーブルデータを返す
+        return view('create.selectDeleteRoutes',['table'=>json_decode($response->getBody()->getContents())->table]);
+    }
+    //ルート削除処理
+    //引数 route_code
+    public function deleteRoute(REQUEST $request){
         //routeDelete
+        //外部制約でルート以下データが「丸ごと」削除される
         $client = new Client();
         $dataUrl = config('services.web.stamprally_API').'/route/delete';
         $param=array(
@@ -211,7 +235,7 @@ class CreateRallyController extends Controller
             'route_code'=>$request->route_code,
             );
         $client->request('GET',$dataUrl,['json'=>$param]);
-        return redirect()->route('selectStart');
-    } */
+        return redirect()->route('selectDeleteRoutes');//削除ルート選択画面へ戻る
+    }
 
 }
