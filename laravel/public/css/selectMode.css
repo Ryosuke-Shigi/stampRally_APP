@@ -1,0 +1,265 @@
+@charset "UTF-8";
+
+html{
+    font-size:var(--root-font-size);
+}
+
+body,h1,h2,h3,h4,h5,h6,p,ul,li,figure{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+body{
+    box-sizing:border-box;
+}
+.buttonSector form{
+    height:100%;
+    width:100%;
+    margin:0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+:root{
+    --root-font-size:16px;
+    --mobile-height:650px;
+    --mobile-width:365px;
+    --button-font-size:1.5rem;
+    --input-text-size:1.5rem;
+}
+
+/* 全体*/
+.wrapper{
+    height:100vh;
+    width:100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background: linear-gradient(180deg, rgba(255,255,0,1) 0%, rgba(255,255,0,1) 60%, rgb(255, 121, 188) 100%);
+    align-content: center;
+}
+
+
+.NONE{
+    display:none;
+}
+
+
+
+/***************************************************************/
+/*
+/*  ルート選択
+/*
+****************************************************************/
+
+
+
+.wrapper .configContainer{
+    height:95%;
+    width: 95%;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgba(95, 77, 255, 0.472);
+    border-radius:10px;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.configContainer .sectorA{
+    width:90%;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.sectorA .titleSection{
+    height:8%;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+    background: radial-gradient(circle,#fffb00 70%,rgb(255, 108, 176));
+    border-radius:10px;
+
+}
+.titleSection .title{
+    height:auto;
+    width:95%;
+    font-size:3.5vh;
+    text-align: center;
+    color:rgb(255, 54, 54);
+    font-weight: 1000;
+}
+.sectorA .configSection{
+    height:85%;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle,#8cf6f1 65%,rgb(107, 186, 255));
+    border-radius:10px;
+}
+
+.configSection .itemSection{
+    height:100%;
+    width:95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content:space-around;
+    flex-wrap: wrap;
+    border-radius: 10px;
+
+}
+
+.itemSection .itemSector{
+    height:20%;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content:space-around;
+    flex-wrap: wrap;
+    border-radius: 10px;
+}
+
+/*テキスト*/
+.itemSector .textSector{
+    margin-top:5px;
+    height:50%;
+    width:60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content:space-around;
+    flex-wrap: wrap;
+    background-color: rgba(245, 245, 245, 0.698);
+    border-radius: 10px;
+    overflow:hidden;
+}
+.textSector .text{
+    height:auto;
+    width:100%;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    font-size:1rem;
+    color:rgb(4, 117, 0);
+    font-weight: 700;
+    overflow: hidden;
+}
+
+
+
+/*ボタン*/
+.itemSector .buttonSector{
+    height:50%;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+    color:rgba(45, 146, 192, 0.664);
+}
+.buttonSector .setButton{
+    height:80%;
+    width:80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:3vh;
+    font-weight: 700;
+    color:rgb(255, 83, 169);
+    background: radial-gradient(circle,#fffb01 65%,#ff5100e8);
+    border-radius: 50vh;
+/*     min-height:50px;
+ */    cursor:pointer;
+}
+.setButton:active{
+    color:rgba(255, 57, 149, 0.719);
+    background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
+    box-shadow: 0 0 20px rgb(255, 251, 2) inset;
+}
+
+
+/*横長（デバイス横向き）である場合*/
+@media (orientation: landscape){
+    .configContainer .sectorA{
+        width:95%;
+        height:70%;
+    }
+
+    .sectorA .titleSection{
+        height:15%;
+    }
+    .titleSection .title{
+        font-size:3.5vw;
+    }
+
+
+    .itemSection .itemSector{
+        height:90%;
+        width:25%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content:space-around;
+        flex-wrap: wrap;
+        border-radius: 10px;
+    }
+
+
+    /*テキスト*/
+    .itemSector .textSector{
+        height:30%;
+        width:90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content:space-around;
+        flex-wrap: wrap;
+        background-color: rgba(245, 245, 245, 0.698);
+        border-radius: 10px;
+    }
+    .textSector .text{
+        height:auto;
+        width:100%;
+        text-align: center;
+        align-items: center;
+        align-content: center;
+        font-size:1.5vw;
+        color:rgb(4, 117, 0);
+        font-weight: 700;
+    }
+
+    /*ボタン*/
+    .itemSector .buttonSector{
+        height:70%;
+        width:90%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        align-items: center;
+        color:rgba(45, 146, 192, 0.664);
+    }
+    .buttonSector .setButton{
+        height:80%;
+        width:80%;
+        font-size:3vw;
+        border-radius: 50vh;
+
+    }
+
+}

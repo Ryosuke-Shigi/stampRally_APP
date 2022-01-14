@@ -46,7 +46,9 @@ Route::group(['prefix'=>'create'],function(){
     Route::post('/addPoint/{route_code}/{route_name}/{latitude?}/{longitude?}/{point_no}','CreateRallyController@addPoint')->name('addPoint');
     //ゴール設定画面表示
     Route::get('/settingGoal/{route_code}/{route_name}','CreateRallyController@settingGoal')->name('settingGoal');
+
     //ルート作成データ処理
+
     //ルート作成処理
     Route::get('/makeRoute','CreateRallyController@makeRoute')->name('makeRoute');
     Route::post('/makeRoute','CreateRallyController@makeRoute')->name('makeRoute');
@@ -62,9 +64,31 @@ Route::group(['prefix'=>'create'],function(){
     //ポイント設定完了ORポイント追加選択画面
     Route::post('/reSelectpoint','CreateRallyController@reSelectpoint')->name('reSelectPoint');
 
+    //ルート削除
+    //画面表示
+    Route::get('selectDeleteRoutes','CreateRallyController@selectDeleteRoutes')->name('selectDeleteRoutes');
+    Route::get('deleteRoute','CreateRallyController@deleteRoute')->name('deleteRoute');
+
+
+
 });
 
+/////////////////////////////////////////////////////////////////////
+//
+//      ゲーム進行・ルート進行
+//
+/////////////////////////////////////////////////////////////////////
+
 Route::group(['prefix'=>'game'],function(){
+
+    //game create score 選択画面
+    Route::get('/selectMode','GameRallyController@selectMode')->name('selectMode');
+    //createモードでの　作成　OR　削除　画面　ルートの途中編集は進行でおかしくなるので削除か作成のみ
+    Route::get('/selectCreate','GameRallyController@selectCreate')->name('selectCreate');
+    //ルート検索選択画面(全てのルート・キー検索両方を含む)
+    Route::get('/searchRoutes','GameRallyController@searchRoutes')->name('searchRoutes');
+    //進行中ルートを出す
+    Route::get('/progressRoutes','GameRallyController@progressRoutes')->name('progressRoutes');
 
     //ルート選択画面
     Route::get('/selectRoute','GameRallyController@selectRoute')->name('selectRoute');
@@ -79,5 +103,8 @@ Route::group(['prefix'=>'game'],function(){
     Route::post('/pointComplete','GameRallyController@pointComplete')->name('pointComplete');
     //クリア後の処理
     Route::post('/clearRally','GameRallyController@clearRally')->name('clearRally');
+
+    //スコア表示
+    Route::get('showScore','GameRallyController@showScore')->name('showScore');
 
 });

@@ -2,12 +2,12 @@
 
 <!--タイトル-->
 @section('title')
-チェックポイント一覧
+ルート削除
 @endsection
 
 <!--追加メタ情報-->
 @section('meta')
-    <link href="{{ asset('css/selectRoute.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/selectDeleteRoutes.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
@@ -19,7 +19,7 @@
     <div class="wrapper">
         <!-- 地図部分 -->
         <div class="mainContainer">
-            <div class="title">はじめるルートを選択してください</div>
+            <div class="title">削除するルートを選択</div>
             <!--ルート列挙-->
             <div class="routeSector">
                 @foreach ($table as $temp)
@@ -43,15 +43,12 @@
         </div>
     </div>
 
-    <!--ポイントチェック画面へ-->
-    <form method="GET" id="nextActionA" action="{{ route('checkPoint') }}" enctype="multipart/form-data">
+    <!--ルート削除処理へ-->
+    <form method="GET" id="nextActionA" action="{{ route('deleteRoute') }}" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="route_code" id="selectroute_code">
-        <input type="hidden" name="message" value="ポイントに近づいてクリック！">
     </form>
     <!--BackAction 他に影響しないように外へ-->
-    <form method="GET" id="backAction" action="{{ route('searchRoutes') }}" enctype="multipart/form-data">
-        @csrf
-    </form>
+    <form method="GET" id="backAction" action="{{ route('selectCreate') }}"></form>
 
 @endsection

@@ -28,7 +28,7 @@
         <!-- ボタン部分 -->
         <div class = "buttonContainer">
             <div id="modalIn" class="setButton">SET</div>
-            <div id="backButton" class="backButton">Back</div>
+            <div id="backButton" class="backButton">やり直す</div>
         </div>
 
     </div>
@@ -79,7 +79,7 @@
             <!--モーダルウィンドウ　ボタン部分-->
             <div class="buttonContainer">
                 <div id="nextButtonA" class="setButton">Create</div>
-                <div id="modalOut" class="backButton">ReSet</div>
+                <div id="modalOut" class="backButton">Back</div>
             </div>
         </div>
     </div>

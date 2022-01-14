@@ -68,5 +68,7 @@
             <div id="backButton" class="backButton">Back</div>
         </div>
     </div>
+    <!--BackAction 他に影響しないように外へ-->
+    <form method="GET" id="backAction" action={{ route('selectCreate') }}></form>
 
 @endsection
