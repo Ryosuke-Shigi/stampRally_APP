@@ -12,18 +12,7 @@ body,h1,h2,h3,h4,h5,h6,p,ul,li,figure{
 body{
     box-sizing:border-box;
 }
-.buttonSector form{
-    height:100%;
-    width:100%;
-    margin:0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    flex-wrap: wrap;
-}
+
 
 :root{
     --root-font-size:16px;
@@ -84,7 +73,7 @@ body{
 }
 
 .sectorA .titleSection{
-    height:8%;
+    height:5%;
     width:100%;
     display: flex;
     justify-content: center;
@@ -97,7 +86,7 @@ body{
 .titleSection .title{
     height:auto;
     width:95%;
-    font-size:3.5vh;
+    font-size:3vh;
     text-align: center;
     color:rgb(255, 54, 54);
     font-weight: 1000;
@@ -112,20 +101,18 @@ body{
     border-radius:10px;
 }
 
-.configSection .itemSection{
+.configSection form{
+    width:100%;
     height:100%;
-    width:95%;
-    display: flex;
+    display:flex;
+    display:flex;
     justify-content: center;
     align-items: center;
-    align-content:space-around;
     flex-wrap: wrap;
-    border-radius: 10px;
-
 }
 
-.itemSection .itemSector{
-    height:20%;
+.configSection .itemSector{
+    height:15%;
     width:100%;
     display: flex;
     justify-content: center;
@@ -134,19 +121,13 @@ body{
     flex-wrap: wrap;
     border-radius: 10px;
 }
-.itemSector form{
-    width:100%;
-    height:100%;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    flex-wrap: wrap;
-}
+
+
+
 /*テキスト*/
 .itemSector .textSector{
-    height:auto;
-    width:80%;
+    height:100%;
+    width:90%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -172,7 +153,8 @@ body{
 
 /*キーワード検索*/
 .textSector .keyword{
-    height:35%;
+    margin-top:15px;
+    height:50%;
     width:90%;
     text-align: center;
     align-content: center;
@@ -189,12 +171,26 @@ body{
     align-items: center;
     color:rgba(255, 47, 47, 0.445);
     font-weight: 700;
+    font-size:2vh;
+
 }
 
 
+
+
+/*ボタン領域*/
+.sectorA .buttonContainer{
+    height:10%;
+    width:100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgba(80, 156, 255, 0.472);
+    border-radius:10px;
+}
 /*ボタン*/
-.itemSector .buttonSector{
-    height:50%;
+.buttonContainer .buttonSector{
+    height:80%;
     width:100%;
     display:flex;
     justify-content: center;
@@ -225,34 +221,35 @@ body{
 
 /*横長（デバイス横向き）である場合*/
 @media (orientation: landscape){
+
+    /*詳細設定領*/
     .configContainer .sectorA{
-        width:95%;
-        height:70%;
+        width:80%;
+        height:100%;
     }
 
     .sectorA .titleSection{
-        height:15%;
+        height:10%;
     }
     .titleSection .title{
-        font-size:3.5vw;
+        font-size:2vw;
     }
-
-
-    .itemSection .itemSector{
+    .sectorA .configSection{
         height:90%;
-        width:25%;
-        display: flex;
+        width:80%;
+        display:flex;
         justify-content: center;
         align-items: center;
-        align-content:center;
-        flex-wrap: wrap;
-        border-radius: 10px;
     }
 
+    .configSection .itemSector{
+        height:13%;
+        width:100%;
+    }
 
     /*テキスト*/
     .itemSector .textSector{
-        height:30%;
+        height:95%;
         width:90%;
         display: flex;
         justify-content: center;
@@ -268,32 +265,51 @@ body{
         text-align: center;
         align-items: center;
         align-content: center;
-        font-size:2vw;
+        font-size:1.7vw;
         color:rgb(4, 117, 0);
         font-weight: 700;
     }
 
-    /*ボタン*/
-    .itemSector .buttonSector{
-        height:70%;
+    /*キーワード検索*/
+    .textSector .keyword{
+        margin-top:5px;
+        height:50%;
         width:90%;
+        font-size:2vw;
+    }
+
+
+
+    .sectorA .buttonContainer{
+        height:90%;
+        width:20%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        background-color: rgba(80, 156, 255, 0.472);
+        border-radius:10px;
+    }
+
+    /*ボタン*/
+    .buttonContainer .buttonSector{
+        height:50%;
+        width:100%;
         display:flex;
         justify-content: center;
+        flex-wrap: wrap;
         align-items: center;
         align-items: center;
         color:rgba(45, 146, 192, 0.664);
     }
     .buttonSector .setButton{
-        height:80%;
+        height:40%;
         width:80%;
-        font-size:3vw;
+        font-size:2.5vw;
         border-radius: 50vh;
-
-    }
-
-    /* 検索キーワード */
-    .textSector .keyword{
-        font-size:2vw;
+        -ms-writing-mode: tb-rl;
+        writing-mode: vertical-rl;
+        text-orientation: upright; /* すべて縦方向に表示 */
     }
 
 

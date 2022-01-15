@@ -57,9 +57,9 @@ Route Search
                                 </form>
                             </div>
                             <div class="itemSector">
-                                <div class="textSector">
+{{--                                 <div class="textSector">
                                     <div class="text">モード選択へ</div>
-                                </div>
+                                </div> --}}
                                 <div class="buttonSector">
                                     <form method="GET" id="nextActionD" action="{{ route('selectMode') }}" enctype="multipart/form-data">
                                         <div id="nextButtonD" class="setButton">ＢＡＣＫ</div>

@@ -29,7 +29,21 @@ class GameRallyController extends Controller
     public function selectCreate(){return view('route.selectCreate');}
     //ルート検索画面
     public function searchRoutes(){return view('route.searchRoutes');}
+    //スコア表示選択画面
+    public function selectScore(){return view('route.selectScore');}
 
+
+
+    //ルートスコア表示選択画面（全ての公開ルートを表示する)
+    public function selectRouteScore(){
+        $client = new Client();
+        $param = array();
+        $dataUrl = config('services.web.stamprally_API').'/route/allRoutes';
+        //外部APIを叩く
+        $response = $client->request('POST',$dataUrl,['json'=>$param]);
+        //取得したテーブルデータを返す
+        return view('route.selectRouteScore',['table'=>json_decode($response->getBody()->getContents())->table]);
+    }
 
 
     ///////////////////////////////////////////////////////////
@@ -206,15 +220,27 @@ class GameRallyController extends Controller
     ///////////////////////////////////////////////////////////////////////////////
     //
     //  スコア表示画面
+    //  引数が何もなければ、自分自身のスコア
+    //          route_codeがはいっていれば、そのルートのスコアを返す
     //
     ///////////////////////////////////////////////////////////////////////////////
-    public function showScore(){
+    public function showScore(REQUEST $request){
         $client = new Client();
         $param = array();
-        $dataUrl = config('services.web.stamprally_API').'/score/showScore';
-        $param += array(
-                        'connect_id'=>auth()->user()->connect_id,
-                        );
+        //接続先API
+        $dataUrl = "";
+
+        if(isset($request->route_code)){
+            $dataUrl = config('services.web.stamprally_API').'/score/showRouteScore';
+            $param += array(
+                'route_code'=>$request->route_code,
+                );
+        }else{
+            $dataUrl = config('services.web.stamprally_API').'/score/showScore';
+            $param += array(
+                'connect_id'=>auth()->user()->connect_id,
+                );
+        }
         //外部APIを叩く
         $response = $client->request('POST',$dataUrl,['json'=>$param]);
         //取得したテーブルデータを返す
