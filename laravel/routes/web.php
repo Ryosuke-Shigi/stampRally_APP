@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/home',function(){
+    return view('home');
+});
+
+
 Auth::routes();
 
 /* Route::get('/home', 'HomeController@index')->name('home'); */
@@ -75,7 +80,7 @@ Route::group(['prefix'=>'create'],function(){
 
 /////////////////////////////////////////////////////////////////////
 //
-//      ゲーム進行・ルート進行
+//     ゲーム進行・ルート進行
 //
 /////////////////////////////////////////////////////////////////////
 
@@ -104,7 +109,12 @@ Route::group(['prefix'=>'game'],function(){
     //クリア後の処理
     Route::post('/clearRally','GameRallyController@clearRally')->name('clearRally');
 
-    //スコア表示
+    //スコア選択画面
+    Route::get('selectScore','GameRallyController@selectScore')->name('selectScore');
+    //マイスコア表示
     Route::get('showScore','GameRallyController@showScore')->name('showScore');
+    //各ルートスコア選択
+    Route::get('selectRouteScore','GameRallyController@selectRouteScore')->name('selectRouteScore');
+    //ルートスコア表示
 
 });

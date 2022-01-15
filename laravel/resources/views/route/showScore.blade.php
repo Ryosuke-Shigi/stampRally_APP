@@ -40,7 +40,7 @@
     </div>
 
     <!--BackAction 他に影響しないように外へ-->
-    <form method="GET" id="backAction" action="{{ route('selectMode') }}" enctype="multipart/form-data">
+    <form method="GET" id="backAction" action="{{ route('selectScore') }}" enctype="multipart/form-data">
         @csrf
     </form>
 

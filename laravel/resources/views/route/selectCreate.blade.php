@@ -49,9 +49,9 @@ RallyEdit
                                         <div id="nextButtonC" class="setButton">ＢＡＣＫ</div>
                                     </form>
                                 </div>
-                                <div class="textSector">
+{{--                                 <div class="textSector">
                                     <div class="text">モード選択へ</div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
