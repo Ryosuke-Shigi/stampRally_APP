@@ -20,13 +20,13 @@ Route Search
             <!-- 詳細設定部分 -->
             <div class="configContainer">
                 <div class="sectorA">
-                    <div class="titleSection"><div class="title">Search Mode</div></div>
+                    <div class="titleSection"><div class="title">ラリー検索</div></div>
                     <div class="configSection">
 
                         <div class="itemSection">
                             <div class="itemSector">
                                 <div class="textSector">
-                                    <div class="text">全てのルート</div>
+                                    <div class="text">全てのラリー</div>
                                 </div>
                                 <div class="buttonSector">
                                     <form method="GET" id="nextActionA" action="{{ route('selectRoute') }}" enctype="multipart/form-data">

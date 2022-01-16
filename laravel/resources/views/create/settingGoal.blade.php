@@ -20,7 +20,7 @@ CREATE [G O A L]
             <!-- 詳細設定部分 -->
             <div class="configContainer">
                 <div class="sectorA">
-                    <div class="titleSection"><div class="title">ラリー達成結果を作成してください。</div></div>
+                    <div class="titleSection"><div class="title">@if($errors->has('text')){{ $errors->first('text') }}@else ラリー達成結果を作成してください。@endif</div></div>
                     <div class="configSection">
                     <form method="POST" id="nextActionA" action="{{ route('makeGoal',['route_code'=>$route_code]) }}" enctype="multipart/form-data">
                         @csrf

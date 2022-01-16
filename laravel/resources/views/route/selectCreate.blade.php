@@ -20,7 +20,7 @@ RallyEdit
             <!-- 詳細設定部分 -->
             <div class="configContainer">
                 <div class="sectorA">
-                    <div class="titleSection"><div class="title">Edit Mode</div></div>
+                    <div class="titleSection"><div class="title">ＥＤＩＴ</div></div>
                     <div class="configSection">
                         <div class="itemSection">
                             <div class="itemSector">
@@ -36,7 +36,7 @@ RallyEdit
                             <div class="itemSector">
                                 <div class="buttonSector">
                                     <form method="GET" id="nextActionB" action="{{ route('createRoute') }}" enctype="multipart/form-data">
-                                        <div id="nextButtonB" class="setButton">ＥＤＩＴ</div>
+                                        <div id="nextButtonB" class="setButton">Create</div>
                                     </form>
                                 </div>
                                 <div class="textSector">

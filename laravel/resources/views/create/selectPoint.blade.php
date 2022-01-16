@@ -21,7 +21,7 @@
     <div class="wrapper">
         <!-- 地図部分 -->
         <div class="mapContainer">
-            <div class="mapKind">{{ $route_name }}　のPOINTを作成</div>
+            <div class="mapKind">@if($errors->has('text')){{ " エラー!:".$errors->first('text') }}@else{{ $route_name }}　のPOINTを作成@endif</div>
             <input id='pac-input' class="controls" type="text" placeholder="場所を検索"/>
             <div class="map" id="map"></div>
         </div>
@@ -32,6 +32,7 @@
         </div>
 
     </div>
+
 
     <!--BackAction 他に影響しないように外へ-->
     <form method="POST" id="backAction" action={{ route('reCreateRoute',['route_code'=>$route_code]) }} enctype="multipart/form-data">
@@ -78,7 +79,7 @@
             </div>
             <!--モーダルウィンドウ　ボタン部分-->
             <div class="buttonContainer">
-                <div id="nextButtonA" class="setButton">Create</div>
+                <div id="nextButtonA" class="setButton">Check</div>
                 <div id="modalOut" class="backButton">Back</div>
             </div>
         </div>
