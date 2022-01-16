@@ -56,12 +56,9 @@ Game or Create
                             <div class="itemSector">
                                 <div class="buttonSector">
                                     <form method="GET" id="nextActionD" action="/">
-                                        <div id="nextButtonD" class="setButton">ＨＯＭＥ</div>
+                                        <div id="nextButtonD" class="backButton">ＨＯＭＥ</div>
                                     </form>
                                 </div>
-{{--                                 <div class="textSector">
-                                    <div class="text">トップ画面へ</div>
-                                </div> --}}
                             </div>
                         </div>
                     </div>

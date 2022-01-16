@@ -61,7 +61,7 @@ form{
     justify-content: space-evenly;
     align-items: center;
     font-weight: bolder;
-    font-size: 1rem;
+    font-size: 2vh;
     color: red;
 }
 /* GoogleMap */
@@ -70,7 +70,7 @@ form{
     width:70%;
     max-width:750px;
     height:4%;
-    font-size:15px;
+    font-size:1.5vh;
     border-style:double;
     background-color:rgba(255, 0, 98, 0.644);
     font-weight: 1000;
@@ -79,7 +79,7 @@ form{
 
 .mapContainer .controls::placeholder{
     text-align: center;
-    font-size:15px;
+    font-size:1.5vh;
     font-weight: 1000;
     color:rgb(255, 255, 255);
 }
@@ -107,7 +107,7 @@ form{
     justify-content: center;
     align-items: center;
     color: #333;
-    font-size: var(--button-font-size);
+    font-size: 3vh;
     font-weight: 700;
     color:rgba(248, 90, 164, 0.719);
     background: radial-gradient(circle,#fffb01 65%,#ff5100e8);
@@ -131,7 +131,7 @@ form{
     justify-content: center;
     align-items: center;
     color: #333;
-    font-size: var(--button-font-size);
+    font-size: 2.5vh;
     font-weight: 700;
     color:rgba(90, 151, 248, 0.719);
     background: radial-gradient(circle,#fffb01 65%,#ff00aae8);
@@ -214,7 +214,7 @@ form{
 .titleSection .title{
     height:auto;
     width:95%;
-    font-size:1rem;
+    font-size:2vh;
     text-align: center;
     color:red;
 }
@@ -242,7 +242,7 @@ form{
     height:auto;
     width:95%;
     text-align: center;
-    font-size:1rem;
+    font-size:1vh;
     color:rgba(255, 0, 0, 0.685);
     background-color:rgba(255, 183, 157, 0.698);
     border-radius:10px;
@@ -266,7 +266,7 @@ form{
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size:1rem;
+    font-size:2vh;
     font-weight: bolder;
     background: radial-gradient(circle,#ffeb389a 70%,#fd33baad);
     color:hotpink;
@@ -286,7 +286,7 @@ form{
     height:100%;
     width:100%;
     text-align: center;
-    font-size:var(--input-text-size);
+    font-size:2vh;
     border:none;
     color:rgba(139, 34, 34, 0.664);
 }
@@ -312,7 +312,7 @@ form{
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size:1rem;
+    font-size:2vh;
     font-weight: bolder;
     background: radial-gradient(circle,#ffeb389a 70%,#fd33baad);
     color:hotpink;
@@ -332,7 +332,7 @@ form{
 .multiText .text{
     height:100%;
     width:100%;
-    font-size:var(--input-text-size);
+    font-size:2vh;
     border:none;
     margin:0.5%;
     color:rgba(165, 42, 42, 0.664);
@@ -362,7 +362,7 @@ form{
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size:1rem;
+    font-size:2vh;
     font-weight: bolder;
     background: radial-gradient(circle,#ffeb389a 70%,#fd33baad);
     color:hotpink;
@@ -407,7 +407,7 @@ form{
     justify-content: center;
     align-items: center;
     color: #333;
-    font-size: var(--button-font-size);
+    font-size: 2vh;
     font-weight: 700;
     color:rgba(248, 90, 164, 0.719);
     background: radial-gradient(circle,#fffb01 65%,#ff5100e8);
@@ -463,6 +463,11 @@ form{
         text-orientation: upright;
         display:flex
     }
+
+    .mapContainer .mapKind{
+        font-size: 2vw;
+    }
+
     /*登録ボタン*/
     .buttonContainer .setButton{
         width:70%;
@@ -470,6 +475,7 @@ form{
         min-height:100px;
         writing-mode: vertical-rl;
         text-orientation: upright;
+        font-size:2vw;
     }
     /*戻るボタン*/
     .buttonContainer .backButton{
@@ -478,6 +484,7 @@ form{
         min-height:100px;
         writing-mode: vertical-rl;
         text-orientation: upright;
+        font-size:2vw;
     }
 
     /* モーダルウィンドウ */
@@ -485,6 +492,38 @@ form{
         display:inline-flex;
         flex-direction: row-reverse;
     }
+    /*  モーダルウィンドウ　タイトル　*/
+    .titleSection .title{
+        font-size:2vw;
+        font-weight: 500;
+    }
+
+    .itemSection .errorMessage{
+        font-size:1vw;
+    }
+
+    .singleText .name{
+        font-size:2vw;
+    }
+
+    .singleText .text{
+        font-size:2vw;
+    }
+    .multiText .name{
+        font-size:2vw;
+    }
+    .multiText .text{
+        font-size:2vw;
+    }
+    .picture .name{
+        font-size:2vw;
+    }
+    .picture .buttonSection .pictButton{
+        font-size: 2vw;
+    }
+
+
+
     /*詳細設定領域*/
     .modalwrapper .configContainer{
         height:95%;
@@ -501,7 +540,25 @@ form{
         display:flex;
     }
 
+    .picture .buttonSection .pictButton{
+        font-size: 2vw;
+    }
+
+
     .configContainer .sectorA{
         max-width:750px;
     }
+
+    /* GoogleMap */
+    .mapContainer .controls{
+        height:7%;
+        font-size:1.5vw;
+    }
+
+    .mapContainer .controls::placeholder{
+        font-size:1.5vw;
+    }
+
+
+
 }

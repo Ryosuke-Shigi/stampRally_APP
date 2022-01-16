@@ -23,8 +23,8 @@
  --}}
 
             <div class="mainSector">
-                <div class="title">Stam<span style="color:rgb(255, 60, 0)">Ｐ</span></div>
-                <div class="title">ＲＡＬＬＹ</div>
+                <div class="title">Stam<span class="P">Ｐ</span></div>
+                <div class="title">RALLY</div>
            </div>
 
         </div>

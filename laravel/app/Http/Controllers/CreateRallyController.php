@@ -212,8 +212,6 @@ class CreateRallyController extends Controller
     public function selectDeleteRoutes(REQUEST $request){
         $client = new Client();
         $param = array();
-        //もしキーワードが入っていればキーワード検索
-        $dataUrl = config('services.web.stamprally_API').'/route/keySearchRoutes';
         $param += array(
                         'connect_id'=>auth()->user()->connect_id,
                         );

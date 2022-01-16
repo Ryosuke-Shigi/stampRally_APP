@@ -67,7 +67,7 @@ body{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: rgba(251, 238, 55, 0.507);
+    background-color: rgba(55, 251, 241, 0.376);
     border-radius:10px;
     flex-wrap: wrap;
     align-content: center;
@@ -193,6 +193,33 @@ body{
     box-shadow: 0 0 20px rgb(255, 251, 2) inset;
 }
 
+/*Backボタン*/
+
+.buttonSector .backButton{
+    height:80%;
+    width:80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:3vh;
+    font-weight: 700;
+    color:rgb(255, 83, 169);
+    background: radial-gradient(circle,#fffb01 65%,#ff5100e8);
+    border-radius: 50vh;
+/*     min-height:50px;
+ */    cursor:pointer;
+}
+.backButton:active{
+    color:rgba(255, 57, 149, 0.719);
+    background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
+    box-shadow: 0 0 20px rgb(255, 251, 2) inset;
+}
+
+
+
+
+
+
 
 /*横長（デバイス横向き）である場合*/
 @media (orientation: landscape){
@@ -260,6 +287,12 @@ body{
         font-size:3vw;
         border-radius: 50vh;
 
+    }
+    .buttonSector .backButton{
+        height:80%;
+        width:80%;
+        font-size:3vw;
+        border-radius: 50vh;
     }
 
 }
