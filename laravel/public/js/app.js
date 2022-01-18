@@ -65955,11 +65955,13 @@ $(function () {
     render.readAsDataURL(e.target.files[0]);
     $('#pictureSelect').html("削除");
   }); //ルート選択画面
+  // valueにルートコードを入れて nextActionAを発火する
   //複数ある同名IDからクリックイベントより、<input type="hidden" の id $route_nameに
-  //data-route_nameで指定されている値をいれてサブミットさせる
+  //data-route_codeで指定されている値をいれてサブミットさせる
 
   $('.rallySelectSection').on('click', function () {
-    $('#selectroute_code').val($(this).data('route_code'));
+    $('#selectroute_code').val($(this).data('route_code')); //data-route_codeで入っている値を送る
+
     $('#nextActionA').submit();
   });
 });
