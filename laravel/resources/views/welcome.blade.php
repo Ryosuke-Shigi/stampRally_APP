@@ -76,7 +76,7 @@
                 <div class="top-right links">
                     <!--ログインしているか-->
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ route('/') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <!-- register というルートがあれば -->

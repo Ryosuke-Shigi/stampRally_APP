@@ -73,7 +73,7 @@ class RegisterController extends Controller
         $client = new Client();
 
         //外部API接続用ConnectID作成
-        $Url = \WebApi::API_ADRESS.'/createUser';
+        $Url = config('services.web.stamprally_API').'/createUser';
         $param=array(
             'user_id'=>$data['user_id'],
             'email'=>$data['email']
