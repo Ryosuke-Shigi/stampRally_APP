@@ -20,7 +20,7 @@
         <!-- 地図部分 -->
         <div class="mainContainer">
             <div class="title">ScoreBoard</div>
-            <!--ルート列挙-->
+            <!--スコア列挙　送られてきたデータ分作成する-->
             <div class="routeSector">
                 @foreach ($table as $temp)
                     <div class = "itemSection">

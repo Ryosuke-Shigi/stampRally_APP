@@ -27,7 +27,7 @@
         <!-- ボタン部分 -->
         <div class = "buttonContainer">
             <div id="modalIn" class="NONE"></div>
-            <div id="backButton" class="backButton">to Route</div>
+            <div id="backButton" class="backButton">Back</div>
         </div>
     </div>
 
@@ -56,7 +56,7 @@
                             <div class="picture">
                                 <div class="content"><img class="preview" id="picture"></div>
                                 <div class="buttonSection">
-                                    <div class="checkButton" id="nextButtonA">ＣＨＥＣＫ</div>
+                                    <div class="checkButton" id="nextButtonA">CHECK</div>
                                 </div>
                             </div>
 
@@ -66,7 +66,7 @@
             </div>
             <!--モーダルウィンドウ　ボタン部分-->
             <div class="buttonContainer">
-                <div id="modalOut" class="backButton">to MAP</div>
+                <div id="modalOut" class="backButton">Back</div>
             </div>
         </div>
 

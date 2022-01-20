@@ -41,7 +41,7 @@ form{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    background: linear-gradient(180deg, rgba(255,255,0,1) 0%, rgba(255,255,0,1) 60%, rgba(254,0,187,1) 100%);
+    background: linear-gradient(180deg, rgb(255, 255, 140) 0%, rgba(255,255,140) 60%, rgb(255, 174, 198) 100%);
     align-content: center;
 }
 
@@ -54,29 +54,30 @@ form{
     justify-content: center;
     flex-wrap: wrap;
     overflow: hidden;
-    background-color: rgba(255, 255, 255, 0.424);
+    background-color: rgba(255, 255, 255, 0);
     border-radius:10px;
 
 }
 /*マップ　座標選択画面の上記文*/
 .mainContainer .title{
     height:5%;
-    width:100%;
+    width:90%;
     background: radial-gradient(circle,#3fd9ffbe 65%,rgba(121, 235, 255, 0.356));
     border-radius:5px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     font-weight: bolder;
-    font-size: 1rem;
+    font-size: 3.5vw;
     color: red;
 }
 
 /*ルートボタン部分*/
 .mainContainer .routeSector{
+    margin-top:2px;
     width:90%;
     height:92%;
-    padding: 10px 0px 10px 0px;
+    padding: 5px 0px 5px 0px;
     display:flex;
     justify-content: space-evenly;
     align-content: flex-start;
@@ -87,6 +88,7 @@ form{
 }
 
 .routeSector .rallySelectSection{
+    margin-top:2px;
     width:80%;
     height:200px;
     display:flex;
@@ -100,9 +102,6 @@ form{
     cursor:pointer;
 }
 
-.routeSector .rallySelectSection:not(:first-of-type){
-    margin-top:10px;
-}
 .routeSector .rallySelectSection:active{
     background: radial-gradient(circle,#fdc190 50%,#ffe601);
     box-shadow: 0 0 20px rgb(255, 251, 2) inset;
@@ -116,13 +115,14 @@ form{
     align-content: center;
     color:rgb(210, 45, 30);
     font-weight: bolder;
-    font-size:var(--root-font-size);
+    font-size:3.5vw;
 }
 
 .rallySelectSection .message{
     width:50%;
     height:70%;
     margin-right: 10px;
+    font-size:3vw;
     overflow-wrap: break-word;
     word-wrap: break-word;
     overflow-y:scroll;
@@ -138,16 +138,16 @@ form{
     background-color: rgba(146, 255, 118, 0.52);
     border-radius:10px;
     color:brown;
+    font-size:3vw;
     font-weight: bolder;
 }
 
 .routeSector .rallySelectSection .Button{
-    width:60%;
+    width:80%;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #333;
-    font-size: var(--button-font-size);
     font-weight: 700;
     color:rgba(248, 90, 164, 0.719);
     background: radial-gradient(circle,#fffb01 65%,#ff5100e8);
@@ -183,12 +183,11 @@ form{
     justify-content: center;
     align-items: center;
     color: #333;
-    font-size: var(--button-font-size);
+    font-size: 4vw;
     font-weight: 700;
     color:rgba(248, 90, 164, 0.719);
     background: radial-gradient(circle,#fffb01 65%,#ff5100e8);
     border-radius: 50vh;
-    min-height:50px;
     transition: all 0.2s ease;
     cursor:pointer;
 }
@@ -207,12 +206,11 @@ form{
     justify-content: center;
     align-items: center;
     color: #333;
-    font-size: var(--button-font-size);
+    font-size: 4vw;
     font-weight: 700;
     color:rgba(90, 151, 248, 0.719);
     background: radial-gradient(circle,#fffb01 65%,#ff00aae8);
     border-radius: 50vh;
-    min-height:50px;
     transition: all 0.2s ease;
     cursor:pointer;
 }
@@ -240,10 +238,30 @@ form{
         height:95%;
         width:85%;
     }
+
+
+
+    /*マップ　座標選択画面の上記文*/
+    .mainContainer .title{
+        height:8%;
+        width:90%;
+        font-size: 3.5vh;
+    }
+    /*ルートボタン部分*/
+    .mainContainer .routeSector{
+        height:89%;
+        padding: 1px 0px 1px 0px;
+    }
+    .rallySelectSection .message{
+        font-size:3vh;
+    }
+    .rallySelectSection .picture{
+        font-size:3vh;
+    }
     /*ボタン領域*/
     .wrapper .buttonContainer{
         height:95%;
-        width:10%;
+        width:8%;
         max-width: 120px;
         overflow: hidden;
         writing-mode: vertical-rl;
@@ -254,23 +272,18 @@ form{
     .buttonContainer .setButton{
         width:70%;
         height:25%;
-        min-height:100px;
+        font-size:4vh;
         writing-mode: vertical-rl;
         text-orientation: upright;
     }
     /*戻るボタン*/
     .buttonContainer .backButton{
         width:70%;
-        height:25%;
-        min-height:100px;
+        height:35%;
+        font-size:4vh;
         writing-mode: vertical-rl;
         text-orientation: upright;
     }
 
-
-    .mainContainer .routeSector{
-        max-width:750px;
-
-    }
 
 }

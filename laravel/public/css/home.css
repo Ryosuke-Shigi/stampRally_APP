@@ -41,7 +41,7 @@ form{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    background: linear-gradient(180deg, rgb(255, 255, 59) 0%, rgba(255,255,0,1) 60%, rgb(255, 97, 195) 100%);
+    background: linear-gradient(180deg, rgb(255, 255, 25) 0%, rgb(255, 255, 118) 60%, rgb(255, 139, 174) 100%);
     align-content: center;
 }
 
@@ -82,14 +82,15 @@ form{
     align-content: center;
     align-items: center;
     text-align: center;
-    font-size:20vw;
-    color:rgb(255, 169, 183);
+    font-size:23vw;
+    color:rgb(255, 122, 133);
     font-weight: 1000;
-    background: radial-gradient(circle,#8affff4b 40%,#ffffff00);
+    background: radial-gradient(circle,#cffdff36 40%,#ffffff00);
 }
 .title .P{
-    font-size:25vw;
-    color:palevioletred;
+    font-size:28vw;
+    font-weight:1000;
+    color:rgb(255, 29, 104);
 }
 
 
@@ -97,7 +98,7 @@ form{
 .wrapper .buttonContainer{
     height:10%;
     width:95%;
-    background-color:rgba(121, 235, 255, 0.356);
+    background-color:rgba(255, 255, 255, 0);
     border-radius:5px;
     display: flex;
     justify-content: space-evenly;
@@ -154,12 +155,6 @@ form{
 
 
 
-@media screen and (max-height: 720px){
-    :root{
-        --button-font-size:1rem;
-    }
-}
-
 /*横長（デバイス横向き）である場合*/
 @media (orientation: landscape){
     .wrapper{
@@ -192,8 +187,8 @@ form{
     .buttonContainer .setButton{
         width:70%;
         height:25%;
-        min-height:100px;
-        font-size:3vh;
+        font-size:2.5vh;
+        font-weight: 1000;
         writing-mode: vertical-rl;
         text-orientation: upright;
     }
@@ -201,8 +196,8 @@ form{
     .buttonContainer .backButton{
         width:70%;
         height:25%;
-        min-height:100px;
-        font-size:3vh;
+        font-size:2.5vh;
+        font-weight:1000;
         writing-mode: vertical-rl;
         text-orientation: upright;
     }

@@ -41,7 +41,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    background: linear-gradient(180deg, rgba(255,255,0,1) 0%, rgba(255,255,0,1) 60%, rgb(255, 121, 188) 100%);
+    background: linear-gradient(180deg, rgb(255, 255, 140) 0%, rgba(255,255,140) 60%, rgb(255, 174, 198) 100%);
     align-content: center;
 }
 
@@ -67,7 +67,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(113, 255, 77, 0.39);
+    background-color: rgba(113, 255, 77, 0.623);
     border-radius:10px;
     flex-wrap: wrap;
     align-content: center;
@@ -195,7 +195,7 @@ body{
     justify-content: center;
     align-items: center;
     align-items: center;
-    color:rgba(45, 146, 192, 0.664);
+    color:rgba(255, 255, 255, 0.082);
 }
 .buttonSector .setButton{
     height:80%;

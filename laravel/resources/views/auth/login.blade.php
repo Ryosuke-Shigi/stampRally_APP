@@ -57,7 +57,7 @@ Route Search
                                     <div id="nextButtonA" class="setButton">LogIN</div>
                                 </div>
                                 <div class="buttonSector">
-                                    <div id="nextButtonB" class="setButton">新規登録</div>
+                                    <div id="nextButtonB" class="setButton">SignUP</div>
                                 </div>
                                 <div class="buttonSector">
                                     <div id="backButton" class="setButton">Back</div>

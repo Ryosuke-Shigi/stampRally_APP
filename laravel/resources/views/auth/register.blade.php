@@ -75,7 +75,7 @@ Route Search
                     </div>
                     <div class = "buttonContainer">
                         <div class="buttonSector">
-                            <div id="nextButtonA" class="setButton">登録</div>
+                            <div id="nextButtonA" class="setButton">SignUP</div>
                         </div>
                         <div class="buttonSector">
                             <div id="backButton" class="setButton">Back</div>

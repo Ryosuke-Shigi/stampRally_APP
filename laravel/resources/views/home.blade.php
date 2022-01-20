@@ -2,7 +2,7 @@
 
 <!--タイトル-->
 @section('title')
-チェックポイント一覧
+StamP-RALLY
 @endsection
 
 <!--追加メタ情報-->
@@ -23,7 +23,7 @@
  --}}
 
             <div class="mainSector">
-                <div class="title">Stam<span class="P">Ｐ</span></div>
+                <div class="title">Stam<span class="P">P</span></div>
                 <div class="title">RALLY</div>
            </div>
 
@@ -32,10 +32,10 @@
         <div class = "buttonContainer">
             @auth
                 <div id="nextButtonA" class="setButton">START</div>
-                <div id="nextButtonB" class="setButton">LOGOUT</div>
+                <div id="nextButtonB" class="setButton">LogOut</div>
             @else
-                <div id="nextButtonC" class="setButton">LOG IN</div>
-                <div id="nextButtonD" class="setButton">新規登録</div>
+                <div id="nextButtonC" class="setButton">LogIN</div>
+                <div id="nextButtonD" class="setButton">SignUP</div>
             @endauth
         </div>
     </div>
