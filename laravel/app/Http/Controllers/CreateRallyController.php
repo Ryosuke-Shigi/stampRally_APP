@@ -211,13 +211,13 @@ class CreateRallyController extends Controller
     //  なので引数は不要
     public function selectDeleteRoutes(REQUEST $request){
         $client = new Client();
-        $param = array();
-        $param += array(
+        $param = array(
                         'connect_id'=>auth()->user()->connect_id,
                         );
-        $dataUrl = config('services.web.stamprally_API').'/route/allRoutes';
+        $dataUrl = config('services.web.stamprally_API').'/route/myRoutes';
         //外部APIを叩く
         $response = $client->request('POST',$dataUrl,['json'=>$param]);
+
         //取得したテーブルデータを返す
         return view('create.selectDeleteRoutes',['table'=>json_decode($response->getBody()->getContents())->table]);
     }

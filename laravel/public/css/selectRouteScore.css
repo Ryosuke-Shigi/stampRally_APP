@@ -54,15 +54,15 @@ form{
     justify-content: center;
     flex-wrap: wrap;
     overflow: hidden;
-    background-color: rgba(255, 255, 255, 0.424);
-    border-radius:10px;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius:10px
 
 }
 /*マップ　座標選択画面の上記文*/
 .mainContainer .title{
     height:5%;
-    width:90%;
-    background: radial-gradient(circle,#3fd9ffbe 65%,rgba(121, 235, 255, 0.356));
+    width:100%;
+    background: radial-gradient(circle,#4fff1998 65%,rgba(121, 255, 150, 0.356));
     border-radius:5px;
     display: flex;
     justify-content: space-evenly;
@@ -75,26 +75,26 @@ form{
 /*ルートボタン部分*/
 .mainContainer .routeSector{
     margin-top:2px;
-    width:90%;
+    width:100%;
     height:92%;
     padding: 5px 0px 5px 0px;
     display:flex;
     justify-content: space-evenly;
     align-content: flex-start;
     flex-wrap: wrap;
-    background: radial-gradient(circle,#3fd9ffbe 65%,rgba(121, 235, 255, 0.356));
+    background: radial-gradient(circle,#4fff1998 65%,rgba(121, 255, 150, 0.356));
     border-radius:10px;
     overflow-y:scroll;
 }
 
 .routeSector .rallySelectSection{
     margin-top:2px;
-    width:80%;
-    height:200px;
+    width:70%;
+    height:30%;
     display:flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.424);
+    background-color: rgba(255, 255, 255, 0.794);
     border-radius:10px;
     flex-wrap: wrap;
     transition: all 0.2s ease;
@@ -167,7 +167,7 @@ form{
 .wrapper .buttonContainer{
     height:10%;
     width:95%;
-    background-color:rgba(121, 235, 255, 0.356);
+    background: radial-gradient(circle,#4fff1998 65%,rgba(121, 255, 150, 0.356));
     border-radius:5px;
     display: flex;
     justify-content: space-evenly;
@@ -236,16 +236,23 @@ form{
     /*MAP表示領域*/
     .wrapper .mainContainer{
         height:95%;
-        width:85%;
+        width:90%;
     }
-
-
-
     /*マップ　座標選択画面の上記文*/
     .mainContainer .title{
         height:8%;
         width:90%;
         font-size: 3.5vh;
+    }
+    /*ルートボタン部分*/
+    .mainContainer .routeSector{
+        margin-top:1px;
+        width:90%;
+    }
+    .routeSector .rallySelectSection{
+        height:40%;
+        max-width:770px;
+        max-height:325px;
     }
     /*ルートボタン部分*/
     .mainContainer .routeSector{
@@ -260,7 +267,7 @@ form{
     }
     /*ボタン領域*/
     .wrapper .buttonContainer{
-        height:95%;
+        height:90%;
         width:8%;
         max-width: 120px;
         overflow: hidden;

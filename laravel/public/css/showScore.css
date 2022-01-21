@@ -52,6 +52,7 @@ form{
     border-radius:10px;
     display:flex;
     justify-content: center;
+    align-content: space-around;
     flex-wrap: wrap;
     overflow: hidden;
     background-color: rgba(255, 255, 255, 0);
@@ -61,7 +62,7 @@ form{
 /*マップ　座標選択画面の上記文*/
 .mainContainer .title{
     height:5%;
-    width:90%;
+    width:95%;
     background: radial-gradient(circle,#3fd9ffbe 65%,rgba(121, 235, 255, 0.356));
     border-radius:5px;
     display: flex;
@@ -75,8 +76,8 @@ form{
 
 /*スコア表示*/
 .mainContainer .routeSector{
-    width:90%;
-    height:92%;
+    width:95%;
+    height:90%;
     padding: 10px 0px 10px 0px;
     display:flex;
     justify-content: space-evenly;
@@ -152,7 +153,7 @@ form{
 /*ボタン領域*/
 .wrapper .buttonContainer{
     height:10%;
-    width:95%;
+    width:90%;
     background-color:rgba(121, 235, 255, 0.356);
     border-radius:5px;
     display: flex;
@@ -221,12 +222,12 @@ form{
     }
     /*MAP表示領域*/
     .wrapper .mainContainer{
-        height:95%;
+        height:90%;
         width:85%;
     }
     /*ボタン領域*/
     .wrapper .buttonContainer{
-        height:95%;
+        height:90%;
         width:10%;
         max-width: 120px;
         overflow: hidden;
@@ -253,7 +254,7 @@ form{
 
     .mainContainer .title{
         height:10%;
-        font-size: 4vh;
+        font-size: 3.5vh;
     }
     .routeSector .itemSection{
         height:30%;
@@ -269,8 +270,7 @@ form{
     }
 
     .mainContainer .routeSector{
-        height:80%;
-        max-width:750px;
+        height:85%;
     }
 
 }
