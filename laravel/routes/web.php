@@ -24,11 +24,12 @@ Auth::routes();
 
 /* Route::get('/home', 'HomeController@index')->name('home');  */
 
-Route::get('/test',function(){
-    return view('test');
-});
+Route::get('/LP','lpController@viewLp')->name('viewLp');
 //画面表示テスト用
 //Route::get('/test','GameRallyController@test')->name('test');
+
+//隠し　ISSチェイサー
+Route::get('/ISS','IssController@viewISS')->name('viewISS');
 
 
 /////////////////////////////////////////////////////////////////////

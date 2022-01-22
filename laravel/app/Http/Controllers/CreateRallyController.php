@@ -14,10 +14,7 @@ use GuzzleHttp\Psr7\Utils;
 class CreateRallyController extends Controller
 {
     //ログイン等認証対象　コンストラクタ
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    public function __construct(){$this->middleware('auth');}
 
 
  /*    // スタートポイント選択画面表示
