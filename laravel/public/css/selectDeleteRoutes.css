@@ -89,7 +89,7 @@ form{
 
 .routeSector .rallySelectSection{
     margin-top:2px;
-    width:70%;
+    width:90%;
     height:30%;
     display:flex;
     justify-content: center;
@@ -118,9 +118,33 @@ form{
     font-size:3.5vw;
 }
 
+.rallySelectSection .contentA{
+    width:60%;
+    height:80%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    border-radius:10px;
+    overflow:hidden;
+}
+.rallySelectSection .contentB{
+    width:40%;
+    height:80%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+
 .rallySelectSection .message{
-    width:50%;
-    height:70%;
+    width:95%;
+    height:95%;
     margin-right: 10px;
     font-size:3vw;
     overflow-wrap: break-word;
@@ -130,7 +154,7 @@ form{
 
 .rallySelectSection .picture{
     height:auto;
-    width:40%;
+    width:95%;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -250,7 +274,8 @@ form{
         width:90%;
     }
     .routeSector .rallySelectSection{
-        height:40%;
+        width:70%;
+        height:35%;
         max-width:770px;
         max-height:325px;
     }
@@ -263,6 +288,8 @@ form{
         font-size:3vh;
     }
     .rallySelectSection .picture{
+        height:95%;
+        width:auto;
         font-size:3vh;
     }
     /*ボタン領域*/

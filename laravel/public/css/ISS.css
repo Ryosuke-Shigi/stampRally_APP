@@ -47,7 +47,7 @@ body{
 
 /*map表示領域*/
 .wrapper .mapContainer{
-    height:85%;
+    height:95%;
     width: 95%;
     border-radius:10px;
     overflow: hidden;
@@ -65,15 +65,40 @@ body{
     font-size: 2vh;
     color: red;
 }
+
+.mapContainer .mapButton{
+    height:10%;
+    width:35%;
+    margin-bottom:1%;
+    border-radius:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-size: 3vh;
+    font-weight: 700;
+    color:rgba(90, 151, 248, 0.719);
+    background: radial-gradient(circle,#fffb01 65%,#ff00aae8);
+    border-radius: 50vh;
+    min-height:50px;
+    transition: all 0.2s ease;
+    cursor:pointer;
+}
+.mapButton:active{
+    color:rgba(39, 120, 251, 0.719);
+    background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
+    box-shadow: 0 0 20px rgb(255, 251, 2) inset;
+}
+
 /* GoogleMap */
 .mapContainer .map{
     height:95%;
     width:100%;
 }
 /*ボタン領域*/
-.wrapper .buttonContainer{
+.mapContainer .buttonContainer{
     height:10%;
-    width:95%;
+    width:50%;
     background-color:rgba(121, 235, 255, 0.356);
     border-radius:5px;
     display: flex;
@@ -449,29 +474,26 @@ body{
 
 
     /*ボタン領域*/
-    .wrapper .buttonContainer{
+/*     .wrapper .buttonContainer{
         height:95%;
         width:10%;
         max-width: 120px;
         overflow: hidden;
         writing-mode: vertical-rl;        text-orientation: upright;
         display:flex
-    }
+    } */
     /*登録ボタン*/
-    .buttonContainer .setButton{
+/*     .buttonContainer .setButton{
         width:70%;
         height:25%;
         font-size:3vw;
         writing-mode: vertical-rl;
         text-orientation: upright;
-    }
+    } */
     /*戻るボタン*/
     .buttonContainer .backButton{
-        width:70%;
-        height:25%;
         font-size:2vw;
-        writing-mode: vertical-rl;
-        text-orientation: upright;
+        margin-bottom:10%;
     }
 
     .titleSection .title{

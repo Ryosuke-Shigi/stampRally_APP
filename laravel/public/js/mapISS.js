@@ -38,6 +38,12 @@ function initMap() {
         // 地図のインスタンスを作成します。第一引数にはマップを描画する領域、第二引数にはオプションを指定
         // mapはgooglemap.blade.phpのdivのid
         mapObj = new google.maps.Map(document.getElementById("map"), opt);
+        //ボタン設置
+        const input = document.getElementById("mapButton");
+        //位置指定してマップにプッシュ
+        mapObj.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(input);
+
+
 
 
         //ユーザのマーカーを設置
@@ -141,7 +147,7 @@ function initMap() {
 
 
         //ISS（宇宙国際ステーションの位置をとり、マーカーで表示する
-        var iss = new XMLHttpRequest();
+/*         var iss = new XMLHttpRequest();
         var iss_marker;
         iss.onload = function(){
             let data = this.response;
@@ -163,7 +169,36 @@ function initMap() {
             iss.open('get','http://api.open-notify.org/iss-now.json');
             iss.send();
         },500);
+ */
 
+        //fetchを使用してISSデータ取得
+        //heroku では httpsでアクセスしている
+        //ISSはhttpであり、httpsからhttpへのアクセスは混在コンテンツとなりはじかれる
+        var iss_marker;
+        const ISSdata = new FormData();
+        setInterval(function(){
+            fetch('http://api.open-notify.org/iss-now.json')
+            .then((response)=>{
+                return response.json();
+            })
+            .then((json)=>{
+                let data = json;
+                let g_lat=data.iss_position.latitude;
+                let g_lng=data.iss_position.longitude;
+                let g_latLng=new google.maps.LatLng(g_lat,g_lng);
+                //alert(lat+lng);
+                mapObj.panTo(g_latLng);
+                if(iss_marker != null){
+                    iss_marker.setMap(null);
+                }
+                iss_marker=new google.maps.Marker({
+                    position:g_latLng,          //位置
+                    map:mapObj,                     //どの地図に入れるか
+                });            })
+            .catch((reason)=>{
+                //エラー
+            });
+        },1500);
 
 
 

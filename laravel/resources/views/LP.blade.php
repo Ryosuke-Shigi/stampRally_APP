@@ -35,6 +35,7 @@ StamP-RALLY LP
             </div>
         </div>
 
+
         <!-- 紹介ページ２ できること-->
 
         <div class="pageContainer">
@@ -192,8 +193,17 @@ StamP-RALLY LP
             </div>
         </div>
 
-
-
+        <!--システム構成-->
+        <div class="pageContainer">
+            <div class="pageSector">
+                <div class="line"><div class="textp1">-- システム構成図 --</div></div>
+                <div class="s-contents">
+                    <div class="s-content">
+                        <img class='pict' src="{{ asset('/images/system.jpg') }}">
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
     </div>

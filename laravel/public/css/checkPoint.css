@@ -47,7 +47,7 @@ body{
 
 /*map表示領域*/
 .wrapper .mapContainer{
-    height:85%;
+    height:95%;
     width: 95%;
     border-radius:10px;
     overflow: hidden;
@@ -71,14 +71,13 @@ body{
     width:100%;
 }
 /*ボタン領域*/
-.wrapper .buttonContainer{
+.map .buttonContainer{
     height:10%;
-    width:95%;
-    background-color:rgba(121, 235, 255, 0.356);
-    border-radius:5px;
+    width:40%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    margin-bottom:1%;
 }
 
 /*登録ボタン*/
@@ -108,13 +107,13 @@ body{
 /*戻るボタン*/
 .buttonContainer .backButton{
     height:70%;
-    width:35%;
+    width:100%;
     border-radius:10px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #333;
-    font-size: 3vh;
+    font-size: 2.5vh;
     font-weight: 700;
     color:rgba(90, 151, 248, 0.719);
     background: radial-gradient(circle,#fffb01 65%,#ff00aae8);
@@ -428,6 +427,24 @@ body{
     border-radius:10px;
 }
 
+.modalwrapper .backButton{
+    height:70%;
+    width:40%;
+    border-radius:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-size: 3vh;
+    font-weight: 700;
+    color:rgba(90, 151, 248, 0.719);
+    background: radial-gradient(circle,#fffb01 65%,#ff00aae8);
+    border-radius: 50vh;
+    min-height:50px;
+    transition: all 0.2s ease;
+    cursor:pointer;
+}
+
 
 
 /*横長（デバイス横向き）である場合*/
@@ -437,25 +454,20 @@ body{
         flex-direction: row-reverse;
     }
     /*MAP表示領域*/
-    .wrapper .mapContainer{
+/*     .wrapper .mapContainer{
         height:95%;
         width:85%;
-    }
+    } */
 
     /*マップ　座標選択画面の上記文*/
     .mapContainer .mapKind{
         font-size: 2vw;
     }
 
-
     /*ボタン領域*/
-    .wrapper .buttonContainer{
-        height:95%;
-        width:10%;
-        max-width: 120px;
-        overflow: hidden;
-        writing-mode: vertical-rl;        text-orientation: upright;
-        display:flex
+    .map .buttonContainer{
+        width:30%;
+        margin-bottom: 1.5%;
     }
     /*登録ボタン*/
     .buttonContainer .setButton{
@@ -467,11 +479,7 @@ body{
     }
     /*戻るボタン*/
     .buttonContainer .backButton{
-        width:70%;
-        height:25%;
-        font-size:2vw;
-        writing-mode: vertical-rl;
-        text-orientation: upright;
+        font-size:3vw;
     }
 
     .titleSection .title{
@@ -481,14 +489,20 @@ body{
         font-size:1vw;
     }
     .multiText .name{
-        font-size:2vw;
+        height:20%;
+        font-size:1.5vw;
+    }
+    .multiText .content{
+        height:80%;
     }
     .multiText .text{
         font-size:3vw;
     }
+
     .picture .buttonSection .checkButton{
         font-size: 2vw;
     }
+
 
 
 
@@ -512,6 +526,11 @@ body{
         writing-mode: vertical-rl;
         text-orientation: upright;
         display:flex;
+    }
+    .modalwrapper .backButton{
+        height:30%;
+        width:50%;
+        font-size:2vw;
     }
 
     .configContainer .sectorA{

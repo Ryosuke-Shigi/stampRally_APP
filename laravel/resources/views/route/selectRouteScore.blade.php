@@ -25,12 +25,16 @@
                 @foreach ($table as $temp)
                     <div class = "rallySelectSection" data-route_code={{ $temp->route_code }}>
                         <div class="title">{{ $temp->route_name }}</div>
-                        <div class="message">{{ $temp->text }}</div>
-                        @if($temp->pict != NULL)
-                            <img src = {{ "https://ada-stamprally.s3.ap-northeast-3.amazonaws.com/".$temp->pict }} class="picture">
-                        @else
-                            <div class="picture">NO IMAGE</div>
-                        @endif
+                        <div class="contentA">
+                            <div class="message">{{ $temp->text }}</div>
+                        </div>
+                        <div class="contentB">
+                            @if($temp->pict != NULL)
+                                <img src = {{ "https://ada-stamprally.s3.ap-northeast-3.amazonaws.com/".$temp->pict }} class="picture">
+                            @else
+                                <div class="picture">NO IMAGE</div>
+                            @endif
+                        </div>
                     </div>
                 @endforeach
             </div>

@@ -81,6 +81,7 @@ class RegisterController extends Controller
             );
         $response = $client->request('POST',$Url,['json'=>$param]);
         $connect_id=json_decode($response->getBody()->getContents());
+        //connect_idはAPI側で作成されたものを使用します
         return User::create([
             //'name' => $data['name'],
             'user_id' => $data['user_id'],

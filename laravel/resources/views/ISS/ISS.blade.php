@@ -23,12 +23,13 @@
         <div class="mapContainer">
             <div class="mapKind">ISS Chaser</div>
             <div class="map" id="map"></div>
+            <!-- ボタン部分 -->
+            <div id="mapButton" class = "buttonContainer">
+                <div id="modalIn" class="NONE"></div>
+                <div id="backButton" class="backButton">Back</div>
+            </div>
         </div>
-        <!-- ボタン部分 -->
-        <div class = "buttonContainer">
-            <div id="modalIn" class="NONE"></div>
-            <div id="backButton" class="backButton">Back</div>
-        </div>
+
     </div>
 
     <!--BackAction 他に影響しないように外へ-->

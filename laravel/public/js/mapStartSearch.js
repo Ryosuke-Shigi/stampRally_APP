@@ -54,6 +54,10 @@ function initMap() {
         // mapはgooglemap.blade.phpのdivのid
         mapObj = new google.maps.Map(document.getElementById("map"), opt);
 
+        //ボタン設置
+        const input = document.getElementById("mapButton");
+        //位置指定してマップにプッシュ
+        mapObj.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(input);
 
         //////////////////////////////////////////////////////////////////
         /*
