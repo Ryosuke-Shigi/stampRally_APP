@@ -34,18 +34,22 @@ form{
 
 }
 
+
 /* 全体*/
 .wrapper{
     height:auto;
     width: var(100vw - scrollbar width);/*スクロールバーの分、小さくする*/
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
     align-content: center;
+    flex-wrap: wrap;
     background: linear-gradient(180deg, rgb(255, 255, 25) 0%, rgb(255, 255, 118) 60%, rgb(255, 139, 174) 100%);
     overflow-x:hidden;
 
 }
+
+
+
 
 /* 1ページ画面領域 */
 .wrapper .pageContainer{
@@ -53,24 +57,157 @@ form{
     width: 100%;
     display:flex;
     justify-content: space-around;
-    align-content: space-around;
+    align-content: center;
     flex-wrap: wrap;
     overflow: hidden;
     background:linear-gradient(180deg, rgb(255, 255, 25) 0%, rgb(255, 255, 118) 60%, rgb(255, 139, 174) 100%);
 }
+
+/*上部バー*/
+.pageContainer .startBarSector{
+    height:5%;
+    width:95%;
+    display:flex;
+    justify-content: space-around;
+    align-content: space-around;
+    flex-wrap: wrap;
+    overflow: hidden;
+    background: radial-gradient(circle,#01c4ff1a 65%,#ff00801f);
+    border-radius: 50vh;
+}
+
+
+
+/*上部バー左*/
+.startBarSector .left{
+    height:100%;
+    width:70%;
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 1%;
+}
+.left a{
+    color:rgb(250, 75, 75);
+    font-weight: 900;
+    text-decoration: none;
+}
+.left a:visited{
+    color:rgb(250, 75, 75);
+}
+
+
+/*上部バー右*/
+.startBarSector .right{
+    height:100%;
+    width:25%;
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    align-items: center;
+    padding-right: 1%;
+}
+
+/*nextボタン*/
+.startBarSector .left .setButton{
+    height:60%;
+    width:30%;
+    border-radius:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3vh;
+    font-weight: 700;
+    color:rgb(250, 75, 75);
+    background: radial-gradient(circle,#fbff018a 65%,#ff0077a8);
+    border-radius: 50vw;
+    transition: all 0.2s ease;
+    cursor:pointer;
+}
+/*loginへボタン*/
+.startBarSector .right .setButton{
+    height:60%;
+    width:80%;
+    border-radius:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3vh;
+    font-weight: 700;
+    color:rgb(252, 40, 40);
+    background: radial-gradient(circle,#fffb01 65%,#ff00c8);
+    border-radius: 50vw;
+    transition: all 0.2s ease;
+    cursor:pointer;
+}
+.startBarSector .setButton:hover{
+    color:rgb(250, 48, 142);
+    background: radial-gradient(circle,#fffb01 65%,#ff349a);
+}
+.startBarSector .setButton:active{
+    color:rgba(255, 57, 149, 0.719);
+    background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
+    box-shadow: 0 0 20px rgb(255, 251, 2) inset;
+}
+.startBarSector .setButton:not(:first-of-type){
+    margin-left:2%;
+}
+
+
+
+
+
+.pageContainer .endBarSector{
+    height:5%;
+    width:95%;
+    display:flex;
+    justify-content: flex-end;
+    align-content: center;
+    padding-right:1%;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+
+/*nextボタン*/
+.endBarSector .setButton{
+    height:80%;
+    width:40%;
+    border-radius:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-size: 2vh;
+    font-weight: 700;
+    color:rgba(248, 90, 164, 0.719);
+    background: radial-gradient(circle,#fffb01 65%,#ff00c8);
+    border-radius: 50vw;
+    transition: all 0.2s ease;
+    cursor:pointer;
+}
+.setButton:hover{
+    color:rgb(250, 48, 142);
+    background: radial-gradient(circle,#fffb01 65%,#ff349a);
+}
+.setButton:active{
+    color:rgba(255, 57, 149, 0.719);
+    background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
+    box-shadow: 0 0 20px rgb(255, 251, 2) inset;
+}
+
+
 
 /*１ページ 内容最大範囲*/
 .pageContainer .pageSector{
     width:95%;
     height:95%;
     display:flex;
-    display:flex;
     justify-content: space-around;
     align-content: space-around;
     flex-wrap: wrap;
     overflow: hidden;
 }
-
 /*ページタイトル*/
 .pageSector .line{
     width:100%;
@@ -82,6 +219,7 @@ form{
     flex-wrap:wrap;
     overflow: hidden;
 }
+/*ページタイトル・テキスト*/
 .line .textp1{
     width:auto;
     height:auto;
@@ -90,15 +228,13 @@ form{
     font-weight: 1000;
     color:rgb(255, 23, 62);
 }
-
-/*画像*/
+/*ページ画像*/
 .pict {
     width:auto;
     height:95%;
     overflow:hidden;
     border-radius:10px;
 }
-
 
 /*ページコンテンツ-single 領域*/
 .pageSector .s-contents{
@@ -112,7 +248,7 @@ form{
 }
 
 /*コンテンツ分割*/
-/*一つ*/
+/*分割なし*/
 .s-contents .s-content{
     height:90%;
     width:90%;
@@ -128,7 +264,7 @@ form{
     height:auto;
     border-radius:10px;
 }
-/*２つ*/
+/*２分割*/
 .s-contents .d-content{
     height:48%;
     width:100%;
@@ -142,7 +278,7 @@ form{
     border-radius:10px;
 
 }
-/*３つ*/
+/*３分割*/
 .s-contents .t-content{
     height:33%;
     width:100%;
@@ -157,6 +293,7 @@ form{
 
 }
 
+/*各ページテキスト設定*/
 /*1Pめ*/
 .d-content .textp1{
     font-size:6vw;
@@ -165,7 +302,7 @@ form{
 }
 /*2Pめ*/
 .d-content .textp2{
-    font-size:5vw;
+    font-size:4vw;
     font-weight: 1000;
     color:rgb(0, 81, 255);
 }
@@ -201,11 +338,10 @@ form{
     justify-content: space-evenly;
     align-items: center;
 }
-
-/*登録ボタン*/
+/*nextボタン*/
 .buttonContainer .setButton{
-    height:90%;
-    width:90%;
+    height:70%;
+    width:70%;
     border-radius:10px;
     display: flex;
     justify-content: center;
@@ -236,12 +372,12 @@ form{
         font-size:6vh;
     }
 
-    /*1Pめ*/
+    /*各ページフォントサイズ*/
     .d-content .textp1{
         font-size:6vh;
     }
     .d-content .textp2{
-        font-size:5vh;
+        font-size:4.5vh;
     }
     .d-content .textp3{
         font-size:5vh;
@@ -258,6 +394,26 @@ form{
         height:90%;
     }
 
+    /*ページ バーサイズ*/
+    .pageContainer .startBarSector{
+        height:8%;
+        width:95%;
+    }
+    .pageContainer .endBarSector{
+        height:8%;
+        width:95%;
+    }
+    /*nextボタン*/
+    .endBarSector .setButton{
+        height:80%;
+        width:25%;
+        font-size:2vw;
+    }
+    /*１ページ 内容最大範囲*/
+    .pageContainer .pageSector{
+        width:95%;
+        height:88%;
+    }
 
     /*コンテンツ分割*/
     /*一つ*/
@@ -276,6 +432,18 @@ form{
         width:33%;
     }
 
+
+
+    /*nextボタン*/
+    .startBarSector .left .setButton{
+        height:60%;
+        width:20%;
+        font-size: 1.3vw;
+    }
+    /*loginへボタン*/
+    .startBarSector .right .setButton{
+        font-size: 1.3vw;
+    }
     /*登録ボタン*/
     .buttonContainer .setButton{
         font-size: 7vh;

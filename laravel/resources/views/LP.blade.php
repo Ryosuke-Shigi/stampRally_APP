@@ -20,6 +20,16 @@ StamP-RALLY LP
         <!-- 紹介ページ１ about stamprally-->
 
         <div class="pageContainer">
+            <div class="startBarSector">
+                <div class="left">
+                    <div class="setButton"><a href="#can">できること</a></div>
+                    <div class="setButton"><a href="#play">遊び方</a></div>
+                    <div class="setButton"><a href="#create">作り方</a></div>
+                </div>
+                <div class="right">
+                    <div id="nextButtonH"  class="setButton">LOGIN</div>
+                </div>
+            </div>
             <div class="pageSector">
                 <div class="line"><div class="textp1">ABOUT 『 StampRally 』</div></div>
                 <div class="s-contents">
@@ -37,8 +47,7 @@ StamP-RALLY LP
 
 
         <!-- 紹介ページ２ できること-->
-
-        <div class="pageContainer">
+        <div class="pageContainer" id="can">
             <div class="pageSector">
                 <div class="line"><div class="textp1">-- できること --</div></div>
                 <div class="s-contents">
@@ -58,12 +67,13 @@ StamP-RALLY LP
                     <div class="d-content"><img class='pict' src="{{ asset('/images/2-select.jpg') }}"></div>
                 </div>
             </div>
+            <div class="endBarSector"><div id="nextButtonA"  class="setButton">やってみる ⇒</div></div>
         </div>
 
 
         <!-- 紹介ページ３ あそびかた-->
 
-        <div class="pageContainer">
+        <div class="pageContainer" id="play">
             <div class="pageSector">
                 <div class="line"><div class="textp1">-- あそびかた１ --</div></div>
                 <div class="s-contents">
@@ -81,6 +91,7 @@ StamP-RALLY LP
                     </div>
                 </div>
             </div>
+            <div class="endBarSector"><div id="nextButtonB"  class="setButton">遊ぶ ⇒</div></div>
         </div>
 
         <!-- 紹介ページ４ あそびかた-->
@@ -102,12 +113,13 @@ StamP-RALLY LP
                     </div>
                 </div>
             </div>
+            <div class="endBarSector"><div id="nextButtonC"  class="setButton">遊ぶ ⇒</div></div>
         </div>
 
 
         <!-- 紹介ページ５ つくりかた-->
 
-        <div class="pageContainer">
+        <div class="pageContainer" id="create">
             <div class="pageSector">
                 <div class="line"><div class="textp1">-- つくりかた１ --</div></div>
                 <div class="s-contents">
@@ -124,6 +136,7 @@ StamP-RALLY LP
                     <div class="d-content"><img class='pict' src="{{ asset('/images/5-create.jpg') }}"></div>
                 </div>
             </div>
+            <div class="endBarSector"><div id="nextButtonD"  class="setButton">作る ⇒</div></div>
         </div>
 
 
@@ -147,6 +160,7 @@ StamP-RALLY LP
                     <div class="d-content"><img class='pict' src="{{ asset('/images/6-create.jpg') }}"></div>
                 </div>
             </div>
+            <div class="endBarSector"><div id="nextButtonE"  class="setButton">作る ⇒</div></div>
         </div>
 
 
@@ -168,6 +182,7 @@ StamP-RALLY LP
                     <div class="d-content"><img class='pict' src="{{ asset('/images/7-create.jpg') }}"></div>
                 </div>
             </div>
+            <div class="endBarSector"><div id="nextButtonF"  class="setButton">作る ⇒</div></div>
         </div>
 
 
@@ -175,22 +190,27 @@ StamP-RALLY LP
 
         <div class="pageContainer">
             <div class="pageSector">
-                <div class="line"><div class="textp1">-- 以上になります --</div></div>
+                <div class="line"><div class="textp1">-- ぜひお試しください --</div></div>
                 <div class="s-contents">
                     <div class="d-content">
                         <div class="textp5">
                             一度、簡単なラリーを作成して<br>
-                            体験してみてください。
+                            体験してみてください。<br>
+                            <br>
+                            お試し用ID・パスワード<br>
+                            　ID：trialuser<br>
+                            　password：trialuser
                         </div>
                     </div>
                     <div class="d-content">
                         <!-- 紹介終了 -->
                         <div class = "buttonContainer">
-                                <div id="nextButtonA" class="setButton">体験する</div>
+                                <div id="nextButtonG" class="setButton">体験する</div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="endBarSector"></div>
         </div>
 
         <!--システム構成-->
@@ -210,10 +230,12 @@ StamP-RALLY LP
 
     <!--buttonaction 他に影響しないように外へ-->
     <form method="GET" id="nextActionA" action="/" ></form>
-
-{{--     <!--BackAction 他に影響しないように外へ-->
-    <form method="GET" id="backAction" action="" enctype="multipart/form-data">
-        @csrf
-    </form> --}}
+    <form method="GET" id="nextActionB" action="/" ></form>
+    <form method="GET" id="nextActionC" action="/" ></form>
+    <form method="GET" id="nextActionD" action="/" ></form>
+    <form method="GET" id="nextActionE" action="/" ></form>
+    <form method="GET" id="nextActionF" action="/" ></form>
+    <form method="GET" id="nextActionG" action="/" ></form>
+    <form method="GET" id="nextActionH" action="{{ route('login') }}" ></form>
 
 @endsection

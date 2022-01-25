@@ -78,7 +78,7 @@ Route Search
                             <div id="nextButtonA" class="setButton">SignUP</div>
                         </div>
                         <div class="buttonSector">
-                            <div id="backButton" class="setButton">Back</div>
+                            <div id="backButton" class="backButton">Back</div>
                         </div>
                     </div>
                 </div>

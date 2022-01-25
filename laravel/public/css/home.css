@@ -83,9 +83,9 @@ form{
     align-items: center;
     text-align: center;
     font-size:23vw;
-    color:rgb(255, 122, 133);
+    color:rgb(255, 95, 108);
     font-weight: 1000;
-    background: radial-gradient(circle,#cffdff36 40%,#ffffff00);
+    background: radial-gradient(circle,#b0fbff1f 20%,#ffffff00);
 }
 .title .P{
     font-size:28vw;

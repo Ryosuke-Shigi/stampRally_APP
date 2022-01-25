@@ -65925,6 +65925,18 @@ $(function () {
     $('#nextActionD').submit();
   }); //前へ戻るボタン
 
+  $('#nextButtonE').on('click', function () {
+    $('#nextActionE').submit();
+  });
+  $('#nextButtonF').on('click', function () {
+    $('#nextActionF').submit();
+  });
+  $('#nextButtonG').on('click', function () {
+    $('#nextActionG').submit();
+  });
+  $('#nextButtonH').on('click', function () {
+    $('#nextActionH').submit();
+  });
   $('#backButton').on('click', function () {
     $('#backAction').submit();
   }); //画像ファイル選択アクション
