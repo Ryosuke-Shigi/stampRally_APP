@@ -67,7 +67,7 @@ body{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: rgba(250, 118, 255, 0.5);
+    background: linear-gradient(180deg, rgba(255, 153, 94, 0.561) 40%, rgba(255, 108, 177, 0));
     border-radius:10px;
     flex-wrap: wrap;
     align-content: center;

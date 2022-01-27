@@ -68,7 +68,7 @@ form{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: rgba(92, 255, 77, 0.63);
+    background-color: rgba(92, 255, 77, 0.466);
     border-radius:10px;
     flex-wrap: wrap;
     align-content: center;
@@ -320,7 +320,7 @@ form{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: rgba(80, 223, 67, 0.63);
+    background-color: rgba(80, 223, 67, 0.507);
     border-radius:10px;
 }
 /*登録ボタン*/
@@ -382,6 +382,8 @@ form{
     .wrapper{
         display:inline-flex;
         flex-direction: row-reverse;
+        background: linear-gradient(270deg, rgb(255, 255, 140) 0%, rgba(255,255,140) 60%, rgb(255, 174, 198) 100%);
+
     }
     /*詳細設定領域*/
     .wrapper .configContainer{

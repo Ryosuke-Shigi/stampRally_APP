@@ -26,6 +26,7 @@
                     <div class = "itemSection">
                         <div class="title">{{ $temp->route_name }}</div>
                         <div class="name">{{ $temp->name }}</div>
+                        <div class="text">{{ $temp->text }}</div>
                         <div class="time">{{ $temp->compleated_at }}</div>
                     </div>
                 @endforeach

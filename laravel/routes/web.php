@@ -11,10 +11,11 @@
 |
 */
 
+
+/* トップ画面 */
 Route::get('/', function () {
     return view('home');
 });
-
 Route::get('/home',function(){
     return view('home');
 });
@@ -22,13 +23,13 @@ Route::get('/home',function(){
 
 Auth::routes();
 
-/* Route::get('/home', 'HomeController@index')->name('home');  */
 
+/* 紹介ページ */
 Route::get('/LP','lpController@viewLp')->name('viewLp');
 //画面表示テスト用
 //Route::get('/test','GameRallyController@test')->name('test');
 
-//隠し　ISSチェイサー
+//ISSチェイサー（未使用）
 Route::get('/ISS','IssController@viewISS')->name('viewISS');
 
 
@@ -64,15 +65,14 @@ Route::group(['prefix'=>'create'],function(){
     //ゴール設定画面
     Route::get('/makeGoal/{route_code}','CreateRallyController@makeGoal')->name('makeGoal');
     Route::post('/makeGoal/{route_code}','CreateRallyController@makeGoal')->name('makeGoal');
-    //ルート作成  Back処理
     //ポイント選択画面からスタート選択画面へ戻る　※スタート設定時に作成したテーブルデータを削除
     Route::post('/reCreateRoute/{route_code}','CreateRallyController@reCreateRoute')->name('reCreateRoute');
-    //ポイント設定完了ORポイント追加選択画面
     Route::post('/reSelectpoint','CreateRallyController@reSelectpoint')->name('reSelectPoint');
 
     //ルート削除
     //画面表示
     Route::get('selectDeleteRoutes','CreateRallyController@selectDeleteRoutes')->name('selectDeleteRoutes');
+    //削除処理
     Route::get('deleteRoute','CreateRallyController@deleteRoute')->name('deleteRoute');
 
 
@@ -116,6 +116,5 @@ Route::group(['prefix'=>'game'],function(){
     Route::get('showScore','GameRallyController@showScore')->name('showScore');
     //各ルートスコア選択
     Route::get('selectRouteScore','GameRallyController@selectRouteScore')->name('selectRouteScore');
-    //ルートスコア表示
 
 });

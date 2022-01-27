@@ -68,7 +68,7 @@ body{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: rgba(95, 77, 255, 0.472);
+    background: linear-gradient(180deg, rgba(94, 251, 115, 0.561) 40%, rgba(255, 108, 177, 0));
     border-radius:10px;
     flex-wrap: wrap;
     align-content: center;
@@ -97,7 +97,8 @@ body{
 .titleSection .title{
     height:auto;
     width:95%;
-    font-size:2rem;
+    font-size:3vh;
+    font-weight:700;
     text-align: center;
     color:red;
 }
@@ -143,8 +144,8 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: var(--button-font-size);
-    font-weight: 700;
+    font-size: 3vh;
+    font-weight: 600;
     color:rgb(255, 83, 169);
     background: radial-gradient(circle,#fffb01 65%,#ff5100e8);
     border-radius: 50vh;
@@ -160,6 +161,13 @@ body{
 
 /*横長（デバイス横向き）である場合*/
 @media (orientation: landscape){
+    .titleSection .title{
+        font-size:2.5vw;
+    }
+    /*ボタン*/
+    .buttonSector .setButton{
+        font-size: 2.5vw;
+    }
     .configContainer .sectorA{
         max-width:750px;
     }
