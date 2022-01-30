@@ -58,6 +58,7 @@ class GameRallyController extends Controller
         $client = new Client();
         $param = array();
         //もしキーワードが入っていればキーワード検索
+        //外部API側でやるべき？
         if(isset($request->keyword)){
             $dataUrl = config('services.web.stamprally_API').'/route/keySearchRoutes';
             $param += array(

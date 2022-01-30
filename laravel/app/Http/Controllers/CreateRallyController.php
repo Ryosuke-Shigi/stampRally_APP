@@ -103,6 +103,7 @@ class CreateRallyController extends Controller
                     'keyword'=>$request->keyword,
                     'pict'=>$pictPath,
                     'text'=>$request->text,
+                    'mode'=>0,//通常作成
                     );
         $response = $client->request('POST',$dataUrl,['json'=>$param]);
         //返ってきたルートコードを取得

@@ -30,7 +30,6 @@
                         <div class="time">{{ $temp->compleated_at }}</div>
                     </div>
                 @endforeach
-
             </div>
         </div>
         <!-- ボタン部分 -->
