@@ -17,12 +17,7 @@ class CreateRallyController extends Controller
     public function __construct(){$this->middleware('auth');}
 
 
- /*    // スタートポイント選択画面表示
-    public function selectStart(){
-        //ユーザIDの取得はこれでよい　２０２１　１２　１８
-        return view('create.selectStart');
-    }
- */
+
 
 
     // ルート作成画面画面表示
@@ -34,7 +29,7 @@ class CreateRallyController extends Controller
     // ポイント選択画面表示
     public function selectPoint($route_code,$route_name,$latitude,$longitude,$point_no){
         $client = new Client();
-        //チェックするポイントの呼び出し
+        //存在するポイントの呼び出し
         $dataUrl = config('services.web.stamprally_API').'/point/callPoints';
         //必要なのはconnect_idとroute_code
         //外部APIで その人はそのルートを進行中か、進行中であれば残ったポイントを返す
@@ -64,8 +59,143 @@ class CreateRallyController extends Controller
                         ->with('route_name',$route_name)
                         ->with('latitude',$latitude)
                         ->with('longitude',$longitude)
-                        ->with('point_no',$point_no+1);//次のポイントNOを＋１する
+                        ->with('point_no',$point_no+1);//ポイントNOを＋１する
     }
+
+
+    /////////////////////////////////////////////////////////////////////////////
+    //
+    //  NOW TRAVEL
+    //
+    /////////////////////////////////////////////////////////////////////////////
+
+
+    //nowTravel選択画面
+    //作成中であれば selectNowTravel へ
+    //新規であれば   createRouteNowTravel へ
+    //route_codeとconnect_idが必要
+    public function selectNowTravel(REQUEST $request){
+        //作成中のnowTravelがあるか確認
+        $client = new Client();
+        $dataUrl = config('services.web.stamprally_API').'/route/reasonNowTravelRoute';
+        $param=array(
+                    'connect_id'=>auth()->user()->connect_id,
+                    );
+        $response = $client->request('POST',$dataUrl,['json'=>$param]);
+        $response=json_decode($response->getBody()->getContents());
+
+        //なければ ルート作成画面へ
+        if($response->reason==false){
+            //なければ新規作成
+            return redirect()->route('createRouteNowTravel');
+        }else{
+            //あれば、nowTravel項目選択画面へ
+            return view('route.selectNowTravel')
+                    ->with('route_code',$response->route_code)
+                    ->with('route_name',$response->route_name)
+                    ->with('pointNum',$response->pointNum);
+        }
+    }
+
+    //ルート作成画面
+    public function createRouteNowTravel(){
+        //nowTravel用ルート作成画面
+        return view('create.createRouteNowTravel');
+    }
+
+    //nowTravelルート作成
+    public function makeRouteNowTravel(ROUTE_SET $request){
+        //画像が存在すれば・保存する　pathが必要なので一番最初に処理
+        //画像保存処理
+        $client = new Client();
+        //画像が存在しているか　また　アップロードは成功しているかどうか
+        if($request->hasFile('pict')){
+            //画像保存
+            //画像を保存してＰＡＴＨを取得。　外部ＷＥＢで行うことで　ファイルの取扱を統一
+            $pictUrl = config('services.web.stamprally_API')."/createPict";
+            $picture = Utils::tryFopen($request->file('pict')->getPathname(), 'r');
+            $pict = $client->request('POST',$pictUrl,['multipart'=>[['name'=>'name','contents'=>$request->file('pict')->getClientOriginalName()],
+                                                                    ['name'=>'mimeType','contents'=>$request->file('pict')->getMimeType()],
+                                                                    ['name'=>"pict",'contents'=>$picture]]]);
+            $pictPath = json_decode($pict->getBody()->getContents())->path;
+        }else{
+            //画像がないときは　NULL　をいれる
+            $pictPath = NULL;
+        }
+
+        //  ルート登録・スタート地点の保存
+        $route_code=""; //ルートコード初期化
+        $response=array();//外部APIより返ってきたレスポンス保存用
+        //ルートの保存
+        $dataUrl = config('services.web.stamprally_API').'/route/create';
+        $param=array(
+                    'connect_id'=>auth()->user()->connect_id,
+                    'name'=>$request->name,
+                    'keyword'=>$request->keyword,
+                    'pict'=>$pictPath,
+                    'text'=>$request->text,
+                    'mode'=>2,//nowTravel用ルート作成
+                    );
+        $response = $client->request('POST',$dataUrl,['json'=>$param]);
+        //返ってきたルートコードを取得
+        $response = json_decode($response->getBody()->getContents());
+
+        return redirect()->route('selectNowTravel');
+    }
+
+    //作成中ルート削除
+    public function resetNowTravel(REQUEST $request){
+        //routeDelete
+        //外部制約でルート以下データが「丸ごと」削除される
+        //画像の削除処理も行われる
+        $client = new Client();
+        $dataUrl = config('services.web.stamprally_API').'/route/delete';
+        $param=array(
+            'connect_id'=>auth()->user()->connect_id,
+            'route_code'=>$request->route_code,
+            );
+        $client->request('GET',$dataUrl,['json'=>$param]);
+        //クリエイト選択画面へ
+        return redirect()->route('selectCreate');
+    }
+
+
+    //nowTravel用 ポイント作成画面移行処理
+    //ルートコードが必要
+    public function selectPointNowTravel(REQUEST $request){
+        //とりあえずnowTravel用ポイント作成画面
+        $client = new Client();
+        //マップ上にポイントを表示するため、現存するポイントを抽出
+        //published=2で引っ張り出すので connect_idだけでよい
+        $dataUrl = config('services.web.stamprally_API').'/point/routePoints';
+        //必要なのはconnect_id ※APIでpublished=2のルートを探す
+        //外部APIで その人はそのルートを進行中か、進行中であれば残ったポイントを返す
+        $param=array(
+                        'connect_id'=>auth()->user()->connect_id,
+                        'route_code'=>$request->route_code,
+                    );
+        //現存するポイントのテーブルデータを取り出す
+        $response = $client->request('POST',$dataUrl,['json'=>$param]);
+        $response=json_decode($response->getBody()->getContents());
+        return view('create.selectPointNowTravel')
+                        ->with('route_code',$request->route_code)
+                        ->with('route_name',$request->route_name)
+                        ->with('latitude',-1)
+                        ->with('longitude',-1)
+                        ->with('table',$response->table)
+                        ->with('pointNum',$response->pointNum+1);//ポイント数＋１（現在作成中ポイントNO）
+    }
+
+
+
+
+    /////////////////////////////////////////////////////////////////////////////
+    //
+    //  NOW TRAVEL ここまで
+    //
+    /////////////////////////////////////////////////////////////////////////////
+
+
 
 
     // ルート作成画面からポイント選択画面へ　※テーブルにスタートデータを登録する
@@ -110,10 +240,12 @@ class CreateRallyController extends Controller
         $route_code = json_decode($response->getBody()->getContents())->route_code;
         //ポイント選択画面へ移動
         //latitude longitudeを-1指定することで 値がない、現在地を初期位置にする処理を行う
+        //作成するpoint_noが最初なので１を送る
         return redirect()->route('selectPoint',['route_code'=>$route_code,'route_name'=>$request->name,
                                                 'latitude'=>-1,'longitude'=>-1,'table'=>-1,
                                                 'point_no'=>1]);
     }
+
 
 
     // ポイント選択画面より ポイント登録処理 selectPoint
