@@ -45,140 +45,13 @@ form{
     align-content: center;
 }
 
-/*map表示領域*/
-.wrapper .mapContainer{
-    height:85%;
-    width: 95%;
-    border-radius:10px;
-    overflow: hidden;
-}
-.mapContainer .mapKind{
-    height:5%;
-    width:100%;
-    background: radial-gradient(circle,#3fd9ffbe 65%,rgba(121, 235, 255, 0.356));
-    border-radius:5px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    font-weight: bolder;
-    font-size: 2vh;
-    color: red;
-}
-/* GoogleMap */
-.mapContainer .controls{
-    margin-top:5px;
-    width:70%;
-    max-width:750px;
-    height:4%;
-    font-size:1.5vh;
-    border-style:double;
-    background-color:rgba(255, 0, 98, 0.644);
-    font-weight: 1000;
-    color:rgb(255, 255, 255);
-}
-
-.mapContainer .controls::placeholder{
-    text-align: center;
-    font-size:1.5vh;
-    font-weight: 1000;
-    color:rgb(255, 255, 255);
-}
-.mapContainer .map{
-    height:95%;
-    width:100%;
-}
-/*ボタン領域*/
-.wrapper .buttonContainer{
-    height:10%;
-    width:95%;
-    background-color:rgba(121, 235, 255, 0.356);
-    border-radius:5px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-/*登録ボタン*/
-.buttonContainer .setButton{
-    height:70%;
-    width:35%;
-    border-radius:10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #333;
-    font-size: 3vh;
-    font-weight: 700;
-    color:rgba(248, 90, 164, 0.719);
-    background: radial-gradient(circle,#fffb01 65%,#ff5100e8);
-    border-radius: 50vh;
-    min-height:50px;
-    transition: all 0.2s ease;
-    cursor:pointer;
-}
-.setButton:active{
-    color:rgba(255, 57, 149, 0.719);
-    background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
-    box-shadow: 0 0 20px rgb(255, 251, 2) inset;
-}
-
-/*戻るボタン*/
-.buttonContainer .backButton{
-    height:70%;
-    width:35%;
-    border-radius:10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #333;
-    font-size: 2.5vh;
-    font-weight: 700;
-    color:rgba(90, 151, 248, 0.719);
-    background: radial-gradient(circle,#fffb01 65%,#ff00aae8);
-    border-radius: 50vh;
-    min-height:50px;
-    transition: all 0.2s ease;
-    cursor:pointer;
-}
-.backButton:active{
-    color:rgba(39, 120, 251, 0.719);
-    background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
-    box-shadow: 0 0 20px rgb(255, 251, 2) inset;
-}
 
 .NONE{
     display:none;
 }
 
 
-
-/***************************************************************/
-/*
-/*  モーダルウィンドウ 詳細設定画面
-/*
-****************************************************************/
-
-/*ポイント作成画面モーダルウィンドウ*/
-.modalWindow{
-    display:none;
-    position:absolute;
-    top:0px;
-    left:0px;
-    width:100vw;
-    height:100vh;
-}
-
-.modalWindow .modalwrapper{
-    width:100%;
-    height:100%;
-    background: radial-gradient(circle,#fffb0488 70%,#84fa74);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-}
-
-.modalwrapper .configContainer{
+.wrapper .configContainer{
     height:85%;
     width: 95%;
     overflow: hidden;
@@ -429,7 +302,7 @@ form{
 
 
 /*ボタン領域*/
-.modalwrapper .buttonContainer{
+.wrapper .buttonContainer{
     height:10%;
     width:95%;
     display: flex;
@@ -438,76 +311,56 @@ form{
     background-color: rgba(223, 67, 140, 0.507);
     border-radius:10px;
 }
-
-
+/*登録ボタン*/
+.buttonContainer .setButton{
+    height:70%;
+    width:35%;
+    border-radius:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-size: 2vh;
+    font-weight: 700;
+    color:rgba(248, 90, 164, 0.719);
+    background: radial-gradient(circle,#fffb01 65%,#ff5100e8);
+    border-radius: 50vh;
+    min-height:50px;
+    transition: all 0.2s ease;
+    cursor:pointer;
+}
+.setButton:active{
+    color:rgba(255, 57, 149, 0.719);
+    background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
+    box-shadow: 0 0 20px rgb(255, 251, 2) inset;
+}
 
 
 /*横長（デバイス横向き）である場合*/
 @media (orientation: landscape){
+
+    /* モーダルウィンドウ */
     .wrapper{
         display:inline-flex;
         flex-direction: row-reverse;
-        background: linear-gradient(270deg, rgb(255, 255, 140) 0%, rgba(255,255,140) 60%, rgb(255, 174, 198) 100%);
-
     }
-    /*MAP表示領域*/
-    .wrapper .mapContainer{
+    /*詳細設定領域*/
+    .wrapper .configContainer{
         height:95%;
         width:85%;
     }
-    /*ボタン領域*/
-    .wrapper .buttonContainer{
-        height:95%;
-        width:10%;
-        max-width: 120px;
-        overflow: hidden;
-        writing-mode: vertical-rl;
-        text-orientation: upright;
-        display:flex
-    }
 
-    .mapContainer .mapKind{
-        font-size: 2vw;
-    }
 
-    /*登録ボタン*/
-    .buttonContainer .setButton{
-        width:70%;
-        height:25%;
-        min-height:100px;
-        writing-mode: vertical-rl;
-        text-orientation: upright;
-        font-size:1.6vw;
-    }
-    /*戻るボタン*/
-    .buttonContainer .backButton{
-        width:70%;
-        height:25%;
-        min-height:100px;
-        writing-mode: vertical-rl;
-        text-orientation: upright;
-        font-size:2vw;
-    }
-
-    /* モーダルウィンドウ */
-    .modalwrapper{
-        display:inline-flex;
-        flex-direction: row-reverse;
-    }
-    /*  モーダルウィンドウ　タイトル　*/
     .titleSection .title{
         font-size:2vw;
-        font-weight: 500;
     }
 
     .itemSection .errorMessage{
         font-size:1vw;
     }
-
     .singleText .name{
         font-size:2vw;
     }
-
     .singleText .text{
         font-size:2vw;
     }
@@ -526,41 +379,26 @@ form{
 
 
 
-    /*詳細設定領域*/
-    .modalwrapper .configContainer{
-        height:95%;
-        width:85%;
-    }
     /*ボタン領域*/
-    .modalwrapper .buttonContainer{
+    .wrapper .buttonContainer{
         height:95%;
         width:10%;
         max-width: 120px;
         overflow: hidden;
         writing-mode: vertical-rl;
         text-orientation: upright;
-        display:flex;
     }
-
-    .picture .buttonSection .pictButton{
-        font-size: 2vw;
+    /*登録ボタン*/
+    .buttonContainer .setButton{
+        width:70%;
+        height:35%;
+        min-height:100px;
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+        font-size:2vw;
     }
-
 
     .configContainer .sectorA{
         max-width:750px;
     }
-
-    /* GoogleMap */
-    .mapContainer .controls{
-        height:7%;
-        font-size:1.5vw;
-    }
-
-    .mapContainer .controls::placeholder{
-        font-size:1.5vw;
-    }
-
-
-
 }

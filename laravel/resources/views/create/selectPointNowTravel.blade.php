@@ -45,7 +45,7 @@
                 <div class="sectorA">
                     <div class="titleSection"><div class="title">詳細を設定してください</div></div>
                     <div class="configSection">
-                    <form method="POST" id="nextActionA" action="{{-- {{ route('makePoint',['route_code'=>$route_code,'route_name'=>$route_name,'point_no'=>$point_no]) }} --}}" enctype="multipart/form-data">
+                    <form method="POST" id="nextActionA" action="{{ route('makePointNowTravel',['route_code'=>$route_code,'pointNum'=>$pointNum]) }}" enctype="multipart/form-data">
                         @csrf
                         <div class="itemSection">
                             <!-- 紹介メッセージ -->

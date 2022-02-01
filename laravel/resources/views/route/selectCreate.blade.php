@@ -35,12 +35,22 @@ RallyEdit
                             </div>
                             <div class="itemSector">
                                 <div class="buttonSector">
+                                    <form method="GET" id="nextActionD" action="{{ route('selectNowTravel') }}" enctype="multipart/form-data">
+                                        <div id="nextButtonD" class="setButton">TripNow</div>
+                                    </form>
+                                </div>
+                                <div class="textSector">
+                                    <div class="text">旅をしながら<br>作成</div>
+                                </div>
+                            </div>
+                            <div class="itemSector">
+                                <div class="buttonSector">
                                     <form method="GET" id="nextActionB" action="{{ route('createRoute') }}" enctype="multipart/form-data">
                                         <div id="nextButtonB" class="setButton">Create</div>
                                     </form>
                                 </div>
                                 <div class="textSector">
-                                    <div class="text">コース作成</div>
+                                    <div class="text">一気に<br>作成</div>
                                 </div>
                             </div>
                             <div class="itemSector">

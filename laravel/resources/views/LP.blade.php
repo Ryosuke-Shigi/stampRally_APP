@@ -125,12 +125,13 @@ StamP-RALLY LP
                 <div class="s-contents">
                     <div class="d-content">
                         <div class="textp4">
-                            「EDIT」からルートが<br>
-                            　作成できます<br>
+                            「EDIT」より<br>
+                            「create」からコースが<br>
+                            　簡単に作成できます<br>
                             <br>
-                            　コース名を決めてから<br>
-                            　説明をつけてください<br>
-                            　画像も添付できます<br>
+                            コース名を決めてから<br>
+                            説明をつけてください<br>
+                            画像も添付できます<br>
                         </div>
                     </div>
                     <div class="d-content"><img class='pict' src="{{ asset('/images/5-create.jpg') }}"></div>
@@ -185,6 +186,23 @@ StamP-RALLY LP
             <div class="endBarSector"><div id="nextButtonF"  class="setButton">作る ⇒</div></div>
         </div>
 
+        <div class="pageContainer">
+            <div class="pageSector">
+                <div class="line"><div class="textp1">-- つくりかた４ --</div></div>
+                <div class="s-contents">
+                    <div class="d-content">
+                        <div class="textp4">
+                            「TripNow」で作成すると<br>
+                            　旅行中など各場所で作成<br>
+                            　そして中断ができます<br><br>
+                            　ゴールを作って初めて<br>
+                            　コースに登録されます<br>
+                        </div>
+                    </div>
+                    <div class="d-content"><img class='pict' src="{{ asset('/images/8-create.jpg') }}"></div>
+                </div>
+            </div>
+        </div>
 
         <!-- 紹介ページ９ 最後に-->
 

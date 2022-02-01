@@ -41,35 +41,34 @@ Route::get('/ISS','IssController@viewISS')->name('viewISS');
 
 Route::group(['prefix'=>'create'],function(){
 
-    //画面表示
-
     //ルート作成（完了まで一気に作成する）
-
     //ルート作成画面表示
     Route::get('/createRoute','CreateRallyController@createRoute')->name('createRoute');
-    //ポイント選択画面表示
-    Route::get('/selectPoint/{route_code}/{route_name}/{latitude?}/{longitude?}/{point_no}','CreateRallyController@selectPoint')->name('selectPoint');
-    Route::post('/selectPoint/{route_code}/{route_name}/{latitude?}/{longitude?}/{point_no}','CreateRallyController@selectPoint')->name('selectPoint');
-    //ポイント追加選択画面表示
-    Route::get('/addPoint/{route_code}/{route_name}/{latitude?}/{longitude?}/{point_no}','CreateRallyController@addPoint')->name('addPoint');
-    Route::post('/addPoint/{route_code}/{route_name}/{latitude?}/{longitude?}/{point_no}','CreateRallyController@addPoint')->name('addPoint');
-    //ゴール設定画面表示
-    Route::get('/settingGoal/{route_code}/{route_name}','CreateRallyController@settingGoal')->name('settingGoal');
-
     //ルート作成データ処理
-
     //ルート作成処理
     Route::get('/makeRoute','CreateRallyController@makeRoute')->name('makeRoute');
     Route::post('/makeRoute','CreateRallyController@makeRoute')->name('makeRoute');
+
+    //ポイント選択画面表示
+    Route::get('/selectPoint/{route_code}/{route_name}/{latitude?}/{longitude?}/{point_no}','CreateRallyController@selectPoint')->name('selectPoint');
+    Route::post('/selectPoint/{route_code}/{route_name}/{latitude?}/{longitude?}/{point_no}','CreateRallyController@selectPoint')->name('selectPoint');
     //ポイント作成処理
     Route::get('/makePoint/{route_code}/{route_name}/{point_no}','CreateRallyController@makePoint')->name('makePoint');
     Route::post('/makePoint/{route_code}/{route_name}/{point_no}','CreateRallyController@makePoint')->name('makePoint');
+
+    //ゴール設定画面表示
+    Route::get('/settingGoal/{route_code}/{route_name}','CreateRallyController@settingGoal')->name('settingGoal');
     //ゴール設定画面
     Route::get('/makeGoal/{route_code}','CreateRallyController@makeGoal')->name('makeGoal');
     Route::post('/makeGoal/{route_code}','CreateRallyController@makeGoal')->name('makeGoal');
+
+    //ポイント追加選択画面表示
+    Route::get('/addPoint/{route_code}/{route_name}/{latitude?}/{longitude?}/{point_no}','CreateRallyController@addPoint')->name('addPoint');
+    Route::post('/addPoint/{route_code}/{route_name}/{latitude?}/{longitude?}/{point_no}','CreateRallyController@addPoint')->name('addPoint');
     //ポイント選択画面からスタート選択画面へ戻る　※スタート設定時に作成したテーブルデータを削除
     Route::post('/reCreateRoute/{route_code}','CreateRallyController@reCreateRoute')->name('reCreateRoute');
     Route::post('/reSelectpoint','CreateRallyController@reSelectpoint')->name('reSelectPoint');
+
 
 
     //nowTravel(現地現地で作成するイメージのもの)
@@ -77,20 +76,24 @@ Route::group(['prefix'=>'create'],function(){
     Route::get('/selectNowTravel','CreateRallyController@selectNowTravel')->name('selectNowTravel');
     //ルート作成画面表示
     Route::get('/createRouteNowTravel','CreateRallyController@createRouteNowTravel')->name('createRouteNowTravel');
-    //ポイント作成画面表示
-    Route::get('/selectPointNowTravel','CreateRallyController@selectPointNowTravel')->name('selectPointNowTravel');
     //ルート作成処理
     Route::get('/makeRouteNowTravel','CreateRallyController@makeRouteNowTravel')->name('makeRouteNowTravel');
     Route::post('/makeRouteNowTravel','CreateRallyController@makeRouteNowTravel')->name('makeRouteNowTravel');
+
+    //ポイント作成画面表示
+    Route::get('/selectPointNowTravel','CreateRallyController@selectPointNowTravel')->name('selectPointNowTravel');
+    //ポイント作成処理
+    Route::get('/makePointNowTravel/{route_code}/{pointNum}','CreateRallyController@makePointNowTravel')->name('makePointNowTravel');
+    Route::post('/makePointNowTravel/{route_code}/{pointNum}','CreateRallyController@makePointNowTravel')->name('makePointNowTravel');
+
+    //ゴール設定画面表示
+    Route::get('/settingGoalNowTravel/{route_code}','CreateRallyController@settingGoalNowTravel')->name('settingGoalNowTravel');
+    //ゴール設定画面
+    Route::get('/makeGoalNowTravel/{route_code}','CreateRallyController@makeGoalNowTravel')->name('makeGoalNowTravel');
+    Route::post('/makeGoalNowTravel/{route_code}','CreateRallyController@makeGoalNowTravel')->name('makeGoalNowTravel');
     //リセットnowTravel（ルート、ポイントを削除する)
     Route::get('/resetNowTravel','CreateRallyController@resetNowTravel')->name('resetNowTravel');
-
-
-
-
-
-
-
+    //nowTravelここまで
 
 
     //ルート削除
@@ -99,9 +102,9 @@ Route::group(['prefix'=>'create'],function(){
     //削除処理
     Route::get('deleteRoute','CreateRallyController@deleteRoute')->name('deleteRoute');
 
-
-
 });
+
+
 
 /////////////////////////////////////////////////////////////////////
 //

@@ -34,11 +34,11 @@ now Travel
                                     <div class="text">ポイント{{ $pointNum+1 }}つ目作成</div>
                                 </div>
                             </div>
-
+                            <!--ポイントが一つでもあれば表示される-->
                             @if($pointNum > 0)
                                 <div class="itemSector">
                                     <div class="buttonSector">
-                                        <form method="GET" id="nextActionB" action="{{ route('selectCreate') }}">
+                                        <form method="GET" id="nextActionB" action="{{ route('settingGoalNowTravel',['route_code'=>$route_code]) }}">
                                             <div id="nextButtonB" class="setButton">完了</div>
                                         </form>
                                     </div>
