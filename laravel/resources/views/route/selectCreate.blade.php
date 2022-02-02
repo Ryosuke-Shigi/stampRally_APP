@@ -20,7 +20,7 @@ RallyEdit
             <!-- 詳細設定部分 -->
             <div class="configContainer">
                 <div class="sectorA">
-                    <div class="titleSection"><div class="title">ＥＤＩＴ</div></div>
+                    <div class="titleSection"><div class="title">EDITOR</div></div>
                     <div class="configSection">
                         <div class="itemSection">
                             <div class="itemSector">

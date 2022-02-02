@@ -20,11 +20,11 @@ Route Search
             <!-- 詳細設定部分 -->
             <div class="configContainer">
                 <div class="sectorA">
-                    <div class="titleSection"><div class="title">ラリー検索</div></div>
+                    <div class="titleSection"><div class="title">ＧＡＭＥＳ</div></div>
                     <div class="configSection">
 
                         <div class="itemSection">
-                            <div class="itemSector">
+{{--                             <div class="itemSector">
                                 <div class="textSector">
                                     <div class="text">全てのラリー</div>
                                 </div>
@@ -33,10 +33,24 @@ Route Search
                                         <div id="nextButtonA" class="setButton">ＡＬＬ</div>
                                     </form>
                                 </div>
+                            </div> --}}
+
+                            <div class="itemSector">
+                                <form method="GET" id="nextActionC" action="{{ route('selectRoute') }}" enctype="multipart/form-data">
+                                    <div class="textSector">
+                                    <!-- REQUESTに keyword を入れて転送　向こうで判断して別のものを表示します -->
+                                    <div class="text">ラリー検索</div>
+                                        <input type="text" class="keyword" name="keyword" placeholder="キー検索も可">
+                                    </div>
+                                    <div class="buttonSector">
+                                        <div id="nextButtonC" class="setButton">検索</div>
+                                    </div>
+                                </form>
                             </div>
+
                             <div class="itemSector">
                                 <div class="textSector">
-                                    <div class="text">現在参加中</div>
+                                    <div class="text">現在進行中</div>
                                 </div>
                                 <div class="buttonSector">
                                     <form method="GET" id="nextActionB" action="{{ route('progressRoutes') }}" enctype="multipart/form-data">
@@ -44,18 +58,19 @@ Route Search
                                     </form>
                                 </div>
                             </div>
+
                             <div class="itemSector">
-                                <form method="GET" id="nextActionC" action="{{ route('selectRoute') }}" enctype="multipart/form-data">
-                                    <div class="textSector">
-                                    <!-- REQUESTに keyword を入れて転送　向こうで判断して別のものを表示します -->
-                                    <div class="text">キー検索</div>
-                                        <input type="text" class="keyword" name="keyword" placeholder="キーワード">
-                                    </div>
-                                    <div class="buttonSector">
-                                        <div id="nextButtonC" class="setButton">検索</div>
-                                    </div>
-                                </form>
+                                <div class="textSector">
+                                    <div class="text">攻略したラリーを<br>表示します</div>
+                                </div>
+                                <div class="buttonSector">
+                                    <form method="GET" id="nextActionE" action="{{ route('selectScore') }}">
+                                        <div id="nextButtonE" class="setButton">SCORE</div>
+                                    </form>
+                                </div>
                             </div>
+
+
                             <div class="itemSector">
 {{--                                 <div class="textSector">
                                     <div class="text">モード選択へ</div>

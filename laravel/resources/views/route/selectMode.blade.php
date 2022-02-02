@@ -43,7 +43,7 @@ Game or Create
                                     <div class="text">ラリーコースを<br>作成します</div>
                                 </div>
                             </div>
-                            <div class="itemSector">
+{{--                             <div class="itemSector">
                                 <div class="buttonSector">
                                     <form method="GET" id="nextActionC" action="{{ route('selectScore') }}">
                                         <div id="nextButtonC" class="setButton">ＳＣＯＲＥ</div>
@@ -52,7 +52,7 @@ Game or Create
                                 <div class="textSector">
                                     <div class="text">攻略したラリーを<br>表示します</div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="itemSector">
                                 <div class="buttonSector">
                                     <form method="GET" id="nextActionD" action="/">

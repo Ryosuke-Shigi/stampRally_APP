@@ -56,12 +56,10 @@ StamP-RALLY LP
                             『 P l a y 』<br>
                             　自分や人が作ったコースで<br>
                             　遊べます。<br>
+                            　スコアも見れます。<br>
                             『 E D I T 』<br>
                             　新しくコースを作成することが<br>
                             　できます。<br>
-                            『 S C O R E 』<br>
-                            　攻略したラリーを<br>
-                            　確認することができます。<br>
                         </div>
                     </div>
                     <div class="d-content"><img class='pict' src="{{ asset('/images/2-select.jpg') }}"></div>

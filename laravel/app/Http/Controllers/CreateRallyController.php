@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\ROUTE_SET;        //ルート名・紹介文・画像は可能な形式のみ
-use App\Http\Requests\POSITION_SET;     //画像は可能な形式のみ
+use App\Http\Requests\ROUTE_SET;        //validate ルート名・紹介文・画像は可能な形式のみ
+use App\Http\Requests\POSITION_SET;     //vlaidate 画像は可能な形式のみ
 //use Facade\FlareClient\Http\Client;
 use Storage;
 //guzzle ｗｅｂＡＰＩを叩く
@@ -15,9 +15,6 @@ class CreateRallyController extends Controller
 {
     //ログイン等認証対象　コンストラクタ
     public function __construct(){$this->middleware('auth');}
-
-
-
 
 
     // ルート作成画面画面表示
@@ -46,6 +43,7 @@ class CreateRallyController extends Controller
                         ->with('table',json_decode($response->getBody()->getContents())->table)
                         ->with('point_no',$point_no);
     }
+
     // ゴール設定画面
     public function settingGoal($route_code,$route_name){
         return view('create.settingGoal')
@@ -61,7 +59,6 @@ class CreateRallyController extends Controller
                         ->with('longitude',$longitude)
                         ->with('point_no',$point_no+1);//ポイントNOを＋１する
     }
-
 
 
     // ルート作成画面からポイント選択画面へ　※テーブルにスタートデータを登録する
@@ -83,14 +80,11 @@ class CreateRallyController extends Controller
             //画像がないときは　NULL　をいれる
             $pictPath = NULL;
         }
-
         //  ルート登録・スタート地点の保存
-
         //ルートコード初期化
         $route_code="";
         //外部APIより返ってきたレスポンス保存用
         $response=array();
-
         //ルートの保存
         $dataUrl = config('services.web.stamprally_API').'/route/create';
         $param=array(
@@ -111,7 +105,6 @@ class CreateRallyController extends Controller
                                                 'latitude'=>-1,'longitude'=>-1,'table'=>-1,
                                                 'point_no'=>1]);
     }
-
 
 
     // ポイント選択画面より ポイント登録処理 selectPoint

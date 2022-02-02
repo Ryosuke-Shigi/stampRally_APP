@@ -45,7 +45,7 @@ Score選択
                             </div>
                             <div class="itemSector">
                                 <div class="buttonSector">
-                                    <form method="GET" id="nextActionD" action="{{ route('selectMode') }}">
+                                    <form method="GET" id="nextActionD" action="{{ route('searchRoutes') }}">
                                         <div id="nextButtonD" class="setButton">ＢＡＣＫ</div>
                                     </form>
                                 </div>
