@@ -48,8 +48,9 @@
     </div>
 
     <!--ルート削除処理へ-->
-    <form method="GET" id="nextActionA" action="{{ route('deleteRoute') }}" enctype="multipart/form-data">
+    <form method="GET" id="nextActionA" action="{{ route('deleteDoubleCheck') }}" enctype="multipart/form-data">
         @csrf
+        <!-- JQUERYで selectroute_codeで指定されて、nameのroute_codeでdata-route_codeの値が転送される -->
         <input type="hidden" name="route_code" id="selectroute_code">
     </form>
     <!--BackAction 他に影響しないように外へ-->

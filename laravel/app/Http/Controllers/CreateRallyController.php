@@ -410,6 +410,12 @@ class CreateRallyController extends Controller
         //取得したテーブルデータを返す
         return view('create.selectDeleteRoutes',['table'=>json_decode($response->getBody()->getContents())->table]);
     }
+    //ルート削除確認チェック
+    public function deleteDoubleCHeck(REQUEST $request){
+        return view('create.deleteDoubleCheck')
+                ->with("route_code",$request->route_code);
+    }
+
     //ルート削除処理
     //引数 route_code
     public function deleteRoute(REQUEST $request){

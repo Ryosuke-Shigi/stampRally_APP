@@ -99,6 +99,8 @@ Route::group(['prefix'=>'create'],function(){
     //ルート削除
     //画面表示
     Route::get('selectDeleteRoutes','CreateRallyController@selectDeleteRoutes')->name('selectDeleteRoutes');
+    //削除確認
+    Route::get('deleteDoubleCheck','CreateRallyController@deleteDoubleCheck')->name('deleteDoubleCheck');
     //削除処理
     Route::get('deleteRoute','CreateRallyController@deleteRoute')->name('deleteRoute');
 
