@@ -216,8 +216,44 @@ body{
     background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
     box-shadow: 0 0 20px rgb(255, 251, 2) inset;
 }
-
-
+.buttonSector .backButton{
+    height:80%;
+    width:80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:3vh;
+    font-weight: 700;
+    color:rgb(34, 160, 2);
+    background: radial-gradient(circle,#fffb01 65%,#ff5100e8);
+    border-radius: 50vh;
+/*     min-height:50px;
+ */    cursor:pointer;
+}
+.backButton:active{
+    color:rgba(117, 255, 83, 0.513);
+    background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
+    box-shadow: 0 0 20px rgb(255, 251, 2) inset;
+}
+.buttonSector .signupButton{
+    height:80%;
+    width:80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:3vh;
+    font-weight: 700;
+    color:rgba(93, 90, 248, 0.719);
+    background: radial-gradient(circle,#fffb01 65%,#ff5100e8);
+    border-radius: 50vh;
+/*     min-height:50px;
+ */    cursor:pointer;
+}
+.signupButton:active{
+    color:rgba(93, 90, 248, 0.555);
+    background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
+    box-shadow: 0 0 20px rgb(255, 251, 2) inset;
+}
 /*横長（デバイス横向き）である場合*/
 @media (orientation: landscape){
     .configContainer .sectorA{
@@ -293,9 +329,18 @@ body{
         width:70%;
         font-size:2vw;
         border-radius: 50vh;
-
     }
-
-
+    .buttonSector .signupButton{
+        height:90%;
+        width:70%;
+        font-size:2vw;
+        border-radius: 50vh;
+    }
+    .buttonSector .backButton{
+        height:90%;
+        width:70%;
+        font-size:2vw;
+        border-radius: 50vh;
+    }
 
 }

@@ -138,16 +138,16 @@ form{
     color: #333;
     font-size: 5vw;
     font-weight: 700;
-    color:rgba(90, 151, 248, 0.719);
-    background: radial-gradient(circle,#fffb01 65%,#ff00aae8);
+    color:rgba(93, 90, 248, 0.719);
+    background: radial-gradient(circle,#fffb01 65%,#ff00c8);
     border-radius: 50vw;
     min-height:50px;
     transition: all 0.2s ease;
     cursor:pointer;
 }
 .backButton:active{
-    color:rgba(39, 120, 251, 0.719);
-    background: radial-gradient(circle,#fdc190 50%,#ffe601,#00b7ffe8);
+    color:rgba(57, 70, 255, 0.356);
+    background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
     box-shadow: 0 0 20px rgb(255, 251, 2) inset;
 }
 
@@ -196,7 +196,7 @@ form{
         width:70%;
         height:25%;
         font-size:2.5vh;
-        font-weight:1000;
+        font-weight: 1000;
         writing-mode: vertical-rl;
         text-orientation: upright;
     }

@@ -26,7 +26,7 @@ Game or Create
                             <div class="itemSector">
                                 <div class="buttonSector">
                                     <form method="GET" id="nextActionA" action="{{ route('searchRoutes') }}">
-                                        <div id="nextButtonA" class="setButton">ＰＬＡＹ</div>
+                                        <div id="nextButtonA" class="setButtonA">ＰＬＡＹ</div>
                                     </form>
                                 </div>
                                 <div class="textSector">
@@ -36,7 +36,7 @@ Game or Create
                             <div class="itemSector">
                                 <div class="buttonSector">
                                     <form method="GET" id="nextActionB" action="{{ route('selectCreate') }}">
-                                        <div id="nextButtonB" class="setButton">ＥＤＩＴ</div>
+                                        <div id="nextButtonB" class="setButtonB">ＥＤＩＴ</div>
                                     </form>
                                 </div>
                                 <div class="textSector">

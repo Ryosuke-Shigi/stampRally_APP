@@ -32,10 +32,10 @@ StamP-RALLY
         <div class = "buttonContainer">
             @auth
                 <div id="nextButtonA" class="setButton">START</div>
-                <div id="nextButtonB" class="setButton">LogOut</div>
+                <div id="nextButtonB" class="backButton">LogOut</div>
             @else
                 <div id="nextButtonC" class="setButton">LogIN</div>
-                <div id="nextButtonD" class="setButton">SignUP</div>
+                <div id="nextButtonD" class="backButton">SignUP</div>
             @endauth
         </div>
     </div>

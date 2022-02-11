@@ -23,20 +23,11 @@ RallyEdit
                     <div class="titleSection"><div class="title">EDITOR</div></div>
                     <div class="configSection">
                         <div class="itemSection">
-                            <div class="itemSector">
-                                <div class="buttonSector">
-                                    <form method="GET" id="nextActionA" action="{{ route('selectDeleteRoutes') }}" enctype="multipart/form-data">
-                                        <div id="nextButtonA" class="setButton">Delete</div>
-                                    </form>
-                                </div>
-                                <div class="textSector">
-                                    <div class="text">コース削除</div>
-                                </div>
-                            </div>
+
                             <div class="itemSector">
                                 <div class="buttonSector">
                                     <form method="GET" id="nextActionD" action="{{ route('selectNowTravel') }}" enctype="multipart/form-data">
-                                        <div id="nextButtonD" class="setButton">TripNow</div>
+                                        <div id="nextButtonD" class="setButtonB">TripNow</div>
                                     </form>
                                 </div>
                                 <div class="textSector">
@@ -46,7 +37,7 @@ RallyEdit
                             <div class="itemSector">
                                 <div class="buttonSector">
                                     <form method="GET" id="nextActionB" action="{{ route('createRoute') }}" enctype="multipart/form-data">
-                                        <div id="nextButtonB" class="setButton">Create</div>
+                                        <div id="nextButtonB" class="setButtonC">Create</div>
                                     </form>
                                 </div>
                                 <div class="textSector">
@@ -55,8 +46,18 @@ RallyEdit
                             </div>
                             <div class="itemSector">
                                 <div class="buttonSector">
+                                    <form method="GET" id="nextActionA" action="{{ route('selectDeleteRoutes') }}" enctype="multipart/form-data">
+                                        <div id="nextButtonA" class="setButtonA">Delete</div>
+                                    </form>
+                                </div>
+                                <div class="textSector">
+                                    <div class="text">コース削除</div>
+                                </div>
+                            </div>
+                            <div class="itemSector">
+                                <div class="buttonSector">
                                     <form method="GET" id="nextActionC" action="{{ route('selectMode') }}" enctype="multipart/form-data">
-                                        <div id="nextButtonC" class="setButton">ＢＡＣＫ</div>
+                                        <div id="nextButtonC" class="backButton">ＢＡＣＫ</div>
                                     </form>
                                 </div>
 {{--                                 <div class="textSector">

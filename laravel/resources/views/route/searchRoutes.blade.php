@@ -43,18 +43,18 @@ Route Search
                                         <input type="text" class="keyword" name="keyword" placeholder="キー検索も可">
                                     </div>
                                     <div class="buttonSector">
-                                        <div id="nextButtonC" class="setButton">検索</div>
+                                        <div id="nextButtonC" class="setButtonA">検　索</div>
                                     </div>
                                 </form>
                             </div>
 
                             <div class="itemSector">
                                 <div class="textSector">
-                                    <div class="text">現在進行中</div>
+                                    <div class="text">現在進行中<br>参加しているラリー</div>
                                 </div>
                                 <div class="buttonSector">
                                     <form method="GET" id="nextActionB" action="{{ route('progressRoutes') }}" enctype="multipart/form-data">
-                                        <div id="nextButtonB" class="setButton">進行中</div>
+                                        <div id="nextButtonB" class="setButtonB">進行中</div>
                                     </form>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@ Route Search
                                 </div>
                                 <div class="buttonSector">
                                     <form method="GET" id="nextActionE" action="{{ route('selectScore') }}">
-                                        <div id="nextButtonE" class="setButton">SCORE</div>
+                                        <div id="nextButtonE" class="setButtonC">SCORE</div>
                                     </form>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@ Route Search
                                 </div> --}}
                                 <div class="buttonSector">
                                     <form method="GET" id="nextActionD" action="{{ route('selectMode') }}" enctype="multipart/form-data">
-                                        <div id="nextButtonD" class="setButton">ＢＡＣＫ</div>
+                                        <div id="nextButtonD" class="backButton">ＢＡＣＫ</div>
                                     </form>
                                 </div>
                             </div>

@@ -26,7 +26,7 @@ Score選択
                             <div class="itemSector">
                                 <div class="buttonSector">
                                     <form method="GET" id="nextActionA" action="{{ route('showScore') }}">
-                                        <div id="nextButtonA" class="setButton">MINE</div>
+                                        <div id="nextButtonA" class="setButtonA">MINE</div>
                                     </form>
                                 </div>
                                 <div class="textSector">
@@ -36,7 +36,7 @@ Score選択
                             <div class="itemSector">
                                 <div class="buttonSector">
                                     <form method="GET" id="nextActionB" action="{{ route('selectRouteScore') }}">
-                                        <div id="nextButtonB" class="setButton">Course</div>
+                                        <div id="nextButtonB" class="setButtonB">Course</div>
                                     </form>
                                 </div>
                                 <div class="textSector">
@@ -46,7 +46,7 @@ Score選択
                             <div class="itemSector">
                                 <div class="buttonSector">
                                     <form method="GET" id="nextActionD" action="{{ route('searchRoutes') }}">
-                                        <div id="nextButtonD" class="setButton">ＢＡＣＫ</div>
+                                        <div id="nextButtonD" class="backButton">ＢＡＣＫ</div>
                                     </form>
                                 </div>
 {{--                                 <div class="textSector">

@@ -172,26 +172,43 @@ body{
     align-items: center;
     color:rgba(45, 146, 192, 0.664);
 }
-.buttonSector .setButton{
+.buttonSector .setButtonA{
     height:80%;
     width:80%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size:3vh;
-    font-weight: 700;
-    color:rgb(255, 83, 169);
+    font-weight: 800;
+    color:rgb(35, 62, 216);
+    background: radial-gradient(circle,#fffb01 65%,#ff5100e8);
+    border-radius: 50vh;
+    cursor:pointer;
+}
+.setButtonA:active{
+    color:rgba(1, 22, 143, 0.472);
+    background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
+    box-shadow: 0 0 20px rgb(255, 251, 2) inset;
+}
+.buttonSector .setButtonB{
+    height:80%;
+    width:80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:3vh;
+    font-weight: 800;
+    color:rgb(9, 192, 2);
     background: radial-gradient(circle,#fffb01 65%,#ff5100e8);
     border-radius: 50vh;
 /*     min-height:50px;
  */    cursor:pointer;
 }
-.setButton:active{
-    color:rgba(255, 57, 149, 0.719);
+.setButtonB:active{
+    color:rgba(8, 192, 2, 0.507);
     background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
     box-shadow: 0 0 20px rgb(255, 251, 2) inset;
 }
-
 /*Backボタン*/
 
 .buttonSector .backButton{
@@ -201,7 +218,7 @@ body{
     justify-content: center;
     align-items: center;
     font-size:3vh;
-    font-weight: 700;
+    font-weight: 800;
     color:rgb(255, 83, 169);
     background: radial-gradient(circle,#fffb01 65%,#ff5100e8);
     border-radius: 50vh;
@@ -280,7 +297,14 @@ body{
         align-items: center;
         color:rgba(45, 146, 192, 0.664);
     }
-    .buttonSector .setButton{
+    .buttonSector .setButtonA{
+        height:80%;
+        width:80%;
+        font-size:3vw;
+        border-radius: 50vh;
+
+    }
+    .buttonSector .setButtonB{
         height:80%;
         width:80%;
         font-size:3vw;

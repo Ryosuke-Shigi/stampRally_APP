@@ -27,13 +27,13 @@
                                 <div class="buttonSector">
                                     <form method="GET" id="nextActionA" action="{{ route('selectPoint',['route_code'=>$route_code,'route_name'=>$route_name,'latitude'=>$latitude,'longitude'=>$longitude,'point_no'=>$point_no]) }}" enctype="multipart/form-data">
                                         @csrf
-                                        <div id="nextButtonA" class="setButton">追　加</div>
+                                        <div id="nextButtonA" class="setButtonA">追 加</div>
                                     </form>
                                 </div>
                                 <div class="buttonSector">
                                     <form method="GET" id="nextActionB" action="{{ route('settingGoal',['route_code'=>$route_code,'route_name'=>$route_name]) }}" enctype="multipart/form-data">
                                         @csrf
-                                        <div id="nextButtonB" class="setButton">完　了</div>
+                                        <div id="nextButtonB" class="setButtonB">完 了</div>
                                     </form>
                                 </div>
                         </div>

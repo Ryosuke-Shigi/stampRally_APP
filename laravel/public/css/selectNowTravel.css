@@ -173,7 +173,7 @@ body{
     align-items: center;
     color:rgba(45, 146, 192, 0.664);
 }
-.buttonSector .setButton{
+.buttonSector .setButtonA{
     height:80%;
     width:80%;
     display: flex;
@@ -181,20 +181,55 @@ body{
     align-items: center;
     font-size:3vh;
     font-weight: 700;
-    color:rgb(255, 83, 169);
+    color:rgb(255, 1, 1);
     background: radial-gradient(circle,#fffb01 65%,#ff5100e8);
     border-radius: 50vh;
 /*     min-height:50px;
  */    cursor:pointer;
 }
-.setButton:active{
-    color:rgba(255, 57, 149, 0.719);
+.setButtonA:active{
+    color:rgba(216, 35, 35, 0.513);
     background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
     box-shadow: 0 0 20px rgb(255, 251, 2) inset;
 }
-
-/*Backボタン*/
-
+.buttonSector .setButtonB{
+    height:80%;
+    width:80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:3vh;
+    font-weight: 700;
+    color:rgb(45, 58, 240);
+    background: radial-gradient(circle,#fffb01 65%,#ff5100e8);
+    border-radius: 50vh;
+/*     min-height:50px;
+ */    cursor:pointer;
+}
+.setButtonB:active{
+    color:rgba(48, 45, 240, 0.561);
+    background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
+    box-shadow: 0 0 20px rgb(255, 251, 2) inset;
+}
+.buttonSector .setButtonC{
+    height:80%;
+    width:80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:3vh;
+    font-weight: 700;
+    color:rgb(9, 192, 2);
+    background: radial-gradient(circle,#fffb01 65%,#ff5100e8);
+    border-radius: 50vh;
+/*     min-height:50px;
+ */    cursor:pointer;
+}
+.setButtonC:active{
+    color:rgba(8, 192, 2, 0.52);
+    background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
+    box-shadow: 0 0 20px rgb(255, 251, 2) inset;
+}
 .buttonSector .backButton{
     height:80%;
     width:80%;
@@ -214,7 +249,6 @@ body{
     background: radial-gradient(circle,#fdc190 50%,#ffe601,#ff00aae8);
     box-shadow: 0 0 20px rgb(255, 251, 2) inset;
 }
-
 
 
 
@@ -281,13 +315,25 @@ body{
         align-items: center;
         color:rgba(45, 146, 192, 0.664);
     }
-    .buttonSector .setButton{
+    .buttonSector .setButtonA{
         height:80%;
         width:80%;
         font-size:3vw;
         border-radius: 50vh;
-
     }
+    .buttonSector .setButtonB{
+        height:80%;
+        width:80%;
+        font-size:3vw;
+        border-radius: 50vh;
+    }
+    .buttonSector .setButtonC{
+        height:80%;
+        width:80%;
+        font-size:3vw;
+        border-radius: 50vh;
+    }
+
     .buttonSector .backButton{
         height:80%;
         width:80%;

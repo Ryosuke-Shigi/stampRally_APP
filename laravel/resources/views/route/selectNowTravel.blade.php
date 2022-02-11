@@ -26,7 +26,7 @@ now Travel
                             <div class="itemSector">
                                 <div class="buttonSector">
                                     <form method="GET" id="nextActionA" action="{{ route('selectPointNowTravel') }}">
-                                        <div id="nextButtonA" class="setButton">@if($pointNum>0) 作成 @else 追加 @endif</div>
+                                        <div id="nextButtonA" class="setButtonA">@if($pointNum>0) 作 成 @else 追 加 @endif</div>
                                         <input type="hidden" name="route_code" value="{{ $route_code }}">
                                     </form>
                                 </div>
@@ -39,7 +39,7 @@ now Travel
                                 <div class="itemSector">
                                     <div class="buttonSector">
                                         <form method="GET" id="nextActionB" action="{{ route('settingGoalNowTravel',['route_code'=>$route_code]) }}">
-                                            <div id="nextButtonB" class="setButton">完了</div>
+                                            <div id="nextButtonB" class="setButtonB">完 了</div>
                                         </form>
                                     </div>
                                     <div class="textSector">
@@ -52,7 +52,7 @@ now Travel
                             <div class="itemSector">
                                 <div class="buttonSector">
                                     <form method="GET" id="nextActionC" action="{{ route('resetNowTravel') }}">
-                                        <div id="nextButtonC" class="setButton">Reset</div>
+                                        <div id="nextButtonC" class="setButtonC">Reset</div>
                                         <!--ルートコードを送って削除する-->
                                         <input type="hidden" name="route_code" value="{{ $route_code }}">
                                     </form>
