@@ -120,15 +120,11 @@ class GameRallyController extends Controller
         $remainPoint=json_decode($response->getBody()->getContents())->remainPoint;
 
 
-
         //もし、ポイントを全部クリアしていれば（変なエラーで２つ以上あった場合を想定してマイナスも考慮にいれる）
         if($remainPoint <= 0){
             //クリア処理
             return redirect()->route('pointComplete',['route_code'=>$request->route_code]);
         }
-
-
-
 
 
         //チェックするポイントの呼び出し
