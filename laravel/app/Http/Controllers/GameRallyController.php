@@ -58,7 +58,6 @@ class GameRallyController extends Controller
         $client = new Client();
         $param = array();
         //もしキーワードが入っていればキーワード検索
-        //外部API側でやるべき？
         if(isset($request->keyword)){
             $dataUrl = config('services.web.stamprally_API').'/route/keySearchRoutes';
             $param += array(
@@ -76,6 +75,11 @@ class GameRallyController extends Controller
 
     //進行中ルートを表示する
     public function progressRoutes(REQUEST $request){
+        //進行中ルートがクリア状態か判断(途中戻る等をおして、処理途中でおわった場合のための対応)
+
+
+
+        //クリア状態でなければ
         $client = new Client();
         $param = array();
         $dataUrl = config('services.web.stamprally_API').'/route/progressRoutes';
@@ -102,7 +106,31 @@ class GameRallyController extends Controller
     ///////////////////////////////////////////////////////////////////////////////////
 
     public function checkPoint(REQUEST $request){
+        //変数宣言
         $client = new Client();
+        $remainPoint = 0;//残りポイント数
+
+        //表示前に、そのコースがクリア済みであるかどうかを確認（途中処理分断で残っている場合を想定）
+        $dataUrl = config('services.web.stamprally_API').'/point/remainPoint';
+        $param=array(
+            'connect_id'=>auth()->user()->connect_id,
+            'route_code'=>$request->route_code,
+        );
+        $response = $client->request('POST',$dataUrl,['json'=>$param]);
+        $remainPoint=json_decode($response->getBody()->getContents())->remainPoint;
+
+
+
+        //もし、ポイントを全部クリアしていれば（変なエラーで２つ以上あった場合を想定してマイナスも考慮にいれる）
+        if($remainPoint <= 0){
+            //クリア処理
+            return redirect()->route('pointComplete',['route_code'=>$request->route_code]);
+        }
+
+
+
+
+
         //チェックするポイントの呼び出し
         $dataUrl = config('services.web.stamprally_API').'/point/callPoints';
         //必要なのはconnect_idとroute_code
@@ -112,6 +140,7 @@ class GameRallyController extends Controller
                         'route_code'=>$request->route_code,
                     );
         $response = $client->request('POST',$dataUrl,['json'=>$param]);
+
         return view('game.checkPoint',['route_code'=>$request->route_code,
                                         'table'=>json_decode($response->getBody()->getContents())->table,
                                         'message'=>$request->message
@@ -156,7 +185,7 @@ class GameRallyController extends Controller
         $result = json_decode($response->getBody()->getContents());
         //result・成功か否か・TRUEorFALSE　remainPoint・残りポイント数　が返ってくる
         //チェック成功であれば(距離内でチェックを押していたら)
-        if($result->result === 0){
+        if($result->result == 0){
             //残りチェックポイント数が０であれば処理へ
             if($result->remainPoint == 0){
                 //クリア処理

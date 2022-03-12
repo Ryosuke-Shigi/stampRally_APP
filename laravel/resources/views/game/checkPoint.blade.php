@@ -24,8 +24,8 @@
             <div class="mapKind">{{ $message }}</div>
             <div class="map" id="map"></div>
             <div id="mapButton" class = "buttonContainer">
-            <!-- ボタン部分 -->
-            <div id="modalIn" class="NONE"></div>
+                <!-- ボタン部分 -->
+                <div id="modalIn" class="NONE"></div>
                 <div id="backButton" class="backButton">Back</div>
             </div>
         </div>
