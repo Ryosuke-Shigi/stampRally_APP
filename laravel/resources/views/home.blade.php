@@ -23,8 +23,24 @@ StamP-RALLY
  --}}
 
             <div class="mainSector">
-                <div class="title">Stam<span class="P">P</span></div>
-                <div class="title">RALLY</div>
+
+
+{{--                 <div class="title">Stam<span class="P">P</span></div>
+                <div class="title">RALLY</div> --}}
+                <span class="sample21">S</span>
+                <span class="sample21">T</span>
+                <span class="sample21">A</span>
+                <span class="sample21">M</span>
+                <span class="sample21">P</span>
+                <span class="sample21">R</span>
+                <span class="sample21">A</span>
+                <span class="sample21">L</span>
+                <span class="sample21">L</span>
+                <span class="sample21">Y</span>
+
+
+
+
            </div>
 
         </div>

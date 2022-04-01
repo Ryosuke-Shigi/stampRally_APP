@@ -33,6 +33,23 @@ form{
     --input-text-size:1.5rem;
 }
 
+
+
+
+.sample21{
+    display  : inline-block;
+    animation: sample21Anime 5s linear infinite; /* アニメーション指定 */
+    font-size: 20vw;                   /* 文字サイズ */
+    font-weight: 700;
+    color:rgb(255, 95, 108);
+}
+@keyframes sample21Anime{
+    100%{ transform: rotate(360deg) }   /* 横回転 */
+}
+
+
+
+
 /* 全体*/
 .wrapper{
     height:100vh;
@@ -181,6 +198,9 @@ form{
     }
     .title .P{
         font-size:32vh;
+    }
+    .sample21{
+        font-size:22vh;
     }
     /*登録ボタン*/
     .buttonContainer .setButton{
