@@ -39,7 +39,7 @@ form{
 .sample21{
     display  : inline-block;
     animation: sample21Anime 5s linear infinite; /* アニメーション指定 */
-    font-size: 20vw;                   /* 文字サイズ */
+    font-size: 23vw;                   /* 文字サイズ */
     font-weight: 700;
     color:rgb(255, 95, 108);
 }

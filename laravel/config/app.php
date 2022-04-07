@@ -174,6 +174,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        //画像リサイズ用
+        \Intervention\Image\ImageServiceProvider::class,
     ],
 
     /*
@@ -226,6 +229,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         //webAPIを触る時の定数
         'WebApi'=> App\Consts\webApi::class,
+        //画像リサイズ
+        'Image'=> \Intervention\Image\Facades\Image::class,
 
     ],
 

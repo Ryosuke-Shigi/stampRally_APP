@@ -10,6 +10,8 @@ use Storage;
 //guzzle ｗｅｂＡＰＩを叩く
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Utils;
+//画像リサイズ
+use Intervention\Image\Facades\Image;
 
 class CreateRallyController extends Controller
 {
@@ -61,6 +63,7 @@ class CreateRallyController extends Controller
     }
 
 
+
     // ルート作成画面からポイント選択画面へ　※テーブルにスタートデータを登録する
     public function makeRoute(ROUTE_SET $request){
         //画像が存在すれば・保存する　pathが必要なので一番最初に処理
@@ -68,6 +71,14 @@ class CreateRallyController extends Controller
         $client = new Client();
         //画像が存在しているか　また　アップロードは成功しているかどうか
         if($request->hasFile('pict')){
+
+            //画像リサイズ
+            $image = Image::make($request->file('pict')->getRealPath())
+            ->resize(1000,null,function($constraint){
+                $constraint->aspectRatio();
+            })->save();
+
+
             //画像保存
             //画像を保存してＰＡＴＨを取得。　外部ＷＥＢで行うことで　ファイルの取扱を統一
             $pictUrl = config('services.web.stamprally_API')."/createPict";
@@ -112,6 +123,12 @@ class CreateRallyController extends Controller
         $client = new Client();
         //画像が存在しているか　また　アップロードは成功しているかどうか
         if($request->hasFile('pict')){
+            //画像リサイズ
+            $image = Image::make($request->file('pict')->getRealPath())
+            ->resize(1000,null,function($constraint){
+                $constraint->aspectRatio();
+            })->save();
+
             //画像保存
             //画像を保存してＰＡＴＨを取得。　外部ＷＥＢで行うことで　ファイルの取扱を統一
             $pictUrl = config('services.web.stamprally_API')."/createPict";
@@ -148,6 +165,12 @@ class CreateRallyController extends Controller
         $client = new Client();
         //画像が存在しているか　また　アップロードは成功しているかどうか
         if($request->hasFile('pict')){
+            //画像リサイズ
+            $image = Image::make($request->file('pict')->getRealPath())
+            ->resize(1000,null,function($constraint){
+                $constraint->aspectRatio();
+            })->save();
+
             //画像保存
             //画像を保存してＰＡＴＨを取得。　外部ＷＥＢで行うことで　ファイルの取扱を統一
             $pictUrl = config('services.web.stamprally_API')."/createPict";
@@ -175,7 +198,11 @@ class CreateRallyController extends Controller
 
 
 
-        //　ポイント選択画面から　戻るボタンをクリックした際の処理　（作成したルートを丸ごと削除）
+
+
+
+
+    //　ポイント選択画面から　戻るボタンをクリックした際の処理　（作成したルートを丸ごと削除）
     public function reCreateRoute(REQUEST $request){
         //routeDelete
         //外部制約でルート以下データが「丸ごと」削除される
@@ -231,6 +258,11 @@ class CreateRallyController extends Controller
         return view('create.createRouteNowTravel');
     }
 
+
+
+
+
+
     //nowTravelルート作成
     public function makeRouteNowTravel(ROUTE_SET $request){
         //画像が存在すれば・保存する　pathが必要なので一番最初に処理
@@ -238,6 +270,12 @@ class CreateRallyController extends Controller
         $client = new Client();
         //画像が存在しているか　また　アップロードは成功しているかどうか
         if($request->hasFile('pict')){
+            //画像リサイズ
+            $image = Image::make($request->file('pict')->getRealPath())
+            ->resize(1000,null,function($constraint){
+                $constraint->aspectRatio();
+            })->save();
+
             //画像保存
             //画像を保存してＰＡＴＨを取得。　外部ＷＥＢで行うことで　ファイルの取扱を統一
             $pictUrl = config('services.web.stamprally_API')."/createPict";
@@ -313,11 +351,21 @@ class CreateRallyController extends Controller
                         ->with('pointNum',$response->pointNum+1);//ポイント数＋１（現在作成中ポイントNO）
     }
 
+
+
+
+
     // ポイント選択画面より ポイント登録処理 selectPoint
     public function makePointNowTravel(POSITION_SET $request,$route_code,$pointNum){
         $client = new Client();
         //画像が存在しているか　また　アップロードは成功しているかどうか
         if($request->hasFile('pict')){
+            //画像リサイズ
+            $image = Image::make($request->file('pict')->getRealPath())
+            ->resize(1000,null,function($constraint){
+                $constraint->aspectRatio();
+            })->save();
+
             //画像保存
             //画像を保存してＰＡＴＨを取得。　外部ＷＥＢで行うことで　ファイルの取扱を統一
             $pictUrl = config('services.web.stamprally_API')."/createPict";
@@ -357,6 +405,12 @@ class CreateRallyController extends Controller
         $client = new Client();
         //画像が存在しているか　また　アップロードは成功しているかどうか
         if($request->hasFile('pict')){
+            //画像リサイズ
+            $image = Image::make($request->file('pict')->getRealPath())
+            ->resize(1000,null,function($constraint){
+                $constraint->aspectRatio();
+            })->save();
+
             //画像保存
             //画像を保存してＰＡＴＨを取得。　外部ＷＥＢで行うことで　ファイルの取扱を統一
             $pictUrl = config('services.web.stamprally_API')."/createPict";
