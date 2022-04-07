@@ -28,16 +28,9 @@ StamP-RALLY
 {{--                 <div class="title">Stam<span class="P">P</span></div>
                 <div class="title">RALLY</div> --}}
 
-                <span class="sample21">S</span>
-                <span class="sample21">T</span>
-                <span class="sample21">A</span>
-                <span class="sample21">M</span>
-                <span class="sample21">P</span>
-                <span class="sample21">R</span>
-                <span class="sample21">A</span>
-                <span class="sample21">L</span>
-                <span class="sample21">L</span>
-                <span class="sample21">Y</span>
+                <span class="sample21">すたん</span>
+                <span class="sample22">Ｐ</span>
+                <span class="sample21">らり～</span>
 
 
 

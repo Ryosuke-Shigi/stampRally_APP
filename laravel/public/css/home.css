@@ -39,18 +39,35 @@ form{
 .sample21{
     display  : inline-block;
     animation: sample21Anime 3s linear infinite; /* アニメーション指定 */
-    font-size: 23vw;                   /* 文字サイズ */
+    font-size: 21vw;                   /* 文字サイズ */
     font-weight: 700;
-    color:rgb(255, 95, 108);
+    color:rgb(254, 116, 128);
+    font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+    z-index:2;
 }
 @keyframes sample21Anime{
     0% { transform: perspective(150px) translate(0px,0px) rotateZ(0deg) rotateX(0deg) scale(1,2); }
-    25% { transform: perspective(150px) translate(0px,-3vh) rotateZ(5deg) rotateX(15deg) scale(1,1.6); }
+    25% { transform: perspective(150px) translate(0px,3vh) rotateZ(5deg) rotateX(15deg) scale(1,1.6); }
     50% { transform: perspective(150px) translate(0px,0px) rotateZ(0deg) rotateX(0deg) scale(1.2,1.2) ; }
-    75% { transform: perspective(150px) translate(0px,3vh) rotateZ(-5deg) rotateX(-15deg) scale(1,1.6); }
+    75% { transform: perspective(150px) translate(0px,-3vh) rotateZ(-5deg) rotateX(-15deg) scale(1,1.6); }
     100% { transform: perspective(150px) translate(0px,0px) rotateZ(0deg) rotateX(0deg) scale(1,2); }
 }
-
+.sample22{
+    display  : inline-block;
+    animation: sample22Anime 3s linear infinite; /* アニメーション指定 */
+    font-size: 22vw;                   /* 文字サイズ */
+    font-weight: 700;
+    color:rgb(255, 95, 108);
+    font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+    z-index:1;
+}
+@keyframes sample22Anime{
+    0% { transform: perspective(150px) translate(0px,0px) rotateZ(0deg) rotateX(0deg) scale(2,2.5); }
+    25% { transform: perspective(150px) translate(0px,3vh) rotateZ(-5deg) rotateX(-15deg) scale(2.5,2.1); }
+    50% { transform: perspective(150px) translate(0px,0px) rotateZ(0deg) rotateX(0deg) scale(2.8,1.8) ; }
+    75% { transform: perspective(150px) translate(0px,-3vh) rotateZ(5deg) rotateX(15deg) scale(2.5,2.1); }
+    100% { transform: perspective(150px) translate(0px,0px) rotateZ(0deg) rotateX(0deg) scale(2,2.5); }
+}
 
 
 
@@ -225,6 +242,12 @@ form{
         writing-mode: vertical-rl;
         text-orientation: upright;
     }
+    .sample21{
+        font-size: 21vh;                   /* 文字サイズ */
+    }
 
+    .sample22{
+        font-size: 28vh;                   /* 文字サイズ */
+    }
 
 }
