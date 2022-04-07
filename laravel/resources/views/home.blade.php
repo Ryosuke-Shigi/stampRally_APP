@@ -27,11 +27,13 @@ StamP-RALLY
 
 {{--                 <div class="title">Stam<span class="P">P</span></div>
                 <div class="title">RALLY</div> --}}
-
-                <span class="sample21">すたん</span>
-                <span class="sample22">Ｐ</span>
-                <span class="sample21">らり～</span>
-
+                <div class="sectorA">
+                    <span class="sample21">すたん</span>
+                    <span class="sample22">Ｐ</span>
+                </div>
+                <div class="sectorB">
+                    <span class="sample21">らり～</span>
+                </div>
 
 
 

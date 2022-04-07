@@ -43,7 +43,7 @@ form{
     font-weight: 700;
     color:rgb(254, 116, 128);
     font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
-    z-index:2;
+    z-index:200;
 }
 @keyframes sample21Anime{
     0% { transform: perspective(150px) translate(0px,0px) rotateZ(0deg) rotateX(0deg) scale(1,2); }
@@ -59,7 +59,7 @@ form{
     font-weight: 700;
     color:rgb(255, 95, 108);
     font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
-    z-index:1;
+    z-index:100;
 }
 @keyframes sample22Anime{
     0% { transform: perspective(150px) translate(0px,0px) rotateZ(0deg) rotateX(0deg) scale(2,2.5); }
@@ -84,7 +84,6 @@ form{
 }
 
 
-/*map表示領域*/
 .wrapper .mainContainer{
     height:85%;
     width: 95%;
@@ -94,40 +93,30 @@ form{
     align-items:center;
     align-content: center;
     flex-wrap: wrap;
-    overflow: hidden;
     border-radius:10px;
 
 }
 
 /*ルートボタン部分*/
 .mainContainer .mainSector{
-    width:90%;
+    width:100%;
     height:92%;
     padding: 10px 0px 10px 0px;
     display:flex;
     justify-content: center;
     align-content: center;
     flex-wrap: wrap;
-    border-radius:50vh;
 }
-
-.mainSector .title{
-    width:100%;
-    height:auto;
-    display: flex;
-    justify-content:center;
+.mainSector .sectorA{
+    display:flex;
+    justify-content: center;
     align-content: center;
-    align-items: center;
-    text-align: center;
-    font-size:23vw;
-    color:rgb(255, 95, 108);
-    font-weight: 1000;
-    background: radial-gradient(circle,#b0fbff1f 20%,#ffffff00);
 }
-.title .P{
-    font-size:28vw;
-    font-weight:1000;
-    color:rgb(255, 29, 104);
+.mainSector .sectorB{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top:10vh;
 }
 
 
@@ -203,6 +192,16 @@ form{
     .wrapper .mainContainer{
         height:95%;
         width:85%;
+        overflow: hidden;
+    }
+    .mainContriner .mainSector{
+        display:inline-flex;
+    }
+    .mainSector .sectorA{
+        margin-left: 2vw;
+    }
+    .mainSector .sectorB{
+        margin-top:0;
     }
     /*ボタン領域*/
     .wrapper .buttonContainer{
@@ -214,16 +213,7 @@ form{
         text-orientation: upright;
         display:flex
     }
-    /*タイトル*/
-    .mainSector .title{
-        font-size:22vh;
-    }
-    .title .P{
-        font-size:32vh;
-    }
-    .sample21{
-        font-size:22vh;
-    }
+
     /*登録ボタン*/
     .buttonContainer .setButton{
         width:70%;
@@ -243,11 +233,10 @@ form{
         text-orientation: upright;
     }
     .sample21{
-        font-size: 21vh;                   /* 文字サイズ */
+        font-size: 20vh;                   /* 文字サイズ */
     }
-
     .sample22{
-        font-size: 28vh;                   /* 文字サイズ */
+        font-size: 23vh;                   /* 文字サイズ */
     }
 
 }
