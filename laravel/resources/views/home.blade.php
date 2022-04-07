@@ -27,6 +27,7 @@ StamP-RALLY
 
 {{--                 <div class="title">Stam<span class="P">P</span></div>
                 <div class="title">RALLY</div> --}}
+
                 <span class="sample21">S</span>
                 <span class="sample21">T</span>
                 <span class="sample21">A</span>
