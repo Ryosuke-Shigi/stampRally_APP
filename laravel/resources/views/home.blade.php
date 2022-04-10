@@ -28,13 +28,27 @@ StamP-RALLY
 {{--                 <div class="title">Stam<span class="P">P</span></div>
                 <div class="title">RALLY</div> --}}
                 <div class="sectorA">
-                    <span class="sample21">すたん</span>
+
+                    <!-- <span class="sample21">すたん</span> -->
+                    <span class="sample21">す</span>
+                    <span class="sample21">た</span>
+                    <span class="sample21">ん</span>
+
                     <span class="sample22">Ｐ</span>
                 </div>
                 <div class="sectorB">
-                    <span class="sample21">らり～</span>
+{{--                     <span class="sample21">らり～</span>
+ --}}
+                    <span class="sample21">ら</span>
+                    <span class="sample21">り</span>
+                    <span class="sample21">～</span>
+
                 </div>
 
+                <!--実験CSS-->
+{{--                 <div class="sectorA">
+                    <span class="objectRotateA">◆</span>
+                </div> --}}
 
 
            </div>

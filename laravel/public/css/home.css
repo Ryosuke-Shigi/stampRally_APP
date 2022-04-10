@@ -38,7 +38,7 @@ form{
 
 .sample21{
     display  : inline-block;
-    animation: sample21Anime 3s linear infinite; /* アニメーション指定 */
+    animation: sample21Anime 2s linear infinite; /* アニメーション指定 */
     font-size: 21vw;                   /* 文字サイズ */
     font-weight: 700;
     color:rgb(254, 116, 128);
@@ -47,11 +47,17 @@ form{
     z-index:200;
 }
 @keyframes sample21Anime{
-    0% { transform: perspective(150px) translate(0px,0px) rotateZ(0deg) rotateX(0deg) scale(1,2); }
+/*     0% { transform: perspective(150px) translate(0px,0px) rotateZ(0deg) rotateX(0deg) scale(1,2); }
     25% { transform: perspective(150px) translate(0px,3vh) rotateZ(5deg) rotateX(15deg) scale(1,1.6); }
     50% { transform: perspective(150px) translate(0px,0px) rotateZ(0deg) rotateX(0deg) scale(1.2,1.2) ; }
     75% { transform: perspective(150px) translate(0px,-3vh) rotateZ(-5deg) rotateX(-15deg) scale(1,1.6); }
-    100% { transform: perspective(150px) translate(0px,0px) rotateZ(0deg) rotateX(0deg) scale(1,2); }
+    100% { transform: perspective(150px) translate(0px,0px) rotateZ(0deg) rotateX(0deg) scale(1,2); } */
+
+    0% { transform: perspective(150px) translate(0px,0px) rotateZ(0deg) rotateX(0deg) scale(1,1); }
+    25% { transform: perspective(150px) translate(0px,-3vh) rotateZ(-25deg) rotateX(0deg) scale(1,1.5); }
+    50% { transform: perspective(150px) translate(0px,0px) rotateZ(0deg) rotateX(0deg) scale(1,1) ; }
+    75% { transform: perspective(150px) translate(0px,-3vh) rotateZ(25deg) rotateX(0deg) scale(1,1.5); }
+    100% { transform: perspective(150px) translate(0px,0px) rotateZ(0deg) rotateX(0deg) scale(1,1); }
 }
 .sample22{
     display  : inline-block;
@@ -71,6 +77,25 @@ form{
     100% { transform: perspective(150px) translate(0px,0px) rotateZ(0deg) rotateX(0deg) scale(2,2.5); }
 }
 
+.objectRotateA{
+    display  : inline-block;
+    animation: objectRotateAnime 6s linear infinite; /* アニメーション指定 */
+    font-size: 15vw;                   /* 文字サイズ */
+    font-weight: 700;
+    color:rgb(255, 95, 108);
+    font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+    -webkit-text-stroke:4px #ff0b54;
+    z-index:100;
+}
+@keyframes objectRotateAnime{
+/*     0% { transform: rotateZ(0deg) translate(15vw,0px); }
+    100% { transform: rotateZ(-360deg) translate(15vw,0px); } */
+
+    0% { transform: translate(15vw,0px) rotateZ(0deg)  translate(-15vw,0px) rotateZ(0deg); }
+    100% { transform: translate(15vw,0px) rotateZ(-360deg) translate(-15vw,0px) rotateZ(360deg); }
+
+}
+
 
 
 /* 全体*/
@@ -88,7 +113,7 @@ form{
 
 .wrapper .mainContainer{
     height:85%;
-    width: 95%;
+    width: 99%;
     border-radius:10px;
     display:flex;
     justify-content: center;
@@ -96,6 +121,7 @@ form{
     align-content: center;
     flex-wrap: wrap;
     border-radius:10px;
+    overflow:hidden;
 
 }
 
