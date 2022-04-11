@@ -142,7 +142,7 @@ body{
 
 /*ポイント作成画面モーダルウィンドウ*/
 .modalWindow{
-    display:none;
+    display:none;/*表示OFF javascriptでon/off */
     position:absolute;
     top:0px;
     left:0px;
@@ -167,10 +167,13 @@ body{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: rgba(126, 182, 255, 0.712);
     border-radius:10px;
     flex-wrap: wrap;
-    align-content: center;
+    animation:configColor 3s ease infinite;
+}
+@keyframes configColor{
+    0%,100% {background-color: rgba(126, 182, 255, 0.712);}
+    50% {background-color: rgba(126, 182, 255, 0.233);}
 }
 
 .configContainer .sectorA{
@@ -423,12 +426,11 @@ body{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: rgba(80, 83, 255, 0.472);
     border-radius:10px;
 }
 
 .modalwrapper .backButton{
-    height:70%;
+    height:65%;
     width:40%;
     border-radius:10px;
     display: flex;
@@ -520,7 +522,7 @@ body{
     /*ボタン領域*/
     .modalwrapper .buttonContainer{
         height:95%;
-        width:10%;
+        width:15%;
         max-width: 120px;
         overflow: hidden;
         writing-mode: vertical-rl;
@@ -528,7 +530,7 @@ body{
         display:flex;
     }
     .modalwrapper .backButton{
-        height:30%;
+        height:40%;
         width:50%;
         font-size:2vw;
     }

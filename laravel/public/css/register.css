@@ -56,10 +56,14 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(113, 255, 77, 0.63);
     border-radius:10px;
     flex-wrap: wrap;
     align-content: center;
+    animation:configColor 3s ease infinite;
+}
+@keyframes configColor{
+    0%,100% {background-color: rgba(113, 255, 77, 0.623);}
+    50% {background-color: rgba(116, 251, 82, 0.224);}
 }
 
 .configContainer .sectorA{

@@ -106,9 +106,17 @@ form{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    background: linear-gradient(180deg, rgb(255, 139, 174) 0%,rgb(255, 255, 25) 10%, rgb(255, 255, 118) 70%, rgb(255, 139, 174) 100%);
+    background: linear-gradient(180deg, rgb(255, 152, 183) 0%,rgb(255, 255, 131) 25%,rgba(255,255,140) 85%, rgb(254, 155, 185) 100%);
+    background-size:100% 200%;
+    animation:bggradient 3s ease infinite;
     align-content: center;
 }
+@keyframes bggradient{
+    0%,100% {background-position:50% 0%;}
+    50% {background-position:50% 100%;}
+}
+
+
 
 
 .wrapper .mainContainer{
@@ -211,11 +219,17 @@ form{
 
 /*横長（デバイス横向き）である場合*/
 @media (orientation: landscape){
+    /* 全体*/
     .wrapper{
-        display:inline-flex;
-        flex-direction: row-reverse;
-        background: linear-gradient(270deg, rgb(255, 139, 174) 0%,rgb(255, 255, 25) 10%, rgb(255, 255, 118) 70%, rgb(255, 139, 174) 100%);
+        background: linear-gradient(270deg, rgb(255, 152, 183) 0%,rgb(255, 255, 131) 25%,rgba(255,255,140) 85%, rgb(254, 155, 185) 100%);
+        background-size:200% 100%;
     }
+    @keyframes bggradient{
+        0%,100% {background-position:0% 50%;}
+        50% {background-position:100% 50%;}
+    }
+
+
     /*MAP表示領域*/
     .wrapper .mainContainer{
         height:95%;
